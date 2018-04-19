@@ -12,3 +12,5 @@ Created on Mon Apr 16 11:18:01 2018
 # Try to make documentation very clear as you go along 
 # Eventually transfer all of this to a Jupyter notebook 
 
+Medfilereader
+Check what it extracts then make huge meta file for ALL dpcp data (split by sal/pcp)

@@ -61,7 +61,30 @@ For each rat scores: NOR deficit or NOR DI (sal and pcp)
 For each rat - number of bursts, clusters and licks on last lick day
 For each rat - percentage distracted
 For each rat - mean PDP 
-For each rat - 
+For each rat - short, medium, long bursts 
+For each rat - percent distracted amphetamine day 
+For each rat - lick behaviour amphetamine day (numbers of bursts, clusters)
+
+REALLY DEFINE BURSTS, CLUSTERS, RUNS ETC. and come up with a "score" for 
+distraction. Percent distracted, pause length (on distracted trials and non-dis)
+mean pause length for each rat ! Mean pause length as a whole and mean pause length
+for JUST distracted and JUST non-distracted trials in EACH RAT :
+    
+    Then an average of these for groups saline, pcp (can aggregate 2 cohorts)
+    Then show the females also (separate cohort with different treatment)
+    
+    On distraction day, habituation day and AMPHETAMINE! Show no effects on saline 
+    Can we reverse, dehabituate the habituation effect with dopamnergic drugs???
+    In saline and PCP animals 
+    
+Licking frequency within the bursts (expecting 6Hz) see if this is different 
+in PCP 
+
+INDIVIDUAL DIFFERENCES - saline only here (for now)
+    Correlations of individual features (could make an aggregated "score") 
+    Can these descriptors accurately predict (1)  Distraction, (2)  PCP/SAL 
+    Rats preference or palatability of saccharin and the distractibility in later trials 
+    AND habituation level
 
 
 For all rats (sal) - mean number of bursts, clusters, last lick day 

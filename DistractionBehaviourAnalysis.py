@@ -6,100 +6,70 @@ Created on Mon Apr 16 11:18:00 2018
 @author: u1490431
 """
 
-###
+#(1) Read in each rats licks only (from med) for each day 
+
+DO THIS ALL TWICE. ONCE FOR MALES AND ONCE FOR FEMALES
+Store them as lickDataDPCPFemales
+Store as lickDataDPCPMales
+
+#(1)
+
+find the meatfile
+
+go to metafile and produce metaextractor
 
 
-1) Read in all 3 cohorts (individually) DPCP1, DPCP2, DPCP3 
-2) Separate into PCP and SALINE animals (possible to just look at saline)
-3) Separate into lick day data (all and last) and distraction day data (main and hab)
-
-4) Work out basic parameters for groups and days
-    (a) Number of bursts, clusters, runs 
-    (b) Palatability for saccharin score based on these 
-    (c) Mean. median number and length of bursts/etc
-
-5) Predictive correlations or linear regression 
-6) Machine learning, support vector machines (with scores from lick day to predict distractedness)
-7) Scores from distraction day to predict group membership (are they PCP or SAL)
-
-8) Subtle differences in PCP, timings and intervals of licks on licks day 
-
-9) Different classifications of distracted or not? 
-
-10) Variables for statistical comparison
-
-11) If no PCP effect, clear analysis of distraction behaviour
-    (a) What it does to bursts and licks 
-    (b) How it affects consumption in general (is this still stable but structurally different)
- 
+#(2)
+for each filename in the names (produced from metafilereader output):
+    only those that are included in col (1)
+    open the file, medfilereader it 
+    produce the lick variable 
     
-# All data on R drive, move to hard drive for access and add the med files to git 
-# in 3 folders of DPCP1, DPCP2, DPCP3 
+    = lickday data for all rats, do this twice. Once for the males (combined)
+    and once for the females (total)
 
-# No metafile dor DPCP3!! 
+#(3)    
+for distraction days for all rats (all after the last lick, for cols with 2):
+    take that lick variable and run DistractioCalc2 (on just distraction days, and modelled?)
+    take d produced from DistractionCalc2 and run distractedOrNot on all
+    store in a list called --> distracted or not 
 
-# Which is male and female? Checking over "sheets"
+#(4) Sort by day, treatment and sex
+# Analyse licking only 
+# Metafile extractor will produce the lists of which rats are which (twice m and f)
 
+take data from last licking day only (use meta extractor to index just this day)
 
-Medfilereader
-Check what it extracts then make huge meta file for ALL dpcp data (split by sal/pcp)
-
-
-N = 16 - amphetamine effect, NOR 
-N = 16 - amphetamine effects, NOR 
-N = 24 (female) - amphetamine effects, NOR 
-
-Percentage distracted
-Number of bursts, number of clusters analysis 
-Metrics for means, medians, etc. 
-
-Literature searching 
-
-
-
-For each rat scores: NOR deficit or NOR DI (sal and pcp) 
-For each rat - number of bursts, clusters and licks on last lick day
-For each rat - percentage distracted
-For each rat - mean PDP 
-For each rat - short, medium, long bursts 
-For each rat - percent distracted amphetamine day 
-For each rat - lick behaviour amphetamine day (numbers of bursts, clusters)
-
-REALLY DEFINE BURSTS, CLUSTERS, RUNS ETC. and come up with a "score" for 
-distraction. Percent distracted, pause length (on distracted trials and non-dis)
-mean pause length for each rat ! Mean pause length as a whole and mean pause length
-for JUST distracted and JUST non-distracted trials in EACH RAT :
+   
+for all lists of licks :
+    do lickcalc
+    and if sal (from variable lists in metaextractor) store in one place (define earlier)
+    and if pcp store here
     
-    Then an average of these for groups saline, pcp (can aggregate 2 cohorts)
-    Then show the females also (separate cohort with different treatment)
+    #this will produce all the burst info for each rat on each day 
+    # store these values and then later, find the means / medians like THPH1 and 2
     
-    On distraction day, habituation day and AMPHETAMINE! Show no effects on saline 
-    Can we reverse, dehabituate the habituation effect with dopamnergic drugs???
-    In saline and PCP animals 
+    # just last licking day, are there differences between pcp and saline here?
+    # no. bursts, runs, etc. set boundaries for cut offs 
     
-Licking frequency within the bursts (expecting 6Hz) see if this is different 
-in PCP 
+DISTRACTION
 
-INDIVIDUAL DIFFERENCES - saline only here (for now)
-    Correlations of individual features (could make an aggregated "score") 
-    Can these descriptors accurately predict (1)  Distraction, (2)  PCP/SAL 
-    Rats preference or palatability of saccharin and the distractibility in later trials 
-    AND habituation level
+#(5) Compare real and modelled distractors
 
+for last lick day do the distracted or not / access from earlier variables stored :
+    compare this to the lick day 
+    work out percentage distracted 
+    work our PDPs (all)
+    work out PDPs (distracted) and pdps (not distracted)
+    
+other metrics of distraction ?? 
 
-For all rats (sal) - mean number of bursts, clusters, last lick day 
-For all rats (pcp) - mean number of bursts, clusters, last lick day 
-For all rats (sal) - percentage distracted
+compare ALL rats distraction and habituation 
 
-PDPs mean as group 
+compare all rats habituation and SAL and AMPH 
 
-Modelled distractors whether they would be distracted or not individual and as 
-groups 
-
-General licking patterns, microstructure differences on lick days 
-How do we know it isnt just licking difference rather than distractability? 
-
-
+for amphetamine, PDPs, percentage etc. 
+   
 
 
 

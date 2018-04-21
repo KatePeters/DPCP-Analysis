@@ -69,11 +69,50 @@ compare ALL rats distraction and habituation
 compare all rats habituation and SAL and AMPH 
 
 for amphetamine, PDPs, percentage etc. 
-   
+  
+
+GROUP DATA (ways to subset)
+
+MALES 
+PCP lick day mean PDP, mean percentage distracted, mean/median bursts
+PCP distraction day mean PDP, mean percentage distracted, mean/median bursts
+PCP habituation day mean PDP, mean percentage distracted, mean/median bursts
+PCP salineIP day mean PDP, mean percentage distracted, mean/median bursts
+PCP amphetamineIP day mean PDP, mean percentage distracted, mean/median bursts
+
+SAL lick day mean PDP, mean percentage distracted, mean/median bursts
+SAL distraction day mean PDP, mean percentage distracted, mean/median bursts
+SAL habituation day mean PDP, mean percentage distracted, mean/median bursts
+SAL salineIP day mean PDP, mean percentage distracted, mean/median bursts
+SAL amphetamineIP day mean PDP, mean percentage distracted, mean/median bursts
+
+FEMALES 
+PCP lick day mean PDP, mean percentage distracted, mean/median bursts
+PCP distraction day mean PDP, mean percentage distracted, mean/median bursts
+PCP habituation day mean PDP, mean percentage distracted, mean/median bursts
+PCP salineIP day mean PDP, mean percentage distracted, mean/median bursts
+PCP amphetamineIP day mean PDP, mean percentage distracted, mean/median bursts
+
+SAL lick day mean PDP, mean percentage distracted, mean/median bursts
+SAL distraction day mean PDP, mean percentage distracted, mean/median bursts
+SAL habituation day mean PDP, mean percentage distracted, mean/median bursts
+SAL salineIP day mean PDP, mean percentage distracted, mean/median bursts
+SAL amphetamineIP day mean PDP, mean percentage distracted, mean/median bursts
 
 
+Statistics (probably not in Python, probably use SPSS or R)
+
+ANOVA - effects of day, effects of PCP (in males and in females)
+ANOVA - effects of sex on distraction OR 3 way ANOVA (although 2 cohorts far appart)
 
 
+# NOR
 
+# Add in NOR scores for each rat too, the DI and then calculate group info 
 
+# (1) Is there a NOR deficit when all male data are combined, is there a deficit in females
+
+# (2) Does the individual NOR score correlate with any distraction measure??
+
+# Correlations 
 

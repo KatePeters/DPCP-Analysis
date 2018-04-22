@@ -284,7 +284,7 @@ def MetaExtractor (metafile):
        PercentDistracted = PercentDistracted + [lst[9]]
  
     return ({'MedFilenames':MedFilenames, 'RatID':RatID, 'Date':Date, 'Day':Day, 'Session':Session, \
-             'TotLicks':TotLicks, 'Distractions':Distractions, \
+             'Drug':Drug, 'TotLicks':TotLicks, 'Distractions':Distractions, \
              'PercentDistracted':PercentDistracted})
     
 def time2samples(self):

@@ -124,12 +124,15 @@ How do we know it isnt just licking difference rather than distractability?
 
 # Edited Metafiles to fix issues 
 # Replaced rat dpcp2.5 day 4 (lick train) data with day 3 (as missing file)
+    # changed date and day numbers to 06 and 4 (not 04 and 3) to fit with Python indices 
 
 # Double check the files can be very easily indexed (file licks linked to ratID and day)
 
 # Editing MetaExtractor to read correct cols in Metafiles as saved
 
-
+# Thinking and testing code to compare groups but also keep track of which 
+# individual rat is which (for matching in correlations) - be careful not 
+# to move/subset data in a way that losing access to rat ID 
 
 
 

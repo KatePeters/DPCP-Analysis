@@ -9,30 +9,76 @@ Created on Mon Apr 16 11:18:00 2018
 # (1) Find and extract info from the meatfile(s) 
 # Useful info for sanity checks, and stored list of file names easy to access
 
-metafile_males = '/Volumes/KP_HARD_DRI 1/kp259/DPCP_ALL/DPCP12Masterfile.csv'
-metafile_females = '/Volumes/KP_HARD_DRI 1/kp259/DPCP_ALL/DPCP3_Metafile.csv'
+metafile_males = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP12Masterfile.csv'
+metafile_females = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP3_Metafile.csv'
 extract_males = MetaExtractor(metafile_males)
 extract_females = MetaExtractor(metafile_females)
 
 # Folder with ALL medfiles  
-medfolder = '/Volumes/KP_HARD_DRI 1/kp259/DPCP_ALL/'
+medfolder = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/' # sometimes need space1 after DRI
 
 # (2) - get all lick data for all rats/sessions (use the filenames in order from metafile_males)
 
 # MALES
 
 # assign empty list to add lists of lick onsets and offsets for all medfiles 
-all_lick_onset_M = []
-all_lick_offset_M = []
+last_lick_sal_M = []
+distraction_sal_M = []
+hab1_sal_M = []
+hab2_sal_M = []
+amph_sal_M = []
 
-for filename in extract_males['MedFilenames']:
+
+# Read in MED files, extract lick onsets and offsets 
+for ind, filename in enumerate(extract_males['MedFilenames']):
     path = medfolder + filename
-    onsets, offsets = medfilereader(path, ['e', 'f'])  # e is onset, f offset
-    all_lick_onset_M.append(onsets)
-    all_lick_offset_M.append(offsets)    
+    onsets, offsets = medfilereader(path, ['e', 'f'])  # e onset, f offset
 
-# Maybe modify this to only give last lick day, distraction, habituation, amphetamine
-# By including an include col, modifying metaextractor and running again 
+# Subsetting all lick data by group (use dates to index) 
+# DPCP1  DPCP2  - CONDITION 
+# 170417 171006 - last lick
+# 170418 171007 - dis
+# 170419 171008 - hab 1
+# 170420 171009 - hab 2
+# 170423 171012 - amphetamine
+
+
+# Saline last licks day    
+    if extract_males['Date'][ind] == '170417' or extract_males['Date'][ind] == '171006' \
+    and extract_males['Drug'][ind] == 'SAL' :
+        # Produces list of lists with 3 inner lists (onset, offset, rat ID)
+        last_lick_sal_M.append([onsets, offsets, extract_males['RatID'][ind]])
+# Saline distraction        
+    if extract_males['Date'][ind] == '170418' or extract_males['Date'][ind] == '171007' \
+    and extract_males['Drug'][ind] == 'SAL' :
+        distraction_sal_M.append([onsets, offsets, extract_males['RatID'][ind]])
+# Saline habituation 1
+    if extract_males['Date'][ind] == '170419' or extract_males['Date'][ind] == '171008' \
+    and extract_males['Drug'][ind] == 'SAL' :
+        hab1_sal_M.append([onsets, offsets, extract_males['RatID'][ind]])
+# Saline habituation 2
+    if extract_males['Date'][ind] == '170420' or extract_males['Date'][ind] == '171009' \
+    and extract_males['Drug'][ind] == 'SAL' :
+        hab2_sal_M.append([onsets, offsets, extract_males['RatID'][ind]])
+# Saline amphetamine IP             
+    if extract_males['Date'][ind] == '170423' or extract_males['Date'][ind] == '171012' \
+    and extract_males['Drug'][ind] == 'SAL' :
+        amph_sal_M.append([onsets, offsets, extract_males['RatID'][ind]])
+            
+
+
+last_lick_pcp_M = []
+distraction_pcp_M = []
+hab1_pcp_M = []
+hab2_pcp_M = []
+amph_pcp_M = []        
+    
+        
+        # add to different variables for storing specific information - can I add the rat name?
+        # do I need to or is the index completely the same as nothing moves from the oridignal 
+        # 
+
+
 
 
 

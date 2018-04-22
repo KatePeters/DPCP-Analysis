@@ -272,18 +272,18 @@ def MetaExtractor (metafile):
     NonDistractions, PercentDistracted = [], [], [], [], [], [], [], [], [], []
 
     for i, lst in enumerate(tablerows):
-       MedFilenames = MedFilenames + [lst[1]]
-       RatID = RatID + [lst[2]]
-       Date = Date + [lst[3]]
-       #Day = Day + [lst[3]]
+       MedFilenames = MedFilenames + [lst[0]]
+       RatID = RatID + [lst[1]]
+       Date = Date + [lst[2]]
+       Day = Day + [lst[3]]
        Session = Session + [lst[4]]
-     #  Drug = Drug + [lst[5]]
+       Drug = Drug + [lst[5]]
        TotLicks = TotLicks + [lst[6]]
-       Distractions = Distractions + [lst[8]] 
-       #NonDistractions = NonDistractions + [lst[8]]
+       Distractions = Distractions + [lst[7]] 
+       NonDistractions = NonDistractions + [lst[8]]
        PercentDistracted = PercentDistracted + [lst[9]]
  
-    return ({'MedFilenames':MedFilenames, 'RatID':RatID, 'Date':Date, 'Session':Session, \
+    return ({'MedFilenames':MedFilenames, 'RatID':RatID, 'Date':Date, 'Day':Day, 'Session':Session, \
              'TotLicks':TotLicks, 'Distractions':Distractions, \
              'PercentDistracted':PercentDistracted})
     

@@ -120,6 +120,15 @@ groups
 General licking patterns, microstructure differences on lick days 
 How do we know it isnt just licking difference rather than distractability? 
 
+''' 22/04/18 '''
+
+# Edited Metafiles to fix issues 
+# Replaced rat dpcp2.5 day 4 (lick train) data with day 3 (as missing file)
+
+# Double check the files can be very easily indexed (file licks linked to ratID and day)
+
+# Editing MetaExtractor to read correct cols in Metafiles as saved
+
 
 
 

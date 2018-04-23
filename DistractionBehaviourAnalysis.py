@@ -7,32 +7,37 @@ Created on Mon Apr 16 11:18:00 2018
 """
 
 # (1) Find and extract info from the meatfile(s) 
+#
+#metafile_males = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP12Masterfile.csv'
+#metafile_females = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP3_Metafile.csv'
 
-metafile_males = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP12Masterfile.csv'
-metafile_females = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP3_Metafile.csv'
+metafile_males = 'F:/kp259/DPCP_ALL/DPCP12Masterfile.csv'
+metafile_females = 'F:/kp259/DPCP_ALL/DPCP3_Metafile.csv' 
+
 extract_males = MetaExtractor(metafile_males)
 extract_females = MetaExtractor(metafile_females)
 # Folder with all medfiles (DPCP1, DPCP2, DPCP3)
-medfolder = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/' # sometimes need space1 after DRI
+#medfolder = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/' # sometimes need space1 after DRI
+medfolder = 'F:/kp259/DPCP_ALL/'
+# (2) - Get all lick onset/offset data for all rats/sessions 
 
-# (2) - get all lick data for all rats/sessions (use the filenames in order from metafile_males)
-# Info :
-  # DPCP1  DPCP2  - CONDITION 
-  # 170417 171006 - last lick
-  # 170418 171007 - dis
-  # 170419 171008 - hab 1
-  # 170420 171009 - hab 2
-  # 170423 171012 - amphetamine
+''' 
+  Info DPCP1(16) and DPCP2(16) males, DPCP3(24) females :
+  DPCP1  DPCP2   DPCP3  - CONDITION 
+  170417 171006  171124 - last lick
+  170418 171007  171125 - dis
+  170419 171008  171126 - hab 1
+  170420 171009  171127 - hab 2
+  170423 171012  171128 - amphetamine
 
-# MALES ------------------------------------------------------------------------------------
-
+'''
+# MALES ***********************************************************************
 # SALINE 
 # assign empty list to add lists of lick onsets and offsets for all medfiles 
-last_lick_sal_M = []
-distraction_sal_M = []
-hab1_sal_M = []
-hab2_sal_M = []
-amph_sal_M = []
+last_lick_sal_M, distraction_sal_M, hab1_sal_M, hab2_sal_M, amph_sal_M = [], [], [], [], []
+# PCP
+last_lick_pcp_M, distraction_pcp_M, hab1_pcp_M, hab2_pcp_M, amph_pcp_M = [], [], [], [], []       
+
 
 # Read in MED files, extract lick onsets and offsets 
 for ind, filename in enumerate(extract_males['MedFilenames']):
@@ -40,6 +45,7 @@ for ind, filename in enumerate(extract_males['MedFilenames']):
     onsets, offsets = medfilereader(path, ['e', 'f'])  # e onset, f offset
 
 # Subsetting all lick data by group (use dates to index) rat ID is saved in the list
+#SALINE
 # Saline last licks day    
     if extract_males['Date'][ind] == '170417' or extract_males['Date'][ind] == '171006' \
     and extract_males['Drug'][ind] == 'SAL' :
@@ -62,15 +68,7 @@ for ind, filename in enumerate(extract_males['MedFilenames']):
     and extract_males['Drug'][ind] == 'SAL' :
         amph_sal_M.append([onsets, offsets, extract_males['RatID'][ind]])
             
-
-# PCP
-last_lick_pcp_M = []
-distraction_pcp_M = []
-hab1_pcp_M = []
-hab2_pcp_M = []
-amph_pcp_M = []        
-
-
+# PCP 
 # PCP last licks day    
     if extract_males['Date'][ind] == '170417' or extract_males['Date'][ind] == '171006' \
     and extract_males['Drug'][ind] == 'PCP' :
@@ -91,71 +89,67 @@ amph_pcp_M = []
     if extract_males['Date'][ind] == '170423' or extract_males['Date'][ind] == '171012' \
     and extract_males['Drug'][ind] == 'PCP' :
         amph_pcp_M.append([onsets, offsets, extract_males['RatID'][ind]])    
-        
-
-# (3) Lick calc for last lick day (by group)
-
-#which variables does lickcac take? Remember the indexing with these variables, 3 lists
-#
-#last_lick_sal_M
-#last_lick_pcp_M
-
-# (4) Distraction calc / distracted or not for distraciton day (by group)
-
-#FEMALES ========================================================================
 
 
-# SALINE 
+#FEMALES **********************************************************************
+
 # assign empty list to add lists of lick onsets and offsets for all medfiles 
-last_lick_sal_F = []
-distraction_sal_F = []
-hab1_sal_F = []
-hab2_sal_F = []
-amph_sal_F = []
-
+# SALINE
+last_lick_sal_F, distraction_sal_F, hab1_sal_F, hab2_sal_F, amph_sal_F = [], [], [], [], []
 # PCP
-last_lick_pcp_F = []
-distraction_pcp_F = []
-hab1_pcp_F = []
-hab2_pcp_F = []
-amph_pcp_F = []
+last_lick_pcp_F, distraction_pcp_F, hab1_pcp_F, hab2_pcp_F, amph_pcp_F = [], [], [], [], []
 
  
 for ind, filename in enumerate(extract_females['MedFilenames']):
     path = medfolder + filename
     onsets, offsets = medfilereader(path, ['e', 'f'])  # e onset, f offset
 
-# Info :
-  # DPCP3  - CONDITION 
-  # 171124 - last lick
-  # 171125 - dis
-  # 171126 - hab 1
-  # 171127 - hab 2
-  # 171128 - amphetamine
-
+# SALINE
 # Saline last licks day 
+    if extract_females['Date'][ind] == '171124' and extract_females['Drug'][ind] == 'SAL' :
+      last_lick_sal_F.append([onsets, offsets, extract_females['RatID'][ind]])      
+  # Saline distraction 
+    if extract_females['Date'][ind] == '171125' and extract_females['Drug'][ind] == 'SAL' :
+      distraction_sal_F.append([onsets, offsets, extract_females['RatID'][ind]])
+  # Saline habituation 1
+    if extract_females['Date'][ind] == '171126' and extract_females['Drug'][ind] == 'SAL' :
+      hab1_sal_F.append([onsets, offsets, extract_females['RatID'][ind]])
+  # Saline habituation 2
+    if extract_females['Date'][ind] == '171127' and extract_females['Drug'][ind] == 'SAL' :
+      hab2_sal_F.append([onsets, offsets, extract_females['RatID'][ind]]) 
+  # Saline amphetamine IP
+    if extract_females['Date'][ind] == '171128' and extract_females['Drug'][ind] == 'SAL' :
+      amph_sal_F.append([onsets, offsets, extract_females['RatID'][ind]])
+     
+  # PCP
+  # PCP last licks day 
+    if extract_females['Date'][ind] == '171124' and extract_females['Drug'][ind] == 'PCP' :
+      last_lick_pcp_F.append([onsets, offsets, extract_females['RatID'][ind]])   
+  # PCP distraction 
+    if extract_females['Date'][ind] == '171125' and extract_females['Drug'][ind] == 'PCP' :
+      distraction_pcp_F.append([onsets, offsets, extract_females['RatID'][ind]])
+  # PCP habituation 1
+    if extract_females['Date'][ind] == '171126' and extract_females['Drug'][ind] == 'PCP' :
+      hab1_pcp_F.append([onsets, offsets, extract_females['RatID'][ind]])
+  # PCP habituation 2
+    if extract_females['Date'][ind] == '171127' and extract_females['Drug'][ind] == 'PCP' :
+      hab2_pcp_F.append([onsets, offsets, extract_females['RatID'][ind]])
+  # PCP amphetamine IP 
+    if extract_females['Date'][ind] == '171128' and extract_females['Drug'][ind] == 'PCP' :
+      amph_pcp_F.append([onsets, offsets, extract_females['RatID'][ind]])
+    
+# (3) Lick calc for last lick day (by group) for male PCP and SAL, for female PCP and SAL
 
-# Saline distraction  
+for each list of 3 lists in the variable:
+  list[0] = onset (what about the -3)
+  list[1] = offset
+  
+#which variables does lickcac take? Remember the indexing with these variables, 3 lists
+#
+#last_lick_sal_M
+#last_lick_pcp_M
 
-# Saline habituation 1
-
-# Saline habituation 2
-
-# Saline amphetamine IP 
-
-# PCP last licks day 
-
-# PCP distraction  
-
-# PCP habituation 1
-
-# PCP habituation 2
-
-# PCP amphetamine IP 
-
-
-
-
+# (4) Distraction calc / distracted or not for distraciton day (by group)
 
 
 

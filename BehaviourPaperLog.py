@@ -143,6 +143,9 @@ How do we know it isnt just licking difference rather than distractability?
 
   # Need to analyse all NOR videos again and compare by goup
   # Can also get the DI and add this to machine learning or group analysis 
+  
+# Think about which figures to produce and include
+# What is being compared to what and how can you show this graphically 
 
 
 

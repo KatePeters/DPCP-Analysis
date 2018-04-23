@@ -7,20 +7,26 @@ Created on Mon Apr 16 11:18:00 2018
 """
 
 # (1) Find and extract info from the meatfile(s) 
-# Useful info for sanity checks, and stored list of file names easy to access
 
 metafile_males = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP12Masterfile.csv'
 metafile_females = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP3_Metafile.csv'
 extract_males = MetaExtractor(metafile_males)
 extract_females = MetaExtractor(metafile_females)
-
-# Folder with ALL medfiles  
+# Folder with all medfiles (DPCP1, DPCP2, DPCP3)
 medfolder = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/' # sometimes need space1 after DRI
 
 # (2) - get all lick data for all rats/sessions (use the filenames in order from metafile_males)
+# Info :
+  # DPCP1  DPCP2  - CONDITION 
+  # 170417 171006 - last lick
+  # 170418 171007 - dis
+  # 170419 171008 - hab 1
+  # 170420 171009 - hab 2
+  # 170423 171012 - amphetamine
 
-# MALES
+# MALES ------------------------------------------------------------------------------------
 
+# SALINE 
 # assign empty list to add lists of lick onsets and offsets for all medfiles 
 last_lick_sal_M = []
 distraction_sal_M = []
@@ -28,21 +34,12 @@ hab1_sal_M = []
 hab2_sal_M = []
 amph_sal_M = []
 
-
 # Read in MED files, extract lick onsets and offsets 
 for ind, filename in enumerate(extract_males['MedFilenames']):
     path = medfolder + filename
     onsets, offsets = medfilereader(path, ['e', 'f'])  # e onset, f offset
 
-# Subsetting all lick data by group (use dates to index) 
-# DPCP1  DPCP2  - CONDITION 
-# 170417 171006 - last lick
-# 170418 171007 - dis
-# 170419 171008 - hab 1
-# 170420 171009 - hab 2
-# 170423 171012 - amphetamine
-
-
+# Subsetting all lick data by group (use dates to index) rat ID is saved in the list
 # Saline last licks day    
     if extract_males['Date'][ind] == '170417' or extract_males['Date'][ind] == '171006' \
     and extract_males['Drug'][ind] == 'SAL' :
@@ -66,34 +63,75 @@ for ind, filename in enumerate(extract_males['MedFilenames']):
         amph_sal_M.append([onsets, offsets, extract_males['RatID'][ind]])
             
 
-
+# PCP
 last_lick_pcp_M = []
 distraction_pcp_M = []
 hab1_pcp_M = []
 hab2_pcp_M = []
 amph_pcp_M = []        
-    
+
+
+# PCP last licks day    
+    if extract_males['Date'][ind] == '170417' or extract_males['Date'][ind] == '171006' \
+    and extract_males['Drug'][ind] == 'PCP' :
+        # Produces list of lists with 3 inner lists (onset, offset, rat ID)
+        last_lick_pcp_M.append([onsets, offsets, extract_males['RatID'][ind]])
+# PCP distraction        
+    if extract_males['Date'][ind] == '170418' or extract_males['Date'][ind] == '171007' \
+    and extract_males['Drug'][ind] == 'PCP' :
+        distraction_pcp_M.append([onsets, offsets, extract_males['RatID'][ind]])
+# PCP habituation 1
+    if extract_males['Date'][ind] == '170419' or extract_males['Date'][ind] == '171008' \
+    and extract_males['Drug'][ind] == 'PCP' :
+        hab1_pcp_M.append([onsets, offsets, extract_males['RatID'][ind]])
+# PCP habituation 2
+    if extract_males['Date'][ind] == '170420' or extract_males['Date'][ind] == '171009' \
+    and extract_males['Drug'][ind] == 'PCP' :
+        hab2_pcp_M.append([onsets, offsets, extract_males['RatID'][ind]])
+# PCP amphetamine IP             
+    if extract_males['Date'][ind] == '170423' or extract_males['Date'][ind] == '171012' \
+    and extract_males['Drug'][ind] == 'PCP' :
+        amph_pcp_M.append([onsets, offsets, extract_males['RatID'][ind]])    
         
-        # add to different variables for storing specific information - can I add the rat name?
-        # do I need to or is the index completely the same as nothing moves from the oridignal 
-        # 
 
+# (3) Lick calc for last lick day (by group)
 
+# (4) Distraction calc / distracted or not for distraciton day (by group)
 
-
-
-#    if include = 1 then index the same bit and run
-#    filename = folder + filename from loop 
-#    only those that are included in col (1)
-#    open the file, medfilereader it 
-#    produce the lick variable 
-#    
-#    = lickday data for all rats, do this twice. Once for the males (combined)
-#    and once for the females (total)
-#
 #FEMALES
-#
-#
+
+
+# Info :
+  # DPCP3  - CONDITION 
+  # 171124 - last lick
+  # 171125 - dis
+  # 171126 - hab 1
+  # 171127 - hab 2
+  # 171128 - amphetamine
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #! With the lickcalc output, add it to a master list of lists or dictionary/list 
 #of dictionaries so that it can be indexed by file / rat / day 
 #

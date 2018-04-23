@@ -135,7 +135,14 @@ How do we know it isnt just licking difference rather than distractability?
 # to move/subset data in a way that losing access to rat ID 
 
 
+''' 23/04/17 '''
 
+# Analyse all at a group level first, licking and distraction measures
+
+# Then, use individual data to look at correlations and individual differences
+
+  # Need to analyse all NOR videos again and compare by goup
+  # Can also get the DI and add this to machine learning or group analysis 
 
 
 

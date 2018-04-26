@@ -8,17 +8,17 @@ Created on Mon Apr 16 11:18:00 2018
 
 # (1) Find and extract info from the meatfile(s) 
 #
-#metafile_males = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP12Masterfile.csv'
-#metafile_females = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP3_Metafile.csv'
+metafile_males = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP12Masterfile.csv'
+metafile_females = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP3_Metafile.csv'
 
-metafile_males = 'F:/kp259/DPCP_ALL/DPCP12Masterfile.csv'
-metafile_females = 'F:/kp259/DPCP_ALL/DPCP3_Metafile.csv' 
+#metafile_males = 'F:/kp259/DPCP_ALL/DPCP12Masterfile.csv'
+#metafile_females = 'F:/kp259/DPCP_ALL/DPCP3_Metafile.csv' 
 
 extract_males = MetaExtractor(metafile_males)
 extract_females = MetaExtractor(metafile_females)
 # Folder with all medfiles (DPCP1, DPCP2, DPCP3)
-#medfolder = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/' # sometimes need space1 after DRI
-medfolder = 'F:/kp259/DPCP_ALL/'
+medfolder = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/' # sometimes need space1 after DRI
+#medfolder = 'F:/kp259/DPCP_ALL/'
 # (2) - Get all lick onset/offset data for all rats/sessions 
 
 ''' 
@@ -42,7 +42,7 @@ last_lick_pcp_M, distraction_pcp_M, hab1_pcp_M, hab2_pcp_M, amph_pcp_M = [], [],
 # Read in MED files, extract lick onsets and offsets 
 for ind, filename in enumerate(extract_males['MedFilenames']):
     path = medfolder + filename
-    onsets, offsets = medfilereader(path, ['e', 'f'])  # e onset, f offset
+    onsets, offsets = medfilereader(path, ['e', 'f'], remove_var_header = True)  # e onset, f offset
 
 # Subsetting all lick data by group (use dates to index) rat ID is saved in the list
 #SALINE
@@ -102,7 +102,7 @@ last_lick_pcp_F, distraction_pcp_F, hab1_pcp_F, hab2_pcp_F, amph_pcp_F = [], [],
  
 for ind, filename in enumerate(extract_females['MedFilenames']):
     path = medfolder + filename
-    onsets, offsets = medfilereader(path, ['e', 'f'])  # e onset, f offset
+    onsets, offsets = medfilereader(path, ['e', 'f'], remove_var_header = True)  # e onset, f offset
 
 # SALINE
 # Saline last licks day 
@@ -140,9 +140,9 @@ for ind, filename in enumerate(extract_females['MedFilenames']):
     
 # (3) Lick calc for last lick day (by group) for male PCP and SAL, for female PCP and SAL
 
-for each list of 3 lists in the variable:
-  list[0] = onset (what about the -3)
-  list[1] = offset
+#for each list of 3 lists in the variable:
+#  list[0] = onset (what about the -3)
+#  list[1] = offset
   
 #which variables does lickcac take? Remember the indexing with these variables, 3 lists
 #
@@ -151,6 +151,15 @@ for each list of 3 lists in the variable:
 
 # (4) Distraction calc / distracted or not for distraciton day (by group)
 
+# Access the list structures of licks 
+# Distraction calc 2 on those
+# OUtput from distraction calc --> in to distracted or not 
+
+# Stored in a master list of D or ND for each group 
+
+
+# (5) Work out PDPs for all groups and store
+# Produce an output and do all the statistics on these (decide tests and comparisons)
 
 
 

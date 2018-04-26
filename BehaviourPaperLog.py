@@ -147,7 +147,15 @@ How do we know it isnt just licking difference rather than distractability?
 # Think about which figures to produce and include
 # What is being compared to what and how can you show this graphically 
 
+''' 25/04/18 '''
 
+# Issue with males code, something wrong with the OR and AND statements 
+
+# Is not always triggering the and (maybe need it twice)
+
+# Female code works and does not have the or statement 
+
+# Debug by adding Drug info to the output 
 
 
 

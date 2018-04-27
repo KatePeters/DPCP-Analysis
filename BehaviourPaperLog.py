@@ -157,6 +157,13 @@ How do we know it isnt just licking difference rather than distractability?
 
 # Debug by adding Drug info to the output 
 
+''' 27/04/18 '''
+
+# Checked last lick day - correct subsetting against metafile for pcp/sal/m/f YES
+
+# Check distraction day 
+# Check hab1, hab2, amph 
+
 
 
     

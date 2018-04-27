@@ -47,47 +47,47 @@ for ind, filename in enumerate(extract_males['MedFilenames']):
 # Subsetting all lick data by group (use dates to index) rat ID is saved in the list
 #SALINE
 # Saline last licks day    
-    if extract_males['Date'][ind] == '170417' or extract_males['Date'][ind] == '171006' \
-    and extract_males['Drug'][ind] == 'SAL' :
+    if extract_males['Date'][ind] == '170417' and extract_males['Drug'][ind] == 'SAL' \
+    or extract_males['Date'][ind] == '171006' and extract_males['Drug'][ind] == 'SAL' :
         # Produces list of lists with 3 inner lists (onset, offset, rat ID)
         last_lick_sal_M.append([onsets, offsets, extract_males['RatID'][ind]])
 # Saline distraction        
-    if extract_males['Date'][ind] == '170418' or extract_males['Date'][ind] == '171007' \
-    and extract_males['Drug'][ind] == 'SAL' :
+    if extract_males['Date'][ind] == '170418' and extract_males['Drug'][ind] == 'SAL' \
+    or extract_males['Date'][ind] == '171007' and extract_males['Drug'][ind] == 'SAL' :
         distraction_sal_M.append([onsets, offsets, extract_males['RatID'][ind]])
 # Saline habituation 1
-    if extract_males['Date'][ind] == '170419' or extract_males['Date'][ind] == '171008' \
-    and extract_males['Drug'][ind] == 'SAL' :
+    if extract_males['Date'][ind] == '170419' and extract_males['Drug'][ind] == 'SAL' \
+    or extract_males['Date'][ind] == '171008' and extract_males['Drug'][ind] == 'SAL' :
         hab1_sal_M.append([onsets, offsets, extract_males['RatID'][ind]])
 # Saline habituation 2
-    if extract_males['Date'][ind] == '170420' or extract_males['Date'][ind] == '171009' \
-    and extract_males['Drug'][ind] == 'SAL' :
+    if extract_males['Date'][ind] == '170420' and extract_males['Drug'][ind] == 'SAL' \
+    or extract_males['Date'][ind] == '171009' and extract_males['Drug'][ind] == 'SAL' :
         hab2_sal_M.append([onsets, offsets, extract_males['RatID'][ind]])
 # Saline amphetamine IP             
-    if extract_males['Date'][ind] == '170423' or extract_males['Date'][ind] == '171012' \
-    and extract_males['Drug'][ind] == 'SAL' :
+    if extract_males['Date'][ind] == '170423' and extract_males['Drug'][ind] == 'SAL' \
+    or extract_males['Date'][ind] == '171012' and extract_males['Drug'][ind] == 'SAL' :
         amph_sal_M.append([onsets, offsets, extract_males['RatID'][ind]])
             
 # PCP 
 # PCP last licks day    
-    if extract_males['Date'][ind] == '170417' or extract_males['Date'][ind] == '171006' \
-    and extract_males['Drug'][ind] == 'PCP' :
+    if extract_males['Date'][ind] == '170417' and extract_males['Drug'][ind] == 'PCP' \
+    or extract_males['Date'][ind] == '171006' and extract_males['Drug'][ind] == 'PCP' :
         last_lick_pcp_M.append([onsets, offsets, extract_males['RatID'][ind]])
 # PCP distraction        
-    if extract_males['Date'][ind] == '170418' or extract_males['Date'][ind] == '171007' \
-    and extract_males['Drug'][ind] == 'PCP' :
+    if extract_males['Date'][ind] == '170418' and extract_males['Drug'][ind] == 'PCP' \
+    or extract_males['Date'][ind] == '171007' and extract_males['Drug'][ind] == 'PCP' :
         distraction_pcp_M.append([onsets, offsets, extract_males['RatID'][ind]])
 # PCP habituation 1
-    if extract_males['Date'][ind] == '170419' or extract_males['Date'][ind] == '171008' \
-    and extract_males['Drug'][ind] == 'PCP' :
+    if extract_males['Date'][ind] == '170419' and extract_males['Drug'][ind] == 'PCP' \
+    or extract_males['Date'][ind] == '171008' and extract_males['Drug'][ind] == 'PCP' :
         hab1_pcp_M.append([onsets, offsets, extract_males['RatID'][ind]])
 # PCP habituation 2
-    if extract_males['Date'][ind] == '170420' or extract_males['Date'][ind] == '171009' \
-    and extract_males['Drug'][ind] == 'PCP' :
+    if extract_males['Date'][ind] == '170420' and extract_males['Drug'][ind] == 'PCP' \
+    or extract_males['Date'][ind] == '171009' and extract_males['Drug'][ind] == 'PCP' :
         hab2_pcp_M.append([onsets, offsets, extract_males['RatID'][ind]])
 # PCP amphetamine IP             
-    if extract_males['Date'][ind] == '170423' or extract_males['Date'][ind] == '171012' \
-    and extract_males['Drug'][ind] == 'PCP' :
+    if extract_males['Date'][ind] == '170423' and extract_males['Drug'][ind] == 'PCP' \
+    or extract_males['Date'][ind] == '171012' and extract_males['Drug'][ind] == 'PCP' :
         amph_pcp_M.append([onsets, offsets, extract_males['RatID'][ind]])    
 
 
@@ -140,9 +140,19 @@ for ind, filename in enumerate(extract_females['MedFilenames']):
     
 # (3) Lick calc for last lick day (by group) for male PCP and SAL, for female PCP and SAL
 
-#for each list of 3 lists in the variable:
-#  list[0] = onset (what about the -3)
-#  list[1] = offset
+
+#def lickCalc(licks, offset = [], burstThreshold = 0.25, runThreshold = 10, 
+#             binsize=60, histDensity = False):
+
+
+for lists in last_lick_sal_M:
+    licks = lists[0]
+    offset = lists[1]    
+    lick_analysis = lickCalc(licks, offset, burstThreshold = 0.25, runThreshold = 10)
+    
+ #   lickCalcSAL_M .append(lick_analysis )
+    
+
   
 #which variables does lickcac take? Remember the indexing with these variables, 3 lists
 #

@@ -160,6 +160,9 @@ def lickCalc(licks, offset = [], burstThreshold = 0.25, runThreshold = 10,
             return
 
     lickData = {}
+
+    if len(licks) == len(offset) + 1:
+        licks = licks[0:-1]
     
     if len(offset) > 0:
         lickData['licklength'] = offset - licks

@@ -164,6 +164,7 @@ How do we know it isnt just licking difference rather than distractability?
 # Check distraction day 
 # Check hab1, hab2, amph 
 
+# Added lickCalc loop, need to save all in massive list structure and average stuff!
 
 
     

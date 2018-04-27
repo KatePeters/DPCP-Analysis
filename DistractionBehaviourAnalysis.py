@@ -140,19 +140,44 @@ for ind, filename in enumerate(extract_females['MedFilenames']):
     
 # (3) Lick calc for last lick day (by group) for male PCP and SAL, for female PCP and SAL
 
+# assign empty variables to store outputs from lick calc (to find means/groups stats)
+# lists where each item is a dictionary (22) derived from lickCalc for each rat / day
 
-#def lickCalc(licks, offset = [], burstThreshold = 0.25, runThreshold = 10, 
-#             binsize=60, histDensity = False):
+# Would list comprehentions be better here, shorter more efficient??
 
+
+lick_analysis_sal_M = []
+lick_analysis_pcp_M = []
+lick_analysis_sal_F = []
+lick_analysis_pcp_F = []
 
 for lists in last_lick_sal_M:
     licks = lists[0]
     offset = lists[1]    
     lick_analysis = lickCalc(licks, offset, burstThreshold = 0.25, runThreshold = 10)
-    
- #   lickCalcSAL_M .append(lick_analysis )
-    
+    lick_analysis_sal_M.append(lick_analysis)
 
+for lists in last_lick_pcp_M:
+    licks = lists[0]
+    offset = lists[1]    
+    lick_analysis = lickCalc(licks, offset, burstThreshold = 0.25, runThreshold = 10)
+    lick_analysis_pcp_M.append(lick_analysis)
+
+for lists in last_lick_sal_F:
+    licks = lists[0]
+    offset = lists[1]    
+    lick_analysis = lickCalc(licks, offset, burstThreshold = 0.25, runThreshold = 10)
+    lick_analysis_sal_F.append(lick_analysis)
+
+for lists in last_lick_pcp_F:
+    licks = lists[0]
+    offset = lists[1]    
+    lick_analysis = lickCalc(licks, offset, burstThreshold = 0.25, runThreshold = 10)
+    lick_analysis_pcp_F.append(lick_analysis)
+    
+# Decide which bits to access and how to average them per group, or input into SPSS/R
+# Lick frequency is there, do SAL and PCP lick at different freq on average?
+# take each value and store them 
   
 #which variables does lickcac take? Remember the indexing with these variables, 3 lists
 #

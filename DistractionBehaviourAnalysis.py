@@ -178,6 +178,13 @@ for lists in last_lick_pcp_F:
 # Decide which bits to access and how to average them per group, or input into SPSS/R
 # Lick frequency is there, do SAL and PCP lick at different freq on average?
 # take each value and store them 
+
+# (a) Licking freuency (males) differences between PCP and SAL
+# (b) Mean and median number of bursts or number of burst lengths, clusters, runs
+    # ILI between bursts, or inter burst intervals 
+    # ILI between runs / clusters 
+    # Instantaneous licking frequency - some ratio calculation 
+# (c) Distributions of burst lengths (cloud/comparisons of distributions)
   
 #which variables does lickcac take? Remember the indexing with these variables, 3 lists
 #

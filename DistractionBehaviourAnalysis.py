@@ -6,19 +6,17 @@ Created on Mon Apr 16 11:18:00 2018
 @author: u1490431
 """
 
-# (1) Find and extract info from the meatfile(s) 
+# (1) Find and extract info from the metafile(s) 
 #
 metafile_males = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP12Masterfile.csv'
 metafile_females = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP3_Metafile.csv'
-
-#metafile_males = 'F:/kp259/DPCP_ALL/DPCP12Masterfile.csv'
-#metafile_females = 'F:/kp259/DPCP_ALL/DPCP3_Metafile.csv' 
 
 extract_males = MetaExtractor(metafile_males)
 extract_females = MetaExtractor(metafile_females)
 # Folder with all medfiles (DPCP1, DPCP2, DPCP3)
 medfolder = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/' # sometimes need space1 after DRI
-#medfolder = 'F:/kp259/DPCP_ALL/'
+
+
 # (2) - Get all lick onset/offset data for all rats/sessions 
 
 ''' 
@@ -139,12 +137,9 @@ for ind, filename in enumerate(extract_females['MedFilenames']):
       amph_pcp_F.append([onsets, offsets, extract_females['RatID'][ind]])
     
 # (3) Lick calc for last lick day (by group) for male PCP and SAL, for female PCP and SAL
-
+# Licking analysis section, just last lick day 
 # assign empty variables to store outputs from lick calc (to find means/groups stats)
 # lists where each item is a dictionary (22) derived from lickCalc for each rat / day
-
-# Would list comprehentions be better here, shorter more efficient??
-
 
 lick_analysis_sal_M = []
 lick_analysis_pcp_M = []
@@ -179,17 +174,72 @@ for lists in last_lick_pcp_F:
 # Lick frequency is there, do SAL and PCP lick at different freq on average?
 # take each value and store them 
 
+''' 
+Each is a list of dictionaries, each dictionary is for a LickCalc on a single rat 
+
+lick_analysis_sal_M = []
+lick_analysis_pcp_M = []
+lick_analysis_sal_F = []
+lick_analysis_pcp_F = []
+
+'''
+# Produce medians/means for individual rats and group means 
+all_n_bursts_sal_M
+all_n_runs_sal_M 
+all_mean_IBI_sal_M 
+
+for dictionary in lick_analysis_sal_M:
+    
+    n_bursts = dictionary['bNum']
+    n_runs = dictionary['rNum']
+    
+    #Mean ILI for each rat then caclulate a mean of mean!
+    mean_inter_burst = np.mean(dictionary['bILIs'])
+    
+    # This isn't storing or working out from stored variables yet, need to 
+    # store each bNum in a master list then find the mean 
+    mean_n_bursts = np.mean(n_bursts) 
+    mean_n_runs = np.mean(n_runs)
+    mean_group_IBI = np.mean()
+    
+    mean bILIs = mean interburstinterval 
+    
+    
+    # number of bursts, number of runs 
+    # median burst length (np.median) - add this to lick calc (median)
+    
+    # add median inter-burst interval to lick calc 
+    # groups analysis (1) then individual differences (logistc or linear regressions/correlations 
+                      # machine learning)
+    
+    print(dictionary['bNum'])
+    # can access anything in the dictionaries by the keys here 
+
+
+
 # (a) Licking freuency (males) differences between PCP and SAL
+#calculate mean lick frequency (all lick around 7) compare saline and pcp (M)
+#calculate mean lick frequency (females)
+
+# what is the mean length of bursts? or median ?
+# what is the mean number of bursts? - for groups (get the individual data into variables/excel)
 # (b) Mean and median number of bursts or number of burst lengths, clusters, runs
     # ILI between bursts, or inter burst intervals 
     # ILI between runs / clusters 
     # Instantaneous licking frequency - some ratio calculation 
 # (c) Distributions of burst lengths (cloud/comparisons of distributions)
-  
-#which variables does lickcac take? Remember the indexing with these variables, 3 lists
-#
-#last_lick_sal_M
-#last_lick_pcp_M
+# (d) Compare actual number of bursts and then mean length of the bursts
+    # Group comparisons for PCP/SAL in males and females  
+
+
+#could store the numbers in an excel sheet? And edit it, make blank 
+#see code where previously 
+
+
+
+
+
+
 
 # (4) Distraction calc / distracted or not for distraciton day (by group)
 

@@ -166,6 +166,14 @@ How do we know it isnt just licking difference rather than distractability?
 
 # Added lickCalc loop, need to save all in massive list structure and average stuff!
 
+''' 28/04/18 '''
+
+# Fixed name issues in metafile, correct rat IDs on all 
+# Decide which variables to analyse from lick calc, compare mean and individual :
+    
+    lick frequency 
+
+
 
     
     

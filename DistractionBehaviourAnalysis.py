@@ -302,6 +302,20 @@ for rat in last_lick_pcp_F:
     distracted, notdistracted = distractedOrNot(discalc, rat[0])
     mod_dis_pcp_F.append([distracted, notdistracted])
 
+''' Previous PDP code '''
+
+for distractedtrials and for non distraxged (lists) find the lick which this :
+    distractor was presented and then find the pdp 
+    
+    see previous code for how I did this earlier??
+
+for ind, lists in enumerate(adjustedDistractors):
+    pdp = []
+    for value in lists:
+        if value in allLickDataArray[ind] and value != allLickDataArray[ind][-1]: #if the value is in this list of licks (from all)
+            index = allLickDataArray[ind].index(value)
+            pdp.append(allLickDataArray[ind][index+1] - allLickDataArray[ind][index])
+    pdpAll.append(pdp)    
 
 # (5) Work out PDPs for all groups and store
 # Produce an output and do all the statistics on these (decide tests and comparisons)

@@ -187,7 +187,6 @@ def lickCalc(licks, offset = [], burstThreshold = 0.25, runThreshold = 10,
     lickData['bNum'] = len(lickData['bStart'])
     if lickData['bNum'] > 0:
         lickData['bMean'] = np.nanmean(lickData['bLicks'])
-        # add bMed here = np.median(lickData['bLicks']) --> KP 28/04 add this to runs too
         lickData['bMed'] = np.median(lickData['bLicks'])
     else:
         lickData['bMean'] = 0
@@ -206,6 +205,13 @@ def lickCalc(licks, offset = [], burstThreshold = 0.25, runThreshold = 10,
     lickData['rLicks'] = np.diff(lickData['rInd'] + [len(lickData['licks'])])    
     lickData['rTime'] = np.subtract(lickData['rEnd'], lickData['rStart'])
     lickData['rNum'] = len(lickData['rStart'])
+    
+    if lickData['rNum'] > 0:
+        lickData['rMean'] = np.nanmean(lickData['rLicks'])
+        lickData['rMed'] = np.median(lickData['rLicks'])
+    else:
+        lickData['rMean'] = 0
+        lickData['rMed'] = 0 
 
     lickData['rILIs'] = [x for x in lickData['ilis'] if x > runThreshold]
     try:

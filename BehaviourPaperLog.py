@@ -171,9 +171,10 @@ How do we know it isnt just licking difference rather than distractability?
 # Fixed name issues in metafile, correct rat IDs on all 
 # Decide which variables to analyse from lick calc, compare mean and individual :
     
-    lick frequency 
+#    lick frequency 
 
+# add bMed and rMed to lickCalc = np.median(lickData['bLicks']) --> KP 28/04 add this to runs too
 
-
+# add rMean and similar to burst code to run code 
     
     

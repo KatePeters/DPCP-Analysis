@@ -3,21 +3,25 @@
 """
 Created on Mon Apr 16 11:18:00 2018
 
-@author: u1490431
+@author: u1490431 (kp) 
 """
+################################################################################
+
+# LICK ANALYSIS DPCP (1,2,3)
+
+################################################################################
 
 # (1) Find and extract info from the metafile(s) 
 #
 metafile_males = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP12Masterfile.csv'
 metafile_females = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/DPCP3_Metafile.csv'
-
 extract_males = MetaExtractor(metafile_males)
 extract_females = MetaExtractor(metafile_females)
 # Folder with all medfiles (DPCP1, DPCP2, DPCP3)
 medfolder = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/' # sometimes need space1 after DRI
 
 
-# (2) - Get all lick onset/offset data for all rats/sessions 
+# (2) - Get all lick onset/offset data for all rats/sessions (make this a function later)
 
 ''' 
   Info DPCP1(16) and DPCP2(16) males, DPCP3(24) females :
@@ -139,7 +143,7 @@ for ind, filename in enumerate(extract_females['MedFilenames']):
 # (3) Lick calc for last lick day (by group) for male PCP and SAL, for female PCP and SAL
 # Licking analysis section, just last lick day 
 # assign empty variables to store outputs from lick calc (to find means/groups stats)
-# lists where each item is a dictionary (22) derived from lickCalc for each rat / day
+# lists where each item is a dictionary (25) derived from lickCalc for each rat / day
 
 lick_analysis_sal_M = []
 lick_analysis_pcp_M = []
@@ -169,11 +173,8 @@ for lists in last_lick_pcp_F:
     offset = lists[1]    
     lick_analysis = lickCalc(licks, offset, burstThreshold = 0.25, runThreshold = 10)
     lick_analysis_pcp_F.append(lick_analysis)
-    
-# Decide which bits to access and how to average them per group, or input into SPSS/R
-# Lick frequency is there, do SAL and PCP lick at different freq on average?
-# take each value and store them 
 
+# ***********************************************************************************!!!!!    
 ''' 
 Each is a list of dictionaries, each dictionary is for a LickCalc on a single rat 
 
@@ -184,26 +185,40 @@ lick_analysis_pcp_F = []
 
 '''
 # Produce medians/means for individual rats and group means 
-all_n_bursts_sal_M
-all_n_runs_sal_M 
-all_mean_IBI_sal_M 
+# Assign empty variables to store all data (before calc means etc.)
 
-for dictionary in lick_analysis_sal_M:
+all_n_bursts_sal_M = [] 
+all_n_runs_sal_M = []
+all_mean_IBI_sal_M = []
+all_mean_IRI_sal_M = [] 
+
+for dictionary in lick_analysis_sal_M: # reapeat for pcp and for the female data 
     
     n_bursts = dictionary['bNum']
     n_runs = dictionary['rNum']
+    #Mean ILI for each rat then caclulate a mean of mean for the groups
+    mean_inter_burst = np.mean(dictionary['bILIs'])   
+    mean_inter_run = np.mean(dictionary['rILIs'])
+ #   bMean, rMean (mean rILI which is the IRI) 
     
-    #Mean ILI for each rat then caclulate a mean of mean!
-    mean_inter_burst = np.mean(dictionary['bILIs'])
     
-    # This isn't storing or working out from stored variables yet, need to 
-    # store each bNum in a master list then find the mean 
-    mean_n_bursts = np.mean(n_bursts) 
-    mean_n_runs = np.mean(n_runs)
-    mean_group_IBI = np.mean()
+    all_n_bursts_sal_M.append(n_bursts)
+    all_n_runs_sal_M.append(n_runs)
+    all_mean_IBI_sal_M.append(mean_inter_burst)
     
-    mean bILIs = mean interburstinterval 
+# Can use these means to make plots, use the full lists to do statistics 
+    # comparing saline to pcp for each variable - is there a difference between 
+    # the numbers of bursts, the IBIs the runs etc. in sal and pcp (m then f)
     
+sal_M_mean_n_bursts = np.mean(all_n_bursts_sal_M)
+sal_M_mean_n_runs = np.mean(all_n_runs_sal_M)
+sal_M_mean_mean_IBI = np.mean(all_mean_IBI_sal_M)
+sal_M_mean_mean_IRI = np.mean(all_mean_IRI_sal_M)
+
+
+ #! Thought - measure of variability in the data, are saline tighter than PCP?
+    # If so, what does this mean and how can I quantify it? Distribution comparisons and 
+    # Violin plots as comparison 
     
     # number of bursts, number of runs 
     # median burst length (np.median) - add this to lick calc (median)
@@ -212,7 +227,7 @@ for dictionary in lick_analysis_sal_M:
     # groups analysis (1) then individual differences (logistc or linear regressions/correlations 
                       # machine learning)
     
-    print(dictionary['bNum'])
+    
     # can access anything in the dictionaries by the keys here 
 
 
@@ -234,20 +249,56 @@ for dictionary in lick_analysis_sal_M:
 
 #could store the numbers in an excel sheet? And edit it, make blank 
 #see code where previously 
+# ***********************************************************************************!!!!!  
 
 
+################################################################################
 
+# DISTRACTION ANALYSIS DPCP (1,2,3)
 
+################################################################################
 
+# Modelled distractors etc. 
 
+''' Licking data already subset earlier '''
 
+discalc_sal_M, discalc_pcp_M, discalc_sal_F, discalc_pcp_F = [], [], [], []  
+
+for rat in distraction_sal_M:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+  #  work out percentage and add this too 
+    discalc_sal_M.append([distracted, notdistracted])
+    
+  # Work out pdp for distracted and not distracted for each rat 
+
+for rat in distraction_pcp_M:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    discalc_pcp_M.append([distracted, notdistracted])
+
+for rat in distraction_sal_F:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    discalc_sal_F.append([distracted, notdistracted])
+
+for rat in distraction_pcp_F:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    discalc_pcp_F.append([distracted, notdistracted])
+
+# last_lick_sal_M, last_lick_pcp_M, last_lick_pcp_F, last_lick_sal_F  
+# Modelled distractors here - work out the same loops for the last lick day 
+  
 # (4) Distraction calc / distracted or not for distraciton day (by group)
+
 
 # Access the list structures of licks 
 # Distraction calc 2 on those
 # OUtput from distraction calc --> in to distracted or not 
 
 # Stored in a master list of D or ND for each group 
+
 
 
 # (5) Work out PDPs for all groups and store

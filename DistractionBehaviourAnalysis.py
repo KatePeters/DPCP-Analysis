@@ -311,16 +311,24 @@ for rat in last_lick_pcp_F:
 # for each rat and for each rats list of distracted trials 
 
 # CALCULATE THE PDP FOR SPECIFIC GROUPS 
+pdps_1, pdps_2 = [], [] 
+count = 0 
 
-for index, rat in enumerate(discalc_sal_M): 
+for index, rat in enumerate(discalc_sal_M):
+    pdps_1 = []
     for distractorlick in rat[0]:
+        
         if distractorlick in distraction_sal_M[index][0] and distractorlick != distraction_sal_M[index][0][-1]:
             lick_index = distraction_sal_M[index][0].index(distractorlick) 
             lick_index_plus1 = lick_index+1
             distracted_PDP = distraction_sal_M[index][0][lick_index_plus1] - distraction_sal_M[index][0][lick_index]
+
+        pdps_1.append(distracted_PDP)
+    pdps_2.append([pdps_1])
+    
+
             
  # Add in here loop to make liast of PDPs for each rats and each for distracted and not
-     
 
 
 # (5) Work out PDPs for all groups and store

@@ -303,19 +303,25 @@ for rat in last_lick_pcp_F:
     mod_dis_pcp_F.append([distracted, notdistracted])
 
 ''' Previous PDP code '''
+# How to access the correct variable here, right structure and correct scope        
+'''discalc_sal_M[0][0][0] # [rat][list][licktimestamp]'''
 
-for distractedtrials and for non distraxged (lists) find the lick which this :
-    distractor was presented and then find the pdp 
-    
-    see previous code for how I did this earlier??
 
-for ind, lists in enumerate(adjustedDistractors):
-    pdp = []
-    for value in lists:
-        if value in allLickDataArray[ind] and value != allLickDataArray[ind][-1]: #if the value is in this list of licks (from all)
-            index = allLickDataArray[ind].index(value)
-            pdp.append(allLickDataArray[ind][index+1] - allLickDataArray[ind][index])
-    pdpAll.append(pdp)    
+# are the indices the same for rats in licks and distraction???? - licks on dis day
+# for each rat and for each rats list of distracted trials 
+
+# CALCULATE THE PDP FOR SPECIFIC GROUPS 
+
+for index, rat in enumerate(discalc_sal_M): 
+    for distractorlick in rat[0]:
+        if distractorlick in distraction_sal_M[index][0] and distractorlick != distraction_sal_M[index][0][-1]:
+            lick_index = distraction_sal_M[index][0].index(distractorlick) 
+            lick_index_plus1 = lick_index+1
+            distracted_PDP = distraction_sal_M[index][0][lick_index_plus1] - distraction_sal_M[index][0][lick_index]
+            
+ # Add in here loop to make liast of PDPs for each rats and each for distracted and not
+     
+
 
 # (5) Work out PDPs for all groups and store
 # Produce an output and do all the statistics on these (decide tests and comparisons)

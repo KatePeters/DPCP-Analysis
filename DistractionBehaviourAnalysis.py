@@ -250,6 +250,8 @@ sal_M_mean_mean_IRI = np.mean(all_mean_IRI_sal_M)
 
 ''' Licking data already subset earlier '''
 
+## Add percentage distracted and other information here too 
+
 discalc_sal_M, discalc_pcp_M, discalc_sal_F, discalc_pcp_F = [], [], [], []  
 
 for rat in distraction_sal_M:
@@ -302,18 +304,28 @@ for rat in last_lick_pcp_F:
     distracted, notdistracted = distractedOrNot(discalc, rat[0])
     mod_dis_pcp_F.append([distracted, notdistracted])
 
-''' Previous PDP code '''
-# How to access the correct variable here, right structure and correct scope        
-'''discalc_sal_M[0][0][0] # [rat][list][licktimestamp]'''
 
+###################################################################################
 
-# are the indices the same for rats in licks and distraction???? - licks on dis day
-# for each rat and for each rats list of distracted trials 
+# POST DISTRACTION PAUSES 
+# For both distracted and non-distracted trials 
 
-# CALCULATE THE PDP FOR SPECIFIC GROUPS 
-pdps_1, pdps_2 = [], [] 
-count = 0 
+###################################################################################
 
+'''
+Info: Structure of the calculated distractors lists 
+
+discalc_sal_M[0][0][0] # [rat][list][licktimestamp]
+
+'''
+
+# CALCULATE THE PDP FOR SPECIFIC GROUPS - finds where in the licks the distractor 
+# occurred and then finds the pause before the next lick (ignoring distractors occurring
+# on the final lick in a session)
+
+# SALINE MALES 
+# Distracted PDPs (for later means) - renamed from pdps1,2,3,4
+pdps_dis_sal_M, pdps_2, pdps_notdis_sal_M, pdps_4 = [], [], [], []
 for index, rat in enumerate(discalc_sal_M):
     pdps_1 = []
     for distractorlick in rat[0]:
@@ -325,15 +337,35 @@ for index, rat in enumerate(discalc_sal_M):
 
         pdps_1.append(distracted_PDP)
     pdps_2.append([pdps_1])
-    
 
+# Not distracted PDPs 
+
+for index, rat in enumerate(discalc_sal_M):
+    pdps_3 = []
+    for notdistractedlick in rat[1]:
+        if notdistractedlick in distraction_sal_M[index][0] and notdistractedlick != distraction_sal_M[index][0][-1]:
+            lick_index = distraction_sal_M[index][0].index(notdistractedlick) 
+            lick_index_plus1 = lick_index+1
+            notdistracted_PDP = distraction_sal_M[index][0][lick_index_plus1] - distraction_sal_M[index][0][lick_index]
+
+        pdps_3.append(notdistracted_PDP)
+    pdps_4.append([pdps_3])
+
+# PCP MALES
+
+# SALINE FEMALES
+
+# PCP FEMALES 
+
+    
+# Repeat for not distracted and for each subgroup - eventually turn it into a function 
+    # to avoid hard coded errors 
             
  # Add in here loop to make liast of PDPs for each rats and each for distracted and not
 
 
 # (5) Work out PDPs for all groups and store
 # Produce an output and do all the statistics on these (decide tests and comparisons)
-
 
 
 #compare ALL rats distraction and habituation 

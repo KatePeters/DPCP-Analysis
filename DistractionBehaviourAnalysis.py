@@ -175,7 +175,7 @@ for lists in last_lick_pcp_F:
 ''' 
 Each is a list of dictionaries, each dictionary is for a LickCalc on a single rat 
 
-lick_analysis_sal_M = []
+lick_analysis_sal_M = [] 
 lick_analysis_pcp_M = []
 lick_analysis_sal_F = []
 lick_analysis_pcp_F = []
@@ -187,17 +187,26 @@ lick_analysis_pcp_F = []
 all_n_bursts_sal_M, all_n_runs_sal_M, all_mean_IBI_sal_M, all_mean_IRI_sal_M = [], [], [], []
 
 for dictionary in lick_analysis_sal_M: # reapeat for pcp and for the female data 
-    
+ 
+# Why is the interval (mean) so similar to the mean length of bursts???
+
+# Is there an error in caclulation here and what is the unit? Are very long ILIS/Run intervals
+    # skewing, why so similar though ?    
     n_bursts = dictionary['bNum']
     n_runs = dictionary['rNum']
     #Mean ILI for each rat then caclulate a mean of mean for the groups
-    mean_inter_burst = np.mean(dictionary['bILIs'])   
+    mean_inter_burst = np.mean(dictionary['bILIs']) 
+    mean_inter_burst2 = dictionary['bMean'] # bMean uses bLicks (n licks not ILIs)
+    mean_inter_burst3 = np.mean(dictionary['bLicks'])
+    
     mean_inter_run = np.mean(dictionary['rILIs'])
+    mean_inter_run2 = dictionary['rMean']
  #   bMean, rMean (mean rILI which is the IRI) 
 
     all_n_bursts_sal_M.append(n_bursts)
     all_n_runs_sal_M.append(n_runs)
     all_mean_IBI_sal_M.append(mean_inter_burst)
+    all_mean_IRI_sal_M.append(mean_inter_run)
     
 # Can use these means to make plots, use the full lists to do statistics 
     # comparing saline to pcp for each variable - is there a difference between 

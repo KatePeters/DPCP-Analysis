@@ -184,7 +184,9 @@ lick_analysis_pcp_F = []
 # Produce medians/means for individual rats and group means 
 # Assign empty variables to store all data (before calc means etc.)
 
-all_n_bursts_sal_M, all_n_runs_sal_M, all_mean_IBI_sal_M, all_mean_IRI_sal_M = [], [], [], []
+all_n_bursts_sal_M, all_n_runs_sal_M, all_mean_IBI_sal_M, all_mean_IRI_sal_M, all_mean_burst_length_sal_M, all_mean_run_length_sal_M = [], [], [], [], [], []
+
+
 
 for dictionary in lick_analysis_sal_M: # reapeat for pcp and for the female data 
  
@@ -196,18 +198,19 @@ for dictionary in lick_analysis_sal_M: # reapeat for pcp and for the female data
     n_runs = dictionary['rNum']
     #Mean ILI for each rat then caclulate a mean of mean for the groups
     mean_inter_burst = np.mean(dictionary['bILIs']) 
-    mean_inter_burst2 = dictionary['bMean'] # bMean uses bLicks (n licks not ILIs)
-    mean_inter_burst3 = np.mean(dictionary['bLicks'])
+    mean_burst_length = dictionary['bMean'] # bMean uses bLicks (n licks not ILIs)
+
     
     mean_inter_run = np.mean(dictionary['rILIs'])
-    mean_inter_run2 = dictionary['rMean']
- #   bMean, rMean (mean rILI which is the IRI) 
+    mean_run_length = dictionary['rMean']
+    
 
     all_n_bursts_sal_M.append(n_bursts)
     all_n_runs_sal_M.append(n_runs)
     all_mean_IBI_sal_M.append(mean_inter_burst)
+    all_mean_burst_length_sal_M.append(mean_burst_length) # rename this variable 
     all_mean_IRI_sal_M.append(mean_inter_run)
-    
+    all_mean_run_length_sal_M.append(mean_run_length)
 # Can use these means to make plots, use the full lists to do statistics 
     # comparing saline to pcp for each variable - is there a difference between 
     # the numbers of bursts, the IBIs the runs etc. in sal and pcp (m then f)

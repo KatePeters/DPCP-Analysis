@@ -177,4 +177,9 @@ How do we know it isnt just licking difference rather than distractability?
 
 # add rMean and similar to burst code to run code 
     
-    
+'''
+Make functions of the repeated code, for sal,pcp,m,f 
+
+Think about the outputs produced by the functions that you want 
+
+'''     

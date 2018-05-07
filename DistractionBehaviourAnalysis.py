@@ -186,25 +186,21 @@ lick_analysis_pcp_F = []
 
 all_n_bursts_sal_M, all_n_runs_sal_M, all_mean_IBI_sal_M, all_mean_IRI_sal_M, all_mean_burst_length_sal_M, all_mean_run_length_sal_M = [], [], [], [], [], []
 
-
+#function :
+#def Group_Lick_Analysis(dictionary, bursts=True, runs=True):
+    
+#    Group_Lick_Analysis
 
 for dictionary in lick_analysis_sal_M: # reapeat for pcp and for the female data 
- 
-# Why is the interval (mean) so similar to the mean length of bursts???
-
-# Is there an error in caclulation here and what is the unit? Are very long ILIS/Run intervals
-    # skewing, why so similar though ?    
+   
     n_bursts = dictionary['bNum']
     n_runs = dictionary['rNum']
-    #Mean ILI for each rat then caclulate a mean of mean for the groups
+    #Mean ILI for each burst for each rat then caclulate a mean of mean for the groups
     mean_inter_burst = np.mean(dictionary['bILIs']) 
     mean_burst_length = dictionary['bMean'] # bMean uses bLicks (n licks not ILIs)
-
-    
     mean_inter_run = np.mean(dictionary['rILIs'])
     mean_run_length = dictionary['rMean']
-    
-
+    # median burst lengths, median inter-burst-intervals (all measures with medians)
     all_n_bursts_sal_M.append(n_bursts)
     all_n_runs_sal_M.append(n_runs)
     all_mean_IBI_sal_M.append(mean_inter_burst)
@@ -213,8 +209,7 @@ for dictionary in lick_analysis_sal_M: # reapeat for pcp and for the female data
     all_mean_run_length_sal_M.append(mean_run_length)
 # Can use these means to make plots, use the full lists to do statistics 
     # comparing saline to pcp for each variable - is there a difference between 
-    # the numbers of bursts, the IBIs the runs etc. in sal and pcp (m then f)
-    
+    # the numbers of bursts, the IBIs the runs etc. in sal and pcp (m then f)    
 sal_M_mean_n_bursts = np.mean(all_n_bursts_sal_M)
 sal_M_mean_n_runs = np.mean(all_n_runs_sal_M)
 sal_M_mean_mean_IBI = np.mean(all_mean_IBI_sal_M)
@@ -224,28 +219,7 @@ sal_M_mean_mean_IRI = np.mean(all_mean_IRI_sal_M)
  #! Thought - measure of variability in the data, are saline tighter than PCP?
     # If so, what does this mean and how can I quantify it? Distribution comparisons and 
     # Violin plots as comparison 
-    
-    # number of bursts, number of runs 
-    # median burst length (np.median) - add this to lick calc (median)
-    
-    # add median inter-burst interval to lick calc 
-    # groups analysis (1) then individual differences (logistc or linear regressions/correlations 
-                      # machine learning)
-    
-    
-    # can access anything in the dictionaries by the keys here 
-
-
-
-# (a) Licking freuency (males) differences between PCP and SAL
-#calculate mean lick frequency (all lick around 7) compare saline and pcp (M)
-#calculate mean lick frequency (females)
-
-# what is the mean length of bursts? or median ?
-# what is the mean number of bursts? - for groups (get the individual data into variables/excel)
-# (b) Mean and median number of bursts or number of burst lengths, clusters, runs
-    # ILI between bursts, or inter burst intervals 
-    # ILI between runs / clusters 
+ 
     # Instantaneous licking frequency - some ratio calculation 
 # (c) Distributions of burst lengths (cloud/comparisons of distributions)
 # (d) Compare actual number of bursts and then mean length of the bursts
@@ -263,7 +237,9 @@ sal_M_mean_mean_IRI = np.mean(all_mean_IRI_sal_M)
 ''' Licking data already subset earlier '''
 
 ## Add percentage distracted and other information here too 
-
+#def Group_Distraction_Analysis(licksbygroup, lickday, distractionday):
+    
+    
 discalc_sal_M, discalc_pcp_M, discalc_sal_F, discalc_pcp_F = [], [], [], []  
 
 for rat in distraction_sal_M:

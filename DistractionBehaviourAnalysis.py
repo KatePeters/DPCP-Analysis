@@ -48,6 +48,8 @@ for ind, filename in enumerate(extract_males['MedFilenames']):
 
 # Subsetting all lick data by group (use dates to index) rat ID is saved in the list
 #SALINE
+
+# Write this as a function, that takes a list of dates, conditions etc. 
 # Saline last licks day    
     if extract_males['Date'][ind] == '170417' and extract_males['Drug'][ind] == 'SAL' \
     or extract_males['Date'][ind] == '171006' and extract_males['Drug'][ind] == 'SAL' :
@@ -216,14 +218,18 @@ sal_M_mean_mean_IBI = np.mean(all_mean_IBI_sal_M)
 sal_M_mean_mean_IRI = np.mean(all_mean_IRI_sal_M)
 
 
- #! Thought - measure of variability in the data, are saline tighter than PCP?
-    # If so, what does this mean and how can I quantify it? Distribution comparisons and 
-    # Violin plots as comparison 
- 
-    # Instantaneous licking frequency - some ratio calculation 
-# (c) Distributions of burst lengths (cloud/comparisons of distributions)
-# (d) Compare actual number of bursts and then mean length of the bursts
-    # Group comparisons for PCP/SAL in males and females  
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ################################################################################
@@ -312,8 +318,9 @@ discalc_sal_M[0][0][0] # [rat][list][licktimestamp]
 # on the final lick in a session)
 
 # SALINE MALES 
-# Distracted PDPs (for later means) - renamed from pdps1,2,3,4
-pdps_dis_sal_M, pdps_2, pdps_notdis_sal_M, pdps_4 = [], [], [], []
+# Distracted PDPs (for later means) - renamed from pdps1,2,3,4 to something more informative 
+pdps_dis_sal_M, pdps_2, pdps_notdis_sal_M, pdps_4 = [], [], [], [] #??
+
 for index, rat in enumerate(discalc_sal_M):
     pdps_1 = []
     for distractorlick in rat[0]:

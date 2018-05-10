@@ -183,3 +183,13 @@ Make functions of the repeated code, for sal,pcp,m,f
 Think about the outputs produced by the functions that you want 
 
 '''     
+
+''' 10/05/18 '''
+
+# Supervisor meeting - discussing how to separate distractors by modality 
+
+# Work on adding this to the script later today (evening)
+
+# Wrote some code for single rat, integrate this into the main script 
+    # and using med file / med programme file. Work out which distractors are which numbers 
+    

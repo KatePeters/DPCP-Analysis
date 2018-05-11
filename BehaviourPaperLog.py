@@ -202,6 +202,33 @@ Think about the outputs produced by the functions that you want
 
 ''' 11/05/18 ''' 
 
+# Decided there probably IS enough data to test individual distractor types 
 
+# See if combined is more distracting than the others? 
 
+# Don't really want 6 variables, seems like a lot and differences wont be clear
+
+# Figure out how to compare, have lists for diatracted and non-distracted trials
+    # info on types, how to compare number of types, percentage of distracted trials 
+    # that are (1), (2) or (3) vs percentage non-distracted trials that are 1,2,3 etc. 
     
+# Calculated the percentage of distracted trials that were X-type and percentage of 
+    # non distracted trials that were X-distractor type 
+    
+    # Perhaps better to calculate percentage distracted for each modality (ie out of all X-type
+                                                                           # how many distracted)
+ # Thoughts: ----------------------------------------------------------------   
+     
+## What if there is a high percentage of distracted because the rat is ALWAYS distracted
+## Not because of the particular modality
+
+## Maybe need to express as a ratio or percentage zero/referenced to the total 
+    # percent distracted???? 
+
+## Will then also have to repeat this whole thing for (1) PCP males, (2) SAL females and (3) PCP females 
+
+
+## Sanity check the numbers of each presented stimulus ))in case more of one((
+
+        ## Do this for all rats and all distracted and non-distracted trials together 
+        

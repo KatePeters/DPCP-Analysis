@@ -33,9 +33,9 @@ distracted, notdistracted = distractedOrNot(discalc, onsets)
 
 distracted_bool2 = np.in1d(discalc, distracted)
 
-auditory = [1, 2]
-visual = [3, 4]
-mixed = [5, 6]
+auditory = [1, 4]
+visual = [2, 5]
+mixed = [3, 6]
 
 
 dis_numeric = []
@@ -52,11 +52,11 @@ dis_numeric = [int(d) for d in dis_numeric]
 dis_type_text = []
 for d in dis_numeric:
     if d in auditory:
-        dis_type_text.append('auditory')
+        dis_type_text.append('whitenoise')
     elif d in visual:
-        dis_type_text.append('visual')
+        dis_type_text.append('tone')
     elif d in mixed:
-        dis_type_text.append('mixed')
+        dis_type_text.append('combined3')
         
 
 # Distraction code from medPC04 - check this is the same as the code used in all DPCP 
@@ -70,12 +70,12 @@ for d in dis_numeric:
 6 = white noise + tone + light cue # 2
 
 # Could separate by (1) White noise vs tone vs massive combined 
-1 and 4
-2 and 5
-3 and 6 
+1 and 4 - whitenoise
+2 and 5 - tone
+3 and 6 - combined 
 # Or by (2) House light vs cue light vs massive combined 
-1 and 2
-4 and 5
-3 and 6 
+1 and 2 - houselight
+4 and 5 - cuelight
+3 and 6 - combined 
 
 # Do both ( 3 groups ) by sounds different and light different as no just sound or just light 

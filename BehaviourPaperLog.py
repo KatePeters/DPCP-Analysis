@@ -217,4 +217,18 @@ Think about the outputs produced by the functions that you want
     
     # Perhaps better to calculate percentage distracted for each modality (ie out of all X-type
                                                                            # how many distracted)
-    
+ # Thoughts: ----------------------------------------------------------------   
+     
+## What if there is a high percentage of distracted because the rat is ALWAYS distracted
+## Not because of the particular modality
+
+## Maybe need to express as a ratio or percentage zero/referenced to the total 
+    # percent distracted???? 
+
+## Will then also have to repeat this whole thing for (1) PCP males, (2) SAL females and (3) PCP females 
+
+
+## Sanity check the numbers of each presented stimulus ))in case more of one((
+
+        ## Do this for all rats and all distracted and non-distracted trials together 
+        

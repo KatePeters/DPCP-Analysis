@@ -192,4 +192,16 @@ Think about the outputs produced by the functions that you want
 
 # Wrote some code for single rat, integrate this into the main script 
     # and using med file / med programme file. Work out which distractors are which numbers 
+
+# Checking that med distractor times match calculated distractors
+#plt.scatter(med_dis_times, discalc)
+#
+#diffs = [x for x in med_dis_times if x not in discalc]
+#
+#diff_between = np.asarray(med_dis_times) - np.asarray(discalc)
+
+''' 11/05/18 ''' 
+
+
+
     

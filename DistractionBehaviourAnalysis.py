@@ -45,7 +45,7 @@ last_lick_pcp_M, distraction_pcp_M, hab1_pcp_M, hab2_pcp_M, amph_pcp_M = [], [],
 for ind, filename in enumerate(extract_males['MedFilenames']):
     path = medfolder + filename
     onsets, offsets = medfilereader(path, ['e', 'f'], remove_var_header = True)  # e onset, f offset
-
+    med_dis_times, dis_type = medfilereader(path, ['i','j'], remove_var_header = True) # j distractor types
 # Subsetting all lick data by group (use dates to index) rat ID is saved in the list
 #SALINE
 
@@ -107,7 +107,7 @@ last_lick_pcp_F, distraction_pcp_F, hab1_pcp_F, hab2_pcp_F, amph_pcp_F = [], [],
 for ind, filename in enumerate(extract_females['MedFilenames']):
     path = medfolder + filename
     onsets, offsets = medfilereader(path, ['e', 'f'], remove_var_header = True)  # e onset, f offset
-
+    med_dis_times, dis_type = medfilereader(path, ['i','j'], remove_var_header = True)
 # SALINE
 # Saline last licks day 
     if extract_females['Date'][ind] == '171124' and extract_females['Drug'][ind] == 'SAL' :
@@ -244,9 +244,16 @@ sal_M_mean_mean_IRI = np.mean(all_mean_IRI_sal_M)
 
 ## Add percentage distracted and other information here too 
 #def Group_Distraction_Analysis(licksbygroup, lickday, distractionday):
+''' Add in distraction modality calculator here '''
+whitenoise = [1, 4] # test with light differences too! 
+tone = [2, 5]
+combined3 = [3, 6]   
     
-    
-discalc_sal_M, discalc_pcp_M, discalc_sal_F, discalc_pcp_F = [], [], [], []  
+discalc_sal_M, discalc_pcp_M, discalc_sal_F, discalc_pcp_F = [], [], [], [] 
+
+percent_dis_whitenoise_sal_M, percent_dis_whitenoise_pcp_M, percent_dis_whitenoise_sal_F, percent_dis_whitenoise_pcp_F = [], [], [], []   
+percent_dis_tone_sal_M, percent_dis_tone_pcp_M, percent_dis_tone_sal_F, percent_dis_tone_pcp_F = [], [], [], []
+percent_dis_combined_sal_M, percent_dis_combined_pcp_M, percent_dis_combined_sal_F, percent_dis_combined_pcp_F = [], [], [], []  
 
 for rat in distraction_sal_M:
     discalc = distractionCalc2(rat[0])
@@ -255,6 +262,89 @@ for rat in distraction_sal_M:
     discalc_sal_M.append([distracted, notdistracted])
   # Work out pdp for distracted and not distracted for each rat
   # Then find means from the lists inside the master list 
+    dis_numeric = []
+
+
+#### have not actually extracted distype 
+
+    
+    for distractor in rat[0]:
+        dis_numeric.append([dis_type[idx] for idx, val in enumerate(discalc_sal_M) if val == distractor][0])
+    
+    ndis_numeric = []
+    for nondistractor in rat[1]:
+        ndis_numeric.append([dis_type[idx] for idx, val in enumerate(discalc_sal_M) if val == nondistractor][0])
+        
+    # Distracted trials by modality
+    dis_numeric = [int(d) for d in dis_numeric]
+    
+    # Counts to work out percentages after finding how many are each modality 
+    d_whitenoise_count = 0
+    d_tone_count = 0
+    d_combined_count = 0 
+    
+    dis_type_text = []
+    for d in dis_numeric:
+        if d in whitenoise:
+            dis_type_text.append('whitenoise')
+            d_whitenoise_count += 1
+        elif d in tone:
+            dis_type_text.append('tone')
+            d_tone_count += 1
+        elif d in combined3:
+            dis_type_text.append('combined3')
+            d_combined_count += 1 
+    d_percent_white_noise = d_whitenoise_count / (len(dis_type_text))*100
+    d_percent_tone = d_tone_count / (len(dis_type_text))*100
+    d_percent_combined = d_combined_count / (len(dis_type_text))*100  
+    # Sanity check = 100% 
+    #totSane = d_percent_white_noise + d_percent_tone + d_percent_combined       
+    
+    # Non-distracted trials by modality 
+    ndis_numeric = [int(d) for d in ndis_numeric]
+    nd_whitenoise_count = 0
+    nd_tone_count = 0
+    nd_combined_count = 0 
+    
+    ndis_type_text = []
+    for d in ndis_numeric:
+        if d in whitenoise:
+            ndis_type_text.append('whitenoise')
+            nd_whitenoise_count += 1
+        elif d in tone:
+            ndis_type_text.append('tone')
+            nd_tone_count += 1
+        elif d in combined3:
+            ndis_type_text.append('combined3')
+            nd_combined_count += 1 
+            
+    nd_percent_white_noise = nd_whitenoise_count / (len(ndis_type_text))*100
+    nd_percent_tone = nd_tone_count / (len(ndis_type_text))*100
+    nd_percent_combined =  nd_combined_count / (len(ndis_type_text))*100
+    
+    percent_distracted_whitenoise = d_whitenoise_count / (d_whitenoise_count + nd_whitenoise_count) *100
+    percent_distracted_tone = d_tone_count / (d_tone_count + nd_tone_count) *100
+    percent_distracted_combined = d_combined_count / (d_combined_count + nd_combined_count) *100  
+      
+    percent_dis_whitenoise_sal_M.append(percent_distracted_whitenoise)
+    percent_dis_tone_sal_M.append(percent_distracted_tone)
+    percent_dis_combined_sal_M.append(percent_distracted_combined)
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 for rat in distraction_pcp_M:
     discalc = distractionCalc2(rat[0])

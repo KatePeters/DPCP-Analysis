@@ -58,7 +58,7 @@ for ind, filename in enumerate(extract_males['MedFilenames']):
 # Saline distraction        
     if extract_males['Date'][ind] == '170418' and extract_males['Drug'][ind] == 'SAL' \
     or extract_males['Date'][ind] == '171007' and extract_males['Drug'][ind] == 'SAL' :
-        distraction_sal_M.append([onsets, offsets, extract_males['RatID'][ind]])
+        distraction_sal_M.append([onsets, offsets, dis_type, extract_males['RatID'][ind]])
 # Saline habituation 1
     if extract_males['Date'][ind] == '170419' and extract_males['Drug'][ind] == 'SAL' \
     or extract_males['Date'][ind] == '171008' and extract_males['Drug'][ind] == 'SAL' :
@@ -80,7 +80,7 @@ for ind, filename in enumerate(extract_males['MedFilenames']):
 # PCP distraction        
     if extract_males['Date'][ind] == '170418' and extract_males['Drug'][ind] == 'PCP' \
     or extract_males['Date'][ind] == '171007' and extract_males['Drug'][ind] == 'PCP' :
-        distraction_pcp_M.append([onsets, offsets, extract_males['RatID'][ind]])
+        distraction_pcp_M.append([onsets, offsets, dis_type, extract_males['RatID'][ind]])
 # PCP habituation 1
     if extract_males['Date'][ind] == '170419' and extract_males['Drug'][ind] == 'PCP' \
     or extract_males['Date'][ind] == '171008' and extract_males['Drug'][ind] == 'PCP' :
@@ -114,7 +114,7 @@ for ind, filename in enumerate(extract_females['MedFilenames']):
       last_lick_sal_F.append([onsets, offsets, extract_females['RatID'][ind]])      
   # Saline distraction 
     if extract_females['Date'][ind] == '171125' and extract_females['Drug'][ind] == 'SAL' :
-      distraction_sal_F.append([onsets, offsets, extract_females['RatID'][ind]])
+      distraction_sal_F.append([onsets, offsets, dis_type, extract_females['RatID'][ind]])
   # Saline habituation 1
     if extract_females['Date'][ind] == '171126' and extract_females['Drug'][ind] == 'SAL' :
       hab1_sal_F.append([onsets, offsets, extract_females['RatID'][ind]])
@@ -131,7 +131,7 @@ for ind, filename in enumerate(extract_females['MedFilenames']):
       last_lick_pcp_F.append([onsets, offsets, extract_females['RatID'][ind]])   
   # PCP distraction 
     if extract_females['Date'][ind] == '171125' and extract_females['Drug'][ind] == 'PCP' :
-      distraction_pcp_F.append([onsets, offsets, extract_females['RatID'][ind]])
+      distraction_pcp_F.append([onsets, offsets, dis_type, extract_females['RatID'][ind]])
   # PCP habituation 1
     if extract_females['Date'][ind] == '171126' and extract_females['Drug'][ind] == 'PCP' :
       hab1_pcp_F.append([onsets, offsets, extract_females['RatID'][ind]])
@@ -263,17 +263,14 @@ for rat in distraction_sal_M:
   # Work out pdp for distracted and not distracted for each rat
   # Then find means from the lists inside the master list 
     dis_numeric = []
-
-
-#### have not actually extracted distype 
-
-    
-    for distractor in rat[0]:
-        dis_numeric.append([dis_type[idx] for idx, val in enumerate(discalc_sal_M) if val == distractor][0])
-    
     ndis_numeric = []
-    for nondistractor in rat[1]:
-        ndis_numeric.append([dis_type[idx] for idx, val in enumerate(discalc_sal_M) if val == nondistractor][0])
+
+    for d in distracted:
+        dis_numeric.append([rat[2][idx] for idx, val in enumerate(discalc) if val == d][0])
+    for nd in notdistracted:
+        ndis_numeric.append([rat[2][idx] for idx, val in enumerate(discalc) if val == nd][0])
+
+
         
     # Distracted trials by modality
     dis_numeric = [int(d) for d in dis_numeric]
@@ -332,7 +329,11 @@ for rat in distraction_sal_M:
   
 
 
+## What if there is a high percentage of distracted because the rat is ALWAYS distracted
+## Not because of the particular modality
 
+## Maybe need to express as a ratio or percentage zeroed/ or referenced to the total 
+    # percent distracted???? 
 
 
 

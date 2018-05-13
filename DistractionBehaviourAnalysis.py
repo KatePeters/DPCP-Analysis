@@ -183,15 +183,25 @@ lick_analysis_sal_F = []
 lick_analysis_pcp_F = []
 
 '''
+## LICK DAY ANALYSIS - BY GROUP 
+
 # Produce medians/means for individual rats and group means 
 # Assign empty variables to store all data (before calc means etc.)
 
+# Saline males
 all_n_bursts_sal_M, all_n_runs_sal_M, all_mean_IBI_sal_M, all_mean_IRI_sal_M, all_mean_burst_length_sal_M, all_mean_run_length_sal_M = [], [], [], [], [], []
+# Pcp males
+all_n_bursts_sal_M, all_n_runs_sal_M, all_mean_IBI_sal_M, all_mean_IRI_sal_M, all_mean_burst_length_sal_M, all_mean_run_length_sal_M = [], [], [], [], [], []
+# Saline females
+all_n_bursts_sal_M, all_n_runs_sal_M, all_mean_IBI_sal_M, all_mean_IRI_sal_M, all_mean_burst_length_sal_M, all_mean_run_length_sal_M = [], [], [], [], [], []
+# Pcp females 
+all_n_bursts_sal_M, all_n_runs_sal_M, all_mean_IBI_sal_M, all_mean_IRI_sal_M, all_mean_burst_length_sal_M, all_mean_run_length_sal_M = [], [], [], [], [], []
+
 
 #function :
 #def Group_Lick_Analysis(dictionary, bursts=True, runs=True):
     
-#    Group_Lick_Analysis
+#    Group_Lick_Analysis - Saline Males 
 
 for dictionary in lick_analysis_sal_M: # reapeat for pcp and for the female data 
    
@@ -217,19 +227,9 @@ sal_M_mean_n_runs = np.mean(all_n_runs_sal_M)
 sal_M_mean_mean_IBI = np.mean(all_mean_IBI_sal_M)
 sal_M_mean_mean_IRI = np.mean(all_mean_IRI_sal_M)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+#    Group_Lick_Analysis - Pcp Males 
+#    Group_Lick_Analysis - Sal Females 
+#    Group_Lick_Analysis - Pcp Females 
 
 
 ################################################################################
@@ -538,12 +538,11 @@ mean_percent_TONE_pcp_F = np.mean(percent_dis_tone_pcp_F)
 mean_percent_COMBINED_pcp_F = np.mean(percent_dis_combined_pcp_F) 
 
 
-
 # Modelled distractors ˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚
 
 mod_dis_sal_M, mod_dis_pcp_M, mod_dis_sal_F, mod_dis_pcp_F = [], [], [], []
 
-# last_lick_sal_M, last_lick_pcp_M, last_lick_pcp_F, last_lick_sal_F 
+# last_lick_sal_M, last_lick_pcp_M, last_lick_pcp_F, last_lick_sal_F  ---- variables
 
 for rat in last_lick_sal_M:
     discalc = distractionCalc2(rat[0])
@@ -585,11 +584,11 @@ discalc_sal_M[0][0][0] # [rat][list][licktimestamp]
 # on the final lick in a session)
 
 # SALINE MALES 
-# Distracted PDPs (for later means) - renamed from pdps1,2,3,4 to something more informative 
-pdps_dis_sal_M, pdps_2, pdps_notdis_sal_M, pdps_4 = [], [], [], [] #??
+# Distracted PDPs  
+pdps_dis_sal_M, pdps_notdis_sal_M = [], [] 
 
 for index, rat in enumerate(discalc_sal_M):
-    pdps_1 = []
+    pdps_dis = []
     for distractorlick in rat[0]:
         
         if distractorlick in distraction_sal_M[index][0] and distractorlick != distraction_sal_M[index][0][-1]:
@@ -597,36 +596,118 @@ for index, rat in enumerate(discalc_sal_M):
             lick_index_plus1 = lick_index+1
             distracted_PDP = distraction_sal_M[index][0][lick_index_plus1] - distraction_sal_M[index][0][lick_index]
 
-        pdps_1.append(distracted_PDP)
-    pdps_2.append([pdps_1])
+        pdps_dis.append(distracted_PDP)
+    pdps_dis_sal_M.append([pdps_dis])
 
 # Not distracted PDPs 
 
 for index, rat in enumerate(discalc_sal_M):
-    pdps_3 = []
+    pdps_notdis = []
     for notdistractedlick in rat[1]:
         if notdistractedlick in distraction_sal_M[index][0] and notdistractedlick != distraction_sal_M[index][0][-1]:
             lick_index = distraction_sal_M[index][0].index(notdistractedlick) 
             lick_index_plus1 = lick_index+1
             notdistracted_PDP = distraction_sal_M[index][0][lick_index_plus1] - distraction_sal_M[index][0][lick_index]
 
-        pdps_3.append(notdistracted_PDP)
-    pdps_4.append([pdps_3])
+        pdps_notdis.append(notdistracted_PDP)
+    pdps_notdis_sal_M.append([pdps_notdis])
 
-# PCP MALES
+# PCP MALES =============================================================================
+# Cross check for number of distracted and not distracted trials in each group 
+pdps_dis_pcp_M, pdps_notdis_pcp_M = [], []
+for index, rat in enumerate(discalc_pcp_M):
+    pdps_dis = []
+    for distractorlick in rat[0]:
+        
+        if distractorlick in distraction_pcp_M[index][0] and distractorlick != distraction_pcp_M[index][0][-1]:
+            lick_index = distraction_pcp_M[index][0].index(distractorlick) 
+            lick_index_plus1 = lick_index+1
+            distracted_PDP = distraction_pcp_M[index][0][lick_index_plus1] - distraction_pcp_M[index][0][lick_index]
+
+        pdps_dis.append(distracted_PDP)
+    pdps_dis_pcp_M.append([pdps_dis])
+
+# Not distracted PDPs 
+
+for index, rat in enumerate(discalc_pcp_M):
+    pdps_notdis = []
+    for notdistractedlick in rat[1]:
+        if notdistractedlick in distraction_pcp_M[index][0] and notdistractedlick != distraction_pcp_M[index][0][-1]:
+            lick_index = distraction_pcp_M[index][0].index(notdistractedlick) 
+            lick_index_plus1 = lick_index+1
+            notdistracted_PDP = distraction_pcp_M[index][0][lick_index_plus1] - distraction_pcp_M[index][0][lick_index]
+
+        pdps_notdis.append(notdistracted_PDP)
+    pdps_notdis_pcp_M.append([pdps_notdis])
+
 
 # SALINE FEMALES
 
+# Distracted pdps
+pdps_dis_sal_F, pdps_notdis_sal_F = [], [] 
+
+for index, rat in enumerate(discalc_sal_F):
+    pdps_dis = []
+    for distractorlick in rat[0]:
+        
+        if distractorlick in distraction_sal_F[index][0] and distractorlick != distraction_sal_F[index][0][-1]:
+            lick_index = distraction_sal_F[index][0].index(distractorlick) 
+            lick_index_plus1 = lick_index+1
+            distracted_PDP = distraction_sal_F[index][0][lick_index_plus1] - distraction_sal_F[index][0][lick_index]
+
+        pdps_dis.append(distracted_PDP)
+    pdps_dis_sal_F.append([pdps_dis])
+
+# Not distracted PDPs 
+
+for index, rat in enumerate(discalc_sal_F):
+    pdps_notdis = []
+    for notdistractedlick in rat[1]:
+        if notdistractedlick in distraction_sal_F[index][0] and notdistractedlick != distraction_sal_F[index][0][-1]:
+            lick_index = distraction_sal_F[index][0].index(notdistractedlick) 
+            lick_index_plus1 = lick_index+1
+            notdistracted_PDP = distraction_sal_F[index][0][lick_index_plus1] - distraction_sal_F[index][0][lick_index]
+
+        pdps_notdis.append(notdistracted_PDP)
+    pdps_notdis_sal_F.append([pdps_notdis])
+
 # PCP FEMALES 
 
+pdps_dis_pcp_F, pdps_notdis_pcp_F = [], []
+for index, rat in enumerate(discalc_pcp_F):
+    pdps_dis = []
+    for distractorlick in rat[0]:
+        
+        if distractorlick in distraction_pcp_F[index][0] and distractorlick != distraction_pcp_F[index][0][-1]:
+            lick_index = distraction_pcp_F[index][0].index(distractorlick) 
+            lick_index_plus1 = lick_index+1
+            distracted_PDP = distraction_pcp_F[index][0][lick_index_plus1] - distraction_pcp_F[index][0][lick_index]
+
+        pdps_dis.append(distracted_PDP)
+    pdps_dis_pcp_F.append([pdps_dis])
+
+# Not distracted PDPs 
+
+for index, rat in enumerate(discalc_pcp_F):
+    pdps_notdis = []
+    for notdistractedlick in rat[1]:
+        if notdistractedlick in distraction_pcp_F[index][0] and notdistractedlick != distraction_pcp_F[index][0][-1]:
+            lick_index = distraction_pcp_F[index][0].index(notdistractedlick) 
+            lick_index_plus1 = lick_index+1
+            notdistracted_PDP = distraction_pcp_F[index][0][lick_index_plus1] - distraction_pcp_F[index][0][lick_index]
+
+        pdps_notdis.append(notdistracted_PDP)
+    pdps_notdis_pcp_F.append([pdps_notdis])
    
 ###################################################################################
 ###################################################################################
 ###################################################################################
 
-
+# PRE DISTRACTOR PAUSES (then later for individual differences find correlation between
+# pre pause and post pause, with different colours for points that are distracted
+# or not)
             
- # Add in here loop to make liast of PDPs for each rats and each for distracted and not
+ # Add in here loop to make list of PDPs for each rats and each for distracted and not
 
 
 # (5) Work out PDPs for all groups and store

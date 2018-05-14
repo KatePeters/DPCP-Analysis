@@ -241,7 +241,42 @@ sal_M_mean_n_runs = np.mean(all_n_runs_sal_M)
 sal_M_mean_mean_IBI = np.mean(all_mean_IBI_sal_M)
 sal_M_mean_mean_IRI = np.mean(all_mean_IRI_sal_M)
 
-#    Group_Lick_Analysis - Pcp Males 
+#    Group_Lick_Analysis - Pcp Males ππππππππππππππππππππππππππππππππππππππππππππππππππππ
+
+for dictionary in lick_analysis_pcp_M: # reapeat for pcp and for the female data 
+   
+    n_bursts = dictionary['bNum']
+    n_runs = dictionary['rNum']
+    #Mean ILI for each burst for each rat then caclulate a mean of mean for the groups
+    mean_inter_burst = np.mean(dictionary['bILIs']) 
+    mean_burst_length = dictionary['bMean'] # bMean uses bLicks (n licks not ILIs)
+    mean_inter_run = np.mean(dictionary['rILIs'])
+    mean_run_length = dictionary['rMean']
+    # median burst lengths, median inter-burst-intervals (all measures with medians)
+    all_n_bursts_sal_M.append(n_bursts)
+    all_n_runs_sal_M.append(n_runs)
+    all_mean_IBI_sal_M.append(mean_inter_burst)
+    all_mean_burst_length_sal_M.append(mean_burst_length) # rename this variable 
+    all_mean_IRI_sal_M.append(mean_inter_run)
+    all_mean_run_length_sal_M.append(mean_run_length)
+# Can use these means to make plots, use the full lists to do statistics 
+    # comparing saline to pcp for each variable - is there a difference between 
+    # the numbers of bursts, the IBIs the runs etc. in sal and pcp (m then f)    
+sal_M_mean_n_bursts = np.mean(all_n_bursts_sal_M)
+sal_M_mean_n_runs = np.mean(all_n_runs_sal_M)
+sal_M_mean_mean_IBI = np.mean(all_mean_IBI_sal_M)
+sal_M_mean_mean_IRI = np.mean(all_mean_IRI_sal_M)
+
+
+
+
+
+
+
+
+
+
+
 #    Group_Lick_Analysis - Sal Females 
 #    Group_Lick_Analysis - Pcp Females 
 
@@ -757,6 +792,15 @@ for index, rat in enumerate(discalc_pcp_F):
     pdps_notdis_pcp_F.append([pdps_notdis])
     preDPs_notdis_pcp_F.append([preDPs_notdis])
    
+
+
+'''
+data = [all_mean_IBI_sal_M, all_mean_IBI_sal_M]
+distractionData = np.empty((2,), dtype=np.object)
+distractionData[0] = np.array(all_mean_IBI_sal_M)
+distractionData[1] = np.array(all_mean_IBI_sal_M)
+'''
+
 ###################################################################################
 
 #GROUP DATA (ways to subset)

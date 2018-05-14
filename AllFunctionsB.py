@@ -29,15 +29,15 @@ import seaborn as sb
 import statistics as stats
 # Set plot parameters and styles
 
-sb.set_context("paper")
+#sb.set_context("paper")
 #sb.set_style("white")
 
 # Plot settings, font / size / styles
-Calibri = {'fontname':'Calibri'}
-Size = {'fontsize': 20}
-label_size = 14
-plt.rcParams['xtick.labelsize'] = label_size 
-plt.rcParams['ytick.labelsize'] = label_size 
+#Calibri = {'fontname':'Calibri'}
+#Size = {'fontsize': 20}
+#label_size = 14
+#plt.rcParams['xtick.labelsize'] = label_size 
+#plt.rcParams['ytick.labelsize'] = label_size 
 
 # Functions -------------------------------------------------------------
 
@@ -689,7 +689,7 @@ def barscatter(data, transpose = False,
                 legendtext.append(itemlabel[i])
             plt.legend(legendbar, legendtext, loc=legendloc)
 
-    ax.set(ylabel='Peak ∆F')
+    ax.set(ylabel='Y title')
     ax.yaxis.label.set_size(14)      
  #   fig.savefig('/Volumes/KPMSB352/PHOTOMETRY MMIN18/PDF figures/Peaks_DisvsNotDis_2sec.pdf', bbox_inches="tight")        
     

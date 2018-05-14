@@ -237,3 +237,6 @@ Think about the outputs produced by the functions that you want
 # Thinking about pre distraction pauses, calculated the interval between distractor and previous lick 
 # Actually want the distractor and before the 3 previous licks (before they started licking to 
 # receive the distractor)
+
+
+matplotlib.collections.PolyCollection

@@ -205,11 +205,11 @@ lick_analysis_pcp_F = []
 # Saline males
 all_n_bursts_sal_M, all_n_runs_sal_M, all_mean_IBI_sal_M, all_mean_IRI_sal_M, all_mean_burst_length_sal_M, all_mean_run_length_sal_M = [], [], [], [], [], []
 # Pcp males
-all_n_bursts_sal_M, all_n_runs_sal_M, all_mean_IBI_sal_M, all_mean_IRI_sal_M, all_mean_burst_length_sal_M, all_mean_run_length_sal_M = [], [], [], [], [], []
+all_n_bursts_pcp_M, all_n_runs_pcp_M, all_mean_IBI_pcp_M, all_mean_IRI_pcp_M, all_mean_burst_length_pcp_M, all_mean_run_length_pcp_M = [], [], [], [], [], []
 # Saline females
-all_n_bursts_sal_M, all_n_runs_sal_M, all_mean_IBI_sal_M, all_mean_IRI_sal_M, all_mean_burst_length_sal_M, all_mean_run_length_sal_M = [], [], [], [], [], []
+all_n_bursts_sal_F, all_n_runs_sal_F, all_mean_IBI_sal_F, all_mean_IRI_sal_F, all_mean_burst_length_sal_F, all_mean_run_length_sal_F = [], [], [], [], [], []
 # Pcp females 
-all_n_bursts_sal_M, all_n_runs_sal_M, all_mean_IBI_sal_M, all_mean_IRI_sal_M, all_mean_burst_length_sal_M, all_mean_run_length_sal_M = [], [], [], [], [], []
+all_n_bursts_pcp_F, all_n_runs_pcp_F, all_mean_IBI_pcp_F, all_mean_IRI_pcp_F, all_mean_burst_length_pcp_F, all_mean_run_length_pcp_F = [], [], [], [], [], []
 
 
 #function :
@@ -253,34 +253,63 @@ for dictionary in lick_analysis_pcp_M: # reapeat for pcp and for the female data
     mean_inter_run = np.mean(dictionary['rILIs'])
     mean_run_length = dictionary['rMean']
     # median burst lengths, median inter-burst-intervals (all measures with medians)
-    all_n_bursts_sal_M.append(n_bursts)
-    all_n_runs_sal_M.append(n_runs)
-    all_mean_IBI_sal_M.append(mean_inter_burst)
-    all_mean_burst_length_sal_M.append(mean_burst_length) # rename this variable 
-    all_mean_IRI_sal_M.append(mean_inter_run)
-    all_mean_run_length_sal_M.append(mean_run_length)
-# Can use these means to make plots, use the full lists to do statistics 
-    # comparing saline to pcp for each variable - is there a difference between 
-    # the numbers of bursts, the IBIs the runs etc. in sal and pcp (m then f)    
-sal_M_mean_n_bursts = np.mean(all_n_bursts_sal_M)
-sal_M_mean_n_runs = np.mean(all_n_runs_sal_M)
-sal_M_mean_mean_IBI = np.mean(all_mean_IBI_sal_M)
-sal_M_mean_mean_IRI = np.mean(all_mean_IRI_sal_M)
-
-
-
-
-
-
-
-
-
+    all_n_bursts_pcp_M.append(n_bursts)
+    all_n_runs_pcp_M.append(n_runs)
+    all_mean_IBI_pcp_M.append(mean_inter_burst)
+    all_mean_burst_length_pcp_M.append(mean_burst_length) # rename this variable 
+    all_mean_IRI_pcp_M.append(mean_inter_run)
+    all_mean_run_length_pcp_M.append(mean_run_length)    
+pcp_M_mean_n_bursts = np.mean(all_n_bursts_pcp_M)
+pcp_M_mean_n_runs = np.mean(all_n_runs_pcp_M)
+pcp_M_mean_mean_IBI = np.mean(all_mean_IBI_pcp_M)
+pcp_M_mean_mean_IRI = np.mean(all_mean_IRI_pcp_M)
 
 
 #    Group_Lick_Analysis - Sal Females 
+for dictionary in lick_analysis_sal_F: # reapeat for pcp and for the female data 
+   
+    n_bursts = dictionary['bNum']
+    n_runs = dictionary['rNum']
+    #Mean ILI for each burst for each rat then caclulate a mean of mean for the groups
+    mean_inter_burst = np.mean(dictionary['bILIs']) 
+    mean_burst_length = dictionary['bMean'] # bMean uses bLicks (n licks not ILIs)
+    mean_inter_run = np.mean(dictionary['rILIs'])
+    mean_run_length = dictionary['rMean']
+    # median burst lengths, median inter-burst-intervals (all measures with medians)
+    all_n_bursts_sal_F.append(n_bursts)
+    all_n_runs_sal_F.append(n_runs)
+    all_mean_IBI_sal_F.append(mean_inter_burst)
+    all_mean_burst_length_sal_F.append(mean_burst_length) # rename this variable 
+    all_mean_IRI_sal_F.append(mean_inter_run)
+    all_mean_run_length_sal_F.append(mean_run_length)
+   
+sal_F_mean_n_bursts = np.mean(all_n_bursts_sal_F)
+sal_F_mean_n_runs = np.mean(all_n_runs_sal_F)
+sal_F_mean_mean_IBI = np.mean(all_mean_IBI_sal_F)
+sal_F_mean_mean_IRI = np.mean(all_mean_IRI_sal_F)
+
 #    Group_Lick_Analysis - Pcp Females 
 
-
+for dictionary in lick_analysis_pcp_F: # reapeat for pcp and for the female data 
+   
+    n_bursts = dictionary['bNum']
+    n_runs = dictionary['rNum']
+    #Mean ILI for each burst for each rat then caclulate a mean of mean for the groups
+    mean_inter_burst = np.mean(dictionary['bILIs']) 
+    mean_burst_length = dictionary['bMean'] # bMean uses bLicks (n licks not ILIs)
+    mean_inter_run = np.mean(dictionary['rILIs'])
+    mean_run_length = dictionary['rMean']
+    # median burst lengths, median inter-burst-intervals (all measures with medians)
+    all_n_bursts_pcp_F.append(n_bursts)
+    all_n_runs_pcp_F.append(n_runs)
+    all_mean_IBI_pcp_F.append(mean_inter_burst)
+    all_mean_burst_length_pcp_F.append(mean_burst_length) # rename this variable 
+    all_mean_IRI_pcp_F.append(mean_inter_run)
+    all_mean_run_length_pcp_F.append(mean_run_length)    
+pcp_F_mean_n_bursts = np.mean(all_n_bursts_pcp_F)
+pcp_F_mean_n_runs = np.mean(all_n_runs_pcp_F)
+pcp_F_mean_mean_IBI = np.mean(all_mean_IBI_pcp_F)
+pcp_F_mean_mean_IRI = np.mean(all_mean_IRI_pcp_F)
 ################################################################################
 
 # DISTRACTION ANALYSIS DPCP (1,2,3)
@@ -793,13 +822,32 @@ for index, rat in enumerate(discalc_pcp_F):
     preDPs_notdis_pcp_F.append([preDPs_notdis])
    
 
+# Corelations 
 
-'''
-data = [all_mean_IBI_sal_M, all_mean_IBI_sal_M]
-distractionData = np.empty((2,), dtype=np.object)
-distractionData[0] = np.array(all_mean_IBI_sal_M)
-distractionData[1] = np.array(all_mean_IBI_sal_M)
-'''
+Find mean for each list of pre / post DPs and then correlate and plot 
+using the sb.jointplot(x='Attack', y='Defense', data=df) seaborn joint plots
+(find out how to get distributions too
+ 
+ sb.jointplot(x=df['nRuns'], y=df['nRuns'], kind='hex')) or type 'reg' for kernel estimation and regression
+
+plt.plot()
+
+How to plot different colours? If values in the plotted points 
+Meet certain condition point should be blue 
+Else it should be black 
+
+OR separate them by condition first and add 2 plots, the blue and black 
+
+for index, value in enumerate(salMdistractors):
+    if value > 1 :
+        add the pdp / predp to this list
+        and add the predp to this list too (of the same index)
+        
+        else:
+            add to this list
+            
+            Not sure if this works yet - 2 variables to compare so do i need
+            both in the list or just one indices???
 
 ###################################################################################
 

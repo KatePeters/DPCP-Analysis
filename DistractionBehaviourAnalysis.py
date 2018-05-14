@@ -2,8 +2,19 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Apr 16 11:18:00 2018
-
 @author: u1490431 (kp) 
+
+DATA EXTRACTION - DISTRACTION BEHAVIOUR PAPER PETERS ET AL. 
+
+Information on what this script does start to finish and which other 
+functions need to be run first 
+
+(1)
+(2)
+(3)
+(4)
+(5)
+
 """
 ################################################################################
 
@@ -184,7 +195,6 @@ lick_analysis_pcp_F = []
 
 '''
 ## LICK DAY ANALYSIS - BY GROUP 
-
 # Produce medians/means for individual rats and group means 
 # Assign empty variables to store all data (before calc means etc.)
 
@@ -744,27 +754,7 @@ for index, rat in enumerate(discalc_pcp_F):
     preDPs_notdis_pcp_F.append([preDPs_notdis])
    
 ###################################################################################
-###################################################################################
-###################################################################################
 
-# PRE DISTRACTOR PAUSES (then later for individual differences find correlation between
-# pre pause and post pause, with different colours for points that are distracted
-# or not)
-            
- # Add in here loop to make list of PDPs for each rats and each for distracted and not
-
-### Maybe add pre distraction pause to the post distraction pause code loops so it
-# is all computed at the same tiem 
-
-## DID YOU ACCESS THE AMPHETAMINE DAY???????????
-
-#compare ALL rats distraction and habituation 
-#
-#compare all rats habituation and SAL and AMPH 
-#
-#for amphetamine, PDPs, percentage etc. 
-#  
-#
 #GROUP DATA (ways to subset)
 #
 #MALES 
@@ -798,8 +788,7 @@ for index, rat in enumerate(discalc_pcp_F):
 #
 #ANOVA - effects of day, effects of PCP (in males and in females)
 #ANOVA - effects of sex on distraction OR 3 way ANOVA (although 2 cohorts far appart)
-#
-#
+##
 ## NOR
 #
 ## Add in NOR scores for each rat too, the DI and then calculate group info 
@@ -808,13 +797,3 @@ for index, rat in enumerate(discalc_pcp_F):
 #
 ## (2) Does the individual NOR score correlate with any distraction measure??
 #
-## Correlations 
-#
-## Individual variations in burst number, cluster number and mean INTERBURST INTERVAL
-#    # compared (correlation or regression) to PDP and distracted percentage 
-#    
-#    # Saline 
-#    
-#    
-#    
-#    

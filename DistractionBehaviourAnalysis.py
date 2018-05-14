@@ -586,9 +586,11 @@ discalc_sal_M[0][0][0] # [rat][list][licktimestamp]
 # SALINE MALES 
 # Distracted PDPs  / and preDPs
 pdps_dis_sal_M, pdps_notdis_sal_M = [], [] 
+preDPs_dis_sal_M, preDPs_notdis_sal_M = [], [] 
 
 for index, rat in enumerate(discalc_sal_M):
     pdps_dis = []
+    preDPs_dis = []
     for distractorlick in rat[0]:
         
         if distractorlick in distraction_sal_M[index][0] and distractorlick != distraction_sal_M[index][0][-1]:
@@ -596,34 +598,39 @@ for index, rat in enumerate(discalc_sal_M):
             lick_index_plus1 = lick_index+1
             lick_index_minus3 = lick_index-3
             distracted_PDP = distraction_sal_M[index][0][lick_index_plus1] - distraction_sal_M[index][0][lick_index]
-
-# NEED TO ADD STORAGE OF THESE PRE-DPS HERE (WITH THE APPEND)
             distracted_preDP = distraction_sal_M[index][0][lick_index] - distraction_sal_M[index][0][lick_index_minus3]
         
         pdps_dis.append(distracted_PDP)
+        preDPs_dis.append(distracted_preDP)
     pdps_dis_sal_M.append([pdps_dis])
+    preDPs_dis_sal_M.append([preDPs_dis])
 
 # Not distracted PDPs 
 
 for index, rat in enumerate(discalc_sal_M):
     pdps_notdis = []
+    preDPs_notdis = []
     for notdistractedlick in rat[1]:
         if notdistractedlick in distraction_sal_M[index][0] and notdistractedlick != distraction_sal_M[index][0][-1]:
             lick_index = distraction_sal_M[index][0].index(notdistractedlick) 
             lick_index_plus1 = lick_index+1
             lick_index_minus3 = lick_index-3
             notdistracted_PDP = distraction_sal_M[index][0][lick_index_plus1] - distraction_sal_M[index][0][lick_index]
-
             notdistracted_preDP = distraction_sal_M[index][0][lick_index] - distraction_sal_M[index][0][lick_index_minus3]
         
         pdps_notdis.append(notdistracted_PDP)
+        preDPs_notdis.append(notdistracted_preDP)
     pdps_notdis_sal_M.append([pdps_notdis])
+    preDPs_notdis_sal_M.append([preDPs_notdis])
 
 # PCP MALES =============================================================================
 # Cross check for number of distracted and not distracted trials in each group 
 pdps_dis_pcp_M, pdps_notdis_pcp_M = [], []
+preDPs_dis_pcp_M, preDPs_notdis_pcp_M = [], [] 
+
 for index, rat in enumerate(discalc_pcp_M):
     pdps_dis = []
+    preDPs_dis = []
     for distractorlick in rat[0]:
         
         if distractorlick in distraction_pcp_M[index][0] and distractorlick != distraction_pcp_M[index][0][-1]:
@@ -631,36 +638,40 @@ for index, rat in enumerate(discalc_pcp_M):
             lick_index_plus1 = lick_index+1
             lick_index_minus3 = lick_index-3
             distracted_PDP = distraction_pcp_M[index][0][lick_index_plus1] - distraction_pcp_M[index][0][lick_index]
-
             distracted_preDP = distraction_pcp_M[index][0][lick_index] - distraction_pcp_M[index][0][lick_index_minus3]
         
         pdps_dis.append(distracted_PDP)
+        preDPs_dis.append(distracted_preDP)
     pdps_dis_pcp_M.append([pdps_dis])
+    preDPs_dis_pcp_M.append([preDPs_dis])
 
 # Not distracted PDPs 
 
 for index, rat in enumerate(discalc_pcp_M):
     pdps_notdis = []
+    preDPs_notdis = []
     for notdistractedlick in rat[1]:
         if notdistractedlick in distraction_pcp_M[index][0] and notdistractedlick != distraction_pcp_M[index][0][-1]:
             lick_index = distraction_pcp_M[index][0].index(notdistractedlick) 
             lick_index_plus1 = lick_index+1
             lick_index_minus3 = lick_index-3
             notdistracted_PDP = distraction_pcp_M[index][0][lick_index_plus1] - distraction_pcp_M[index][0][lick_index]
-
             notdistracted_preDP = distraction_pcp_M[index][0][lick_index] - distraction_pcp_M[index][0][lick_index_minus3]
         
         pdps_notdis.append(notdistracted_PDP)
+        preDPs_notdis.append(notdistracted_preDP)
     pdps_notdis_pcp_M.append([pdps_notdis])
+    preDPs_notdis_pcp_M.append([preDPs_notdis])
 
 
 # SALINE FEMALES
 
 # Distracted pdps
 pdps_dis_sal_F, pdps_notdis_sal_F = [], [] 
-
+preDPs_dis_sal_F, preDPs_notdis_sal_F = [], [] 
 for index, rat in enumerate(discalc_sal_F):
     pdps_dis = []
+    preDPs_dis = []
     for distractorlick in rat[0]:
         
         if distractorlick in distraction_sal_F[index][0] and distractorlick != distraction_sal_F[index][0][-1]:
@@ -668,33 +679,38 @@ for index, rat in enumerate(discalc_sal_F):
             lick_index_plus1 = lick_index+1
             lick_index_minus3 = lick_index-3
             distracted_PDP = distraction_sal_F[index][0][lick_index_plus1] - distraction_sal_F[index][0][lick_index]
-
             distracted_preDP = distraction_sal_F[index][0][lick_index] - distraction_sal_F[index][0][lick_index_minus3]
         
         pdps_dis.append(distracted_PDP)
+        preDPs_dis.append(distracted_preDP)
     pdps_dis_sal_F.append([pdps_dis])
+    preDPs_dis_sal_F.append([preDPs_dis])
 
 # Not distracted PDPs 
 
 for index, rat in enumerate(discalc_sal_F):
     pdps_notdis = []
+    preDPs_notdis = []
     for notdistractedlick in rat[1]:
         if notdistractedlick in distraction_sal_F[index][0] and notdistractedlick != distraction_sal_F[index][0][-1]:
             lick_index = distraction_sal_F[index][0].index(notdistractedlick) 
             lick_index_plus1 = lick_index+1
             lick_index_minus3 = lick_index-3
             notdistracted_PDP = distraction_sal_F[index][0][lick_index_plus1] - distraction_sal_F[index][0][lick_index]
-
             notdistracted_preDP = distraction_sal_F[index][0][lick_index] - distraction_sal_F[index][0][lick_index_minus3]
         
         pdps_notdis.append(notdistracted_PDP)
+        preDPs_notdis.append(notdistracted_preDP)
     pdps_notdis_sal_F.append([pdps_notdis])
+    preDPs_notdis_sal_F.append([preDPs_notdis])
 
 # PCP FEMALES 
 
 pdps_dis_pcp_F, pdps_notdis_pcp_F = [], []
+preDPs_dis_pcp_F, preDPs_notdis_pcp_F = [], []
 for index, rat in enumerate(discalc_pcp_F):
     pdps_dis = []
+    preDPs_dis = []
     for distractorlick in rat[0]:
         
         if distractorlick in distraction_pcp_F[index][0] and distractorlick != distraction_pcp_F[index][0][-1]:
@@ -702,27 +718,30 @@ for index, rat in enumerate(discalc_pcp_F):
             lick_index_plus1 = lick_index+1
             lick_index_minus3 = lick_index-3
             distracted_PDP = distraction_pcp_F[index][0][lick_index_plus1] - distraction_pcp_F[index][0][lick_index]
-
             distracted_preDP = distraction_pcp_F[index][0][lick_index] - distraction_pcp_F[index][0][lick_index_minus3]
         
         pdps_dis.append(distracted_PDP)
+        preDPs_dis.append(distracted_preDP)
     pdps_dis_pcp_F.append([pdps_dis])
+    preDPs_dis_pcp_F.append([preDPs_dis])
 
 # Not distracted PDPs 
 
 for index, rat in enumerate(discalc_pcp_F):
     pdps_notdis = []
+    preDPs_notdis = []
     for notdistractedlick in rat[1]:
         if notdistractedlick in distraction_pcp_F[index][0] and notdistractedlick != distraction_pcp_F[index][0][-1]:
             lick_index = distraction_pcp_F[index][0].index(notdistractedlick) 
             lick_index_plus1 = lick_index+1
             lick_index_minus3 = lick_index-3
             notdistracted_PDP = distraction_pcp_F[index][0][lick_index_plus1] - distraction_pcp_F[index][0][lick_index]
-
             notdistracted_preDP = distraction_pcp_F[index][0][lick_index] - distraction_pcp_F[index][0][lick_index_minus3]
         
         pdps_notdis.append(notdistracted_PDP)
+        preDPs_notdis.append(notdistracted_preDP)
     pdps_notdis_pcp_F.append([pdps_notdis])
+    preDPs_notdis_pcp_F.append([preDPs_notdis])
    
 ###################################################################################
 ###################################################################################

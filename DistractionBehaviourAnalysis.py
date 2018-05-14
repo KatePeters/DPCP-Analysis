@@ -9,11 +9,15 @@ DATA EXTRACTION - DISTRACTION BEHAVIOUR PAPER PETERS ET AL.
 Information on what this script does start to finish and which other 
 functions need to be run first 
 
-(1)
-(2)
-(3)
-(4)
-(5)
+(1) Reads in metafiles from filepath, contains information on filenames and basic descriptives
+(2) Extracts lick data from MED files. Uses the names files in metafile and stores licking 
+    data into variables by chosen day (ie. last lick day / distraction day). Stores lick data
+    by group as large list of lists. Eg. last_lick_sal_M contains 16 lists of lick onsets for 
+    just the last day of licking, each list is a rat, with onsets and offsets stored.
+(3) Lick analysis - 
+(4) Distraction analysis -  
+(5) Post distractor pauses and predistractor pauses - calculates the time periods 
+    for both distracted and non distracted trials separately for all groups
 
 """
 ################################################################################
@@ -69,7 +73,7 @@ for ind, filename in enumerate(extract_males['MedFilenames']):
 # Saline distraction        
     if extract_males['Date'][ind] == '170418' and extract_males['Drug'][ind] == 'SAL' \
     or extract_males['Date'][ind] == '171007' and extract_males['Drug'][ind] == 'SAL' :
-        distraction_sal_M.append([onsets, offsets, dis_type, extract_males['RatID'][ind]])
+        distraction_sal_M.append([onsets, offsets, dis_type, extract_males['RatID'][ind]]) #dis type on distraction days only 
 # Saline habituation 1
     if extract_males['Date'][ind] == '170419' and extract_males['Drug'][ind] == 'SAL' \
     or extract_males['Date'][ind] == '171008' and extract_males['Drug'][ind] == 'SAL' :
@@ -782,18 +786,4 @@ for index, rat in enumerate(discalc_pcp_F):
 #SAL habituation day mean PDP, mean percentage distracted, mean/median bursts
 #SAL salineIP day mean PDP, mean percentage distracted, mean/median bursts
 #SAL amphetamineIP day mean PDP, mean percentage distracted, mean/median bursts
-#
-#
-#Statistics (probably not in Python, probably use SPSS or R)
-#
-#ANOVA - effects of day, effects of PCP (in males and in females)
-#ANOVA - effects of sex on distraction OR 3 way ANOVA (although 2 cohorts far appart)
-##
-## NOR
-#
-## Add in NOR scores for each rat too, the DI and then calculate group info 
-#
-## (1) Is there a NOR deficit when all male data are combined, is there a deficit in females
-#
-## (2) Does the individual NOR score correlate with any distraction measure??
 #

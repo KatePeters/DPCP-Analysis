@@ -232,3 +232,8 @@ Think about the outputs produced by the functions that you want
 
         ## Do this for all rats and all distracted and non-distracted trials together 
         
+''' 14/05/18 '''
+
+# Thinking about pre distraction pauses, calculated the interval between distractor and previous lick 
+# Actually want the distractor and before the 3 previous licks (before they started licking to 
+# receive the distractor)

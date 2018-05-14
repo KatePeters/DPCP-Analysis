@@ -584,7 +584,7 @@ discalc_sal_M[0][0][0] # [rat][list][licktimestamp]
 # on the final lick in a session)
 
 # SALINE MALES 
-# Distracted PDPs  
+# Distracted PDPs  / and preDPs
 pdps_dis_sal_M, pdps_notdis_sal_M = [], [] 
 
 for index, rat in enumerate(discalc_sal_M):
@@ -594,8 +594,12 @@ for index, rat in enumerate(discalc_sal_M):
         if distractorlick in distraction_sal_M[index][0] and distractorlick != distraction_sal_M[index][0][-1]:
             lick_index = distraction_sal_M[index][0].index(distractorlick) 
             lick_index_plus1 = lick_index+1
+            lick_index_minus3 = lick_index-3
             distracted_PDP = distraction_sal_M[index][0][lick_index_plus1] - distraction_sal_M[index][0][lick_index]
 
+# NEED TO ADD STORAGE OF THESE PRE-DPS HERE (WITH THE APPEND)
+            distracted_preDP = distraction_sal_M[index][0][lick_index] - distraction_sal_M[index][0][lick_index_minus3]
+        
         pdps_dis.append(distracted_PDP)
     pdps_dis_sal_M.append([pdps_dis])
 
@@ -607,8 +611,11 @@ for index, rat in enumerate(discalc_sal_M):
         if notdistractedlick in distraction_sal_M[index][0] and notdistractedlick != distraction_sal_M[index][0][-1]:
             lick_index = distraction_sal_M[index][0].index(notdistractedlick) 
             lick_index_plus1 = lick_index+1
+            lick_index_minus3 = lick_index-3
             notdistracted_PDP = distraction_sal_M[index][0][lick_index_plus1] - distraction_sal_M[index][0][lick_index]
 
+            notdistracted_preDP = distraction_sal_M[index][0][lick_index] - distraction_sal_M[index][0][lick_index_minus3]
+        
         pdps_notdis.append(notdistracted_PDP)
     pdps_notdis_sal_M.append([pdps_notdis])
 
@@ -622,8 +629,11 @@ for index, rat in enumerate(discalc_pcp_M):
         if distractorlick in distraction_pcp_M[index][0] and distractorlick != distraction_pcp_M[index][0][-1]:
             lick_index = distraction_pcp_M[index][0].index(distractorlick) 
             lick_index_plus1 = lick_index+1
+            lick_index_minus3 = lick_index-3
             distracted_PDP = distraction_pcp_M[index][0][lick_index_plus1] - distraction_pcp_M[index][0][lick_index]
 
+            distracted_preDP = distraction_pcp_M[index][0][lick_index] - distraction_pcp_M[index][0][lick_index_minus3]
+        
         pdps_dis.append(distracted_PDP)
     pdps_dis_pcp_M.append([pdps_dis])
 
@@ -635,8 +645,11 @@ for index, rat in enumerate(discalc_pcp_M):
         if notdistractedlick in distraction_pcp_M[index][0] and notdistractedlick != distraction_pcp_M[index][0][-1]:
             lick_index = distraction_pcp_M[index][0].index(notdistractedlick) 
             lick_index_plus1 = lick_index+1
+            lick_index_minus3 = lick_index-3
             notdistracted_PDP = distraction_pcp_M[index][0][lick_index_plus1] - distraction_pcp_M[index][0][lick_index]
 
+            notdistracted_preDP = distraction_pcp_M[index][0][lick_index] - distraction_pcp_M[index][0][lick_index_minus3]
+        
         pdps_notdis.append(notdistracted_PDP)
     pdps_notdis_pcp_M.append([pdps_notdis])
 
@@ -653,8 +666,11 @@ for index, rat in enumerate(discalc_sal_F):
         if distractorlick in distraction_sal_F[index][0] and distractorlick != distraction_sal_F[index][0][-1]:
             lick_index = distraction_sal_F[index][0].index(distractorlick) 
             lick_index_plus1 = lick_index+1
+            lick_index_minus3 = lick_index-3
             distracted_PDP = distraction_sal_F[index][0][lick_index_plus1] - distraction_sal_F[index][0][lick_index]
 
+            distracted_preDP = distraction_sal_F[index][0][lick_index] - distraction_sal_F[index][0][lick_index_minus3]
+        
         pdps_dis.append(distracted_PDP)
     pdps_dis_sal_F.append([pdps_dis])
 
@@ -666,8 +682,11 @@ for index, rat in enumerate(discalc_sal_F):
         if notdistractedlick in distraction_sal_F[index][0] and notdistractedlick != distraction_sal_F[index][0][-1]:
             lick_index = distraction_sal_F[index][0].index(notdistractedlick) 
             lick_index_plus1 = lick_index+1
+            lick_index_minus3 = lick_index-3
             notdistracted_PDP = distraction_sal_F[index][0][lick_index_plus1] - distraction_sal_F[index][0][lick_index]
 
+            notdistracted_preDP = distraction_sal_F[index][0][lick_index] - distraction_sal_F[index][0][lick_index_minus3]
+        
         pdps_notdis.append(notdistracted_PDP)
     pdps_notdis_sal_F.append([pdps_notdis])
 
@@ -681,8 +700,11 @@ for index, rat in enumerate(discalc_pcp_F):
         if distractorlick in distraction_pcp_F[index][0] and distractorlick != distraction_pcp_F[index][0][-1]:
             lick_index = distraction_pcp_F[index][0].index(distractorlick) 
             lick_index_plus1 = lick_index+1
+            lick_index_minus3 = lick_index-3
             distracted_PDP = distraction_pcp_F[index][0][lick_index_plus1] - distraction_pcp_F[index][0][lick_index]
 
+            distracted_preDP = distraction_pcp_F[index][0][lick_index] - distraction_pcp_F[index][0][lick_index_minus3]
+        
         pdps_dis.append(distracted_PDP)
     pdps_dis_pcp_F.append([pdps_dis])
 
@@ -694,8 +716,11 @@ for index, rat in enumerate(discalc_pcp_F):
         if notdistractedlick in distraction_pcp_F[index][0] and notdistractedlick != distraction_pcp_F[index][0][-1]:
             lick_index = distraction_pcp_F[index][0].index(notdistractedlick) 
             lick_index_plus1 = lick_index+1
+            lick_index_minus3 = lick_index-3
             notdistracted_PDP = distraction_pcp_F[index][0][lick_index_plus1] - distraction_pcp_F[index][0][lick_index]
 
+            notdistracted_preDP = distraction_pcp_F[index][0][lick_index] - distraction_pcp_F[index][0][lick_index_minus3]
+        
         pdps_notdis.append(notdistracted_PDP)
     pdps_notdis_pcp_F.append([pdps_notdis])
    
@@ -709,10 +734,10 @@ for index, rat in enumerate(discalc_pcp_F):
             
  # Add in here loop to make list of PDPs for each rats and each for distracted and not
 
+### Maybe add pre distraction pause to the post distraction pause code loops so it
+# is all computed at the same tiem 
 
-# (5) Work out PDPs for all groups and store
-# Produce an output and do all the statistics on these (decide tests and comparisons)
-
+## DID YOU ACCESS THE AMPHETAMINE DAY???????????
 
 #compare ALL rats distraction and habituation 
 #

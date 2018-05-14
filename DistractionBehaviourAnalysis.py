@@ -821,7 +821,7 @@ for index, rat in enumerate(discalc_pcp_F):
     pdps_notdis_pcp_F.append([pdps_notdis])
     preDPs_notdis_pcp_F.append([preDPs_notdis])
    
-
+'''
 # Corelations 
 
 Find mean for each list of pre / post DPs and then correlate and plot 
@@ -850,7 +850,7 @@ for index, value in enumerate(salMdistractors):
             both in the list or just one indices???
 
 ###################################################################################
-
+'''
 #GROUP DATA (ways to subset)
 #
 #MALES 

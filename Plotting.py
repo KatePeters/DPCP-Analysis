@@ -89,38 +89,35 @@ b = ['sal','sal','sal','sal','sal','sal','sal','sal','sal','sal','sal','sal','sa
      'sal','sal','sal','pcp','pcp','pcp','pcp','pcp','pcp','pcp','pcp','pcp','pcp',\
      'pcp','pcp','pcp','pcp','pcp','pcp']
 
-c = ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1',]
+
+c = ['a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a',]
+
+d = [15]
+e = [-15]
 df = pd.DataFrame()
 df['nRuns'] = a
 df['Group'] = b
 df['all'] = c
 
-
 # Should make PANDAS dataframe here so you can access labels with col names 
 
 fig, ax = plt.subplots(1,1)
-ax = sb.violinplot(hue=df['Group'], y=df['nRuns'], x=df['all'], palette="muted", split=True, scale="width", scale_hue=False, inner=None)
-ax = sb.swarmplot(y=df['nRuns'], x=df['all'], color="grey", edgecolor="grey", split=True)
 
+plt.yticks()
+ax = sb.violinplot(hue=df['Group'], x=df['nRuns'], y=df['all'], bw = 0.4, palette=['orange', 'lightblue'], split=True, scale="width", inner=None)
+ax = sb.swarmplot(x=df['nRuns'][0:16], y=df['all'], color="orange", edgecolor="orange", split=True)
+ax = sb.swarmplot(x=df['nRuns'][16:32], y=df['all'], color="lightblue", edgecolor="lightblue", split=True)
+ax.bar(15,0.1) # USE THIS TO ADD IN MEAN/MEDIAN  - MAKE BARS NARROW AND CLEANER
+
+## HOW DO I FIX OVERLAPPING POINTS ON PLOT, for 2 data sets???? 
+
+# d is the position on X axis, first arg. e if negative is up if pos is down make them both 32 (or n observations)
 
 inner=None
+delta =0.05
+final_width = 0.6
+inner=None
 
-
-# offset stuff
-delta = 0.5
-for ii, item in enumerate(ax.collections):
-    # axis contains PolyCollections and PathCollections
-    if isinstance(item, matplotlib.collections.PolyCollection):
-        # get path
-        path= item.get_paths()
-        vertices = path.vertices
-
-        # shift x-coordinates of path
-        if not inner:
-            if ii % 2: # -> to right
-                vertices[:,0] += delta
-            else: # -> to left
-                vertices[:,0] -= delta
-
+offset_violinplot_halves(ax, delta, final_width, inner, 'horizontal')
 
 

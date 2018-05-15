@@ -25,7 +25,7 @@ import os
 import matplotlib as mpl
 import itertools
 import matplotlib.mlab as mlab
-import seaborn as sb
+#import seaborn as sb
 import statistics as stats
 # Set plot parameters and styles
 
@@ -506,9 +506,9 @@ def nearestevents(timelock, events, preTrial=10, trialLength=30):
 
 ''' Barscatter '''
 
-colors = ['darkorange', 'orange']
-colors2 = ['k','k']
-colors3 = ['white', 'white']
+#colors = ['darkorange', 'orange']
+#colors2 = ['k','k']
+#colors3 = ['white', 'white']
  
 def barscatter(data, transpose = False,
                 groupwidth = .75,
@@ -584,9 +584,9 @@ def barscatter(data, transpose = False,
         xvals = groupx
     
     # Set colors for bars and scatters  
-#    colors = ['darkorange', 'skyblue']
-#    colors2 = ['k','k']
-#    colors3 = ['white', 'white']
+    colors = ['dodgerblue', 'hotpink']
+    colors2 = ['k','k']
+    colors3 = ['white', 'white']
     
     barfacecolorArray = setcolors("between", colors, 1, 2, data, paired_scatter = True)
     baredgecolorArray = setcolors("between", colors, 1, 2, data, paired_scatter = True)

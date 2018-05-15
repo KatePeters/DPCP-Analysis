@@ -126,6 +126,8 @@ final_width = 0.6
 inner=None
 offset_violinplot_halves(ax, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb
 
+fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/nRun Violin.pdf', bbox_inches="tight") 
+
 #### nBursts
 a = []
 a.extend(nbursts[0])
@@ -169,6 +171,7 @@ final_width = 0.6
 inner=None
 offset_violinplot_halves(ax2, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb
 
+fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/nBurst Violin.pdf', bbox_inches="tight") 
 
 
 ## Mean burst length 
@@ -214,6 +217,9 @@ final_width = 0.6
 inner=None
 offset_violinplot_halves(ax3, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb
 
+fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/MeanBurstLength Violin.pdf', bbox_inches="tight") 
+
+
 # Mean run length
 a = []
 a.extend(meanrunlength[0])
@@ -256,6 +262,7 @@ delta =0.05
 final_width = 0.6
 inner=None
 offset_violinplot_halves(ax4, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb
+fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/MeanRunLength Violin.pdf', bbox_inches="tight") 
 
 
 # Mean IBI 
@@ -301,6 +308,7 @@ delta =0.05
 final_width = 0.6
 inner=None
 offset_violinplot_halves(ax5, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb
+fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/MeanIBI Violin.pdf', bbox_inches="tight") 
 
 
 # Mean IRI 
@@ -346,7 +354,40 @@ final_width = 0.6
 inner=None
 offset_violinplot_halves(ax6, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb
 
+fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/MeanIRI Violin.pdf', bbox_inches="tight") 
 
+
+### CODE OVERWRITES DATAFRAME EACH TIME, CANNOT ACCESS PREVIOUS VARIABLES. RRE NEEDED
+
+
+##################################################################################
+
+# Barscatter plots for grouped data. PCP vs SAL
+
+
+
+# PLOT PERCENTAGE DISTRACTED, by modality - run ANOVA (saline vs pcp)
+# PLOT percentage distracted saline vs pcp (males) (female) just distraction day 
+
+# Large plot of all days for just saline MALES
+# Large plot of all days for just saline MALES 
+
+
+# Individual differences, linear regression for PREDP and POSTDP 
+    # Try this plot with 16 averages one from each rat. Average pause and average pre??
+    # Really want individual data here not averages
+    # Very variable though , issues with wild outliers messing up the regression
+
+# Maybe limit to the PDPs under 2 seconds (then same window of 1 second either way and reduced variablity)
+
+
+compare distracted and not distracted pdps (all together) with all pre-dps too 
+
+plot these 
+
+flatten the arrays 
+
+can go through and find if distracted or not based on the pdp
 
 ## Read in ALL of the licks?? Or bursts 
 
@@ -356,8 +397,11 @@ offset_violinplot_halves(ax6, delta, final_width, inner, 'horizontal') ## Add th
 
 ### Correlation using seaborn model - regression 
 
-fig.savefig('/Volumes/KPMSB352/PHOTOMETRY MMIN18/PDF figures/Hist_Runs.pdf', bbox_inches="tight") 
-
-
-
+## VERY few are less than 2 seconds, when they are distracted they are REALLY distracted 
+## Look at the pdps compare the mean or even median for distracted and not 
+count = 0
+for trial in pdps_dis_sal_M:
+    for tril in trial[0]:
+        if tril < 2:
+            count += 1
 

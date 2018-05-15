@@ -828,7 +828,7 @@ Find mean for each list of pre / post DPs and then correlate and plot
 using the sb.jointplot(x='Attack', y='Defense', data=df) seaborn joint plots
 (find out how to get distributions too
  
- sb.jointplot(x=df['nRuns'], y=df['nRuns'], kind='hex')) or type 'reg' for kernel estimation and regression
+sb.jointplot(x=df['nRuns'], y=df['nRuns'], kind='hex')) or type 'reg' for kernel estimation and regression
 
 plt.plot()
 
@@ -878,4 +878,6 @@ for index, value in enumerate(salMdistractors):
 #SAL habituation day mean PDP, mean percentage distracted, mean/median bursts
 #SAL salineIP day mean PDP, mean percentage distracted, mean/median bursts
 #SAL amphetamineIP day mean PDP, mean percentage distracted, mean/median bursts
-#
+
+
+#sb.jointplot(x=df['nRuns'], y=df['nBursts'], kind='hex')) #or type 'reg' for kernel estimation and regression

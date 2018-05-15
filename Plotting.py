@@ -108,8 +108,9 @@ fig, ax = plt.subplots(1,1)
 plt.yticks()
 ax = sb.violinplot(hue=df['Group'], x=df['nRuns'], y=df['Drug treatment'], bw = 0.4, palette=['dodgerblue', 'hotpink'], split=True, saturation=1, scale="width", inner=None)
 ax.legend().set_visible(False)
-
-ax = sb.swarmplot(x=df["nRuns"], y=df["Drug treatment"], hue=df["Group"], palette=['dodgerblue', 'hotpink'])
+ax.set_xlabel("doesnt change!", fontsize=14)
+ax.tick_params(labelsize=14)
+ax = sb.swarmplot(x=df["nRuns"], y=df["Drug treatment"], hue=df["Group"], palette=['dodgerblue', 'hotpink'], size=6)
 ax.bar(median_nRuns_pcp_M,0.3, color='white') # USE THIS TO ADD IN MEAN/MEDIAN  - MAKE BARS NARROW AND CLEANER
 ax.bar(median_nRuns_sal_M,-0.3, color='white')
 sb.despine(offset=10, trim=True)
@@ -117,7 +118,7 @@ ax.set_ylabel("")
 ax.set(yticks=[]) 
 # Choose the legend you want from the 4 options plotted
 handles, labels = ax.get_legend_handles_labels()
-l = plt.legend(handles[2:4], labels[2:4])
+l = plt.legend(handles[2:4], labels[2:4], fontsize=14)
 # Make a gap between the distributions for easier comparison, offset determined by delta
 inner=None
 delta =0.05
@@ -149,8 +150,9 @@ fig, ax2 = plt.subplots(1,1)
 plt.yticks()
 ax2 = sb.violinplot(hue=df['Group'], x=df['nBursts'], y=df['Drug treatment'], bw = 0.4, palette=['dodgerblue', 'hotpink'], split=True, saturation=1, scale="width", inner=None)
 ax2.legend().set_visible(False)
-
-ax2 = sb.swarmplot(x=df["nBursts"], y=df["Drug treatment"], hue=df["Group"], palette=['dodgerblue', 'hotpink'])
+ax2.set_xlabel("doesnt change!", fontsize=14)
+ax2.tick_params(labelsize=14)
+ax2 = sb.swarmplot(x=df["nBursts"], y=df["Drug treatment"], hue=df["Group"], palette=['dodgerblue', 'hotpink'], size=6)
 ax2.bar(median_nBursts_pcp_M,0.3, color='white') # USE THIS TO ADD IN MEAN/MEDIAN  - MAKE BARS NARROW AND CLEANER
 ax2.bar(median_nBursts_sal_M,-0.3, color='white') 
 
@@ -159,7 +161,7 @@ ax2.set_ylabel("")
 ax2.set(yticks=[]) 
 # Choose the legend you want from the 4 options plotted
 handles, labels = ax.get_legend_handles_labels()
-l = plt.legend(handles[2:4], labels[2:4])
+l = plt.legend(handles[2:4], labels[2:4], fontsize=14)
 # Make a gap between the distributions for easier comparison, offset determined by delta
 inner=None
 delta =0.05
@@ -194,8 +196,9 @@ fig, ax3 = plt.subplots(1,1)
 plt.yticks()
 ax3 = sb.violinplot(hue=df['Group'], x=df['meanBurstlen'], y=df['Drug treatment'], bw = 0.4, palette=['dodgerblue', 'hotpink'], split=True, saturation=1, scale="width", inner=None)
 ax3.legend().set_visible(False)
-
-ax3 = sb.swarmplot(x=df["meanBurstlen"], y=df["Drug treatment"], hue=df["Group"], palette=['dodgerblue', 'hotpink'])
+ax3.set_xlabel("doesnt change!", fontsize=14)
+ax3.tick_params(labelsize=14)
+ax3 = sb.swarmplot(x=df["meanBurstlen"], y=df["Drug treatment"], hue=df["Group"], palette=['dodgerblue', 'hotpink'], size=6)
 ax3.bar(median_meanBurstlen_pcp_M,0.3, color='white') # USE THIS TO ADD IN MEAN/MEDIAN  - MAKE BARS NARROW AND CLEANER
 ax3.bar(median_meanBurstlen_sal_M,-0.3, color='white')
 sb.despine(offset=10, trim=True)
@@ -203,7 +206,7 @@ ax3.set_ylabel("")
 ax3.set(yticks=[]) 
 # Choose the legend you want from the 4 options plotted
 handles, labels = ax.get_legend_handles_labels()
-l = plt.legend(handles[2:4], labels[2:4])
+l = plt.legend(handles[2:4], labels[2:4], fontsize=14)
 # Make a gap between the distributions for easier comparison, offset determined by delta
 inner=None
 delta =0.05
@@ -236,8 +239,9 @@ fig, ax4 = plt.subplots(1,1)
 plt.yticks()
 ax4 = sb.violinplot(hue=df['Group'], x=df['meanRunlen'], y=df['Drug treatment'], bw = 0.4, palette=['dodgerblue', 'hotpink'], split=True, saturation=1, scale="width", inner=None)
 ax4.legend().set_visible(False)
-
-ax4 = sb.swarmplot(x=df["meanRunlen"], y=df["Drug treatment"], hue=df["Group"], palette=['dodgerblue', 'hotpink'])
+ax4.set_xlabel("doesnt change!", fontsize=14)
+ax4.tick_params(labelsize=14)
+ax4 = sb.swarmplot(x=df["meanRunlen"], y=df["Drug treatment"], hue=df["Group"], palette=['dodgerblue', 'hotpink'], size=6)
 ax4.bar(median_meanRunlen_pcp_M,0.3, color='white') # USE THIS TO ADD IN MEAN/MEDIAN  - MAKE BARS NARROW AND CLEANER
 ax4.bar(median_meanRunlen_sal_M,-0.3, color='white')
 sb.despine(offset=10, trim=True)
@@ -245,7 +249,7 @@ ax4.set_ylabel("")
 ax4.set(yticks=[]) 
 # Choose the legend you want from the 4 options plotted
 handles, labels = ax.get_legend_handles_labels()
-l = plt.legend(handles[2:4], labels[2:4])
+l = plt.legend(handles[2:4], labels[2:4], fontsize=14)
 # Make a gap between the distributions for easier comparison, offset determined by delta
 inner=None
 delta =0.05
@@ -279,8 +283,10 @@ fig, ax5= plt.subplots(1,1)
 plt.yticks()
 ax5 = sb.violinplot(hue=df['Group'], x=df['meanIBI'], y=df['Drug treatment'], bw = 0.4, palette=['dodgerblue', 'hotpink'], split=True, saturation=1, scale="width", inner=None)
 ax5.legend().set_visible(False)
+ax5.set_xlabel("doesnt change!", fontsize=14)
+ax5.tick_params(labelsize=14)
 
-ax5 = sb.swarmplot(x=df["meanIBI"], y=df["Drug treatment"], hue=df["Group"], palette=['dodgerblue', 'hotpink'])
+ax5 = sb.swarmplot(x=df["meanIBI"], y=df["Drug treatment"], hue=df["Group"], palette=['dodgerblue', 'hotpink'], size=6)
 ax5.bar(median_IBI_pcp_M,0.3, color='white') # USE THIS TO ADD IN MEAN/MEDIAN  - MAKE BARS NARROW AND CLEANER
 ax5.bar(median_IBI_sal_M,-0.3, color='white')
 sb.despine(offset=10, trim=True)
@@ -288,7 +294,7 @@ ax5.set_ylabel("")
 ax5.set(yticks=[]) 
 # Choose the legend you want from the 4 options plotted
 handles, labels = ax5.get_legend_handles_labels()
-l = plt.legend(handles[2:4], labels[2:4])
+l = plt.legend(handles[2:4], labels[2:4], fontsize=14)
 # Make a gap between the distributions for easier comparison, offset determined by delta
 inner=None
 delta =0.05
@@ -322,8 +328,9 @@ fig, ax6= plt.subplots(1,1)
 plt.yticks()
 ax6 = sb.violinplot(hue=df['Group'], x=df['meanIRI'], y=df['Drug treatment'], bw = 0.4, palette=['dodgerblue', 'hotpink'], split=True, saturation=1, scale="width", inner=None)
 ax6.legend().set_visible(False)
-
-ax6 = sb.swarmplot(x=df["meanIRI"], y=df["Drug treatment"], hue=df["Group"], palette=['dodgerblue', 'hotpink'])
+ax6.set_xlabel("doesnt change!", fontsize=14)
+ax6.tick_params(labelsize=14)
+ax6 = sb.swarmplot(x=df["meanIRI"], y=df["Drug treatment"], hue=df["Group"], palette=['dodgerblue', 'hotpink'], size=6)
 ax6.bar(median_IRI_pcp_M,0.3, color='white') # USE THIS TO ADD IN MEAN/MEDIAN  - MAKE BARS NARROW AND CLEANER
 ax6.bar(median_IRI_sal_M,-0.3, color='white')
 sb.despine(offset=10, trim=True)
@@ -331,10 +338,26 @@ ax6.set_ylabel("")
 ax6.set(yticks=[]) 
 # Choose the legend you want from the 4 options plotted
 handles, labels = ax6.get_legend_handles_labels()
-l = plt.legend(handles[2:4], labels[2:4])
+l = plt.legend(handles[2:4], labels[2:4], fontsize=14)
 # Make a gap between the distributions for easier comparison, offset determined by delta
 inner=None
 delta =0.05
 final_width = 0.6
 inner=None
 offset_violinplot_halves(ax6, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb
+
+
+
+## Read in ALL of the licks?? Or bursts 
+
+
+
+### All bar scatters for percent distracted - or even violin plots 
+
+### Correlation using seaborn model - regression 
+
+fig.savefig('/Volumes/KPMSB352/PHOTOMETRY MMIN18/PDF figures/Hist_Runs.pdf', bbox_inches="tight") 
+
+
+
+

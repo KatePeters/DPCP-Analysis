@@ -242,3 +242,8 @@ Think about the outputs produced by the functions that you want
 matplotlib.collections.PolyCollection
 
 
+''' 15/05/18 '''
+
+# Run all functionsB, then violin plots adjuster, then distractionbehaviour, then plotting
+
+

@@ -10,6 +10,7 @@ Created on Mon May 14 10:12:21 2018
 
 # (1) Bar scatter plots for licking 
 
+'''
 MALES
 
 which groups? 
@@ -33,6 +34,8 @@ barscatter(data)
     
     
 DATA FORMAT :
+    
+'''
 
 
 '''
@@ -271,7 +274,7 @@ median_IBI_sal_M = np.median(meanIBI[0])
 median_IBI_pcp_M = np.median(meanIBI[1])
 
 sb.set_style("white")
-fig, ax45= plt.subplots(1,1)
+fig, ax5= plt.subplots(1,1)
 
 plt.yticks()
 ax5 = sb.violinplot(hue=df['Group'], x=df['meanIBI'], y=df['Drug treatment'], bw = 0.4, palette=['dodgerblue', 'hotpink'], split=True, saturation=1, scale="width", inner=None)
@@ -295,3 +298,43 @@ offset_violinplot_halves(ax5, delta, final_width, inner, 'horizontal') ## Add th
 
 
 # Mean IRI 
+a = []
+a.extend(meanIRI[0])
+a.extend(meanIRI[1])
+b = ['sal','sal','sal','sal','sal','sal','sal','sal','sal','sal','sal','sal','sal',\
+     'sal','sal','sal','pcp','pcp','pcp','pcp','pcp','pcp','pcp','pcp','pcp','pcp',\
+     'pcp','pcp','pcp','pcp','pcp','pcp']
+# Arbitrary value (not numeric is horizontal) with n values for data points
+c = ['a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a']
+# c = ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1']
+
+df = pd.DataFrame()
+df['meanIRI'] = a
+df['Group'] = b
+df['Drug treatment'] = c
+
+median_IRI_sal_M = np.median(meanIRI[0])
+median_IRI_pcp_M = np.median(meanIRI[1])
+
+sb.set_style("white")
+fig, ax6= plt.subplots(1,1)
+
+plt.yticks()
+ax6 = sb.violinplot(hue=df['Group'], x=df['meanIRI'], y=df['Drug treatment'], bw = 0.4, palette=['dodgerblue', 'hotpink'], split=True, saturation=1, scale="width", inner=None)
+ax6.legend().set_visible(False)
+
+ax6 = sb.swarmplot(x=df["meanIRI"], y=df["Drug treatment"], hue=df["Group"], palette=['dodgerblue', 'hotpink'])
+ax6.bar(median_IRI_pcp_M,0.3, color='white') # USE THIS TO ADD IN MEAN/MEDIAN  - MAKE BARS NARROW AND CLEANER
+ax6.bar(median_IRI_sal_M,-0.3, color='white')
+sb.despine(offset=10, trim=True)
+ax6.set_ylabel("")
+ax6.set(yticks=[]) 
+# Choose the legend you want from the 4 options plotted
+handles, labels = ax6.get_legend_handles_labels()
+l = plt.legend(handles[2:4], labels[2:4])
+# Make a gap between the distributions for easier comparison, offset determined by delta
+inner=None
+delta =0.05
+final_width = 0.6
+inner=None
+offset_violinplot_halves(ax6, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb

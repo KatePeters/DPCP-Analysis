@@ -754,7 +754,7 @@ for index, rat in enumerate(discalc_sal_M):
         pdps_dis.append(distracted_PDP)
         preDPs_dis.append(distracted_preDP)
     pdps_dis_sal_M.append(pdps_dis)
-    med_pdps_dis_sal_M.append(np.median(pdps_dis))
+    med_pdps_dis_sal_M.append(np.mean(pdps_dis))
     preDPs_dis_sal_M.append(preDPs_dis)
 
 # Not distracted PDPs 
@@ -773,7 +773,7 @@ for index, rat in enumerate(discalc_sal_M):
         pdps_notdis.append(notdistracted_PDP)
         preDPs_notdis.append(notdistracted_preDP)
     pdps_notdis_sal_M.append(pdps_notdis)
-    med_pdps_notdis_sal_M.append(np.median(pdps_notdis))
+    med_pdps_notdis_sal_M.append(np.mean(pdps_notdis))
     preDPs_notdis_sal_M.append(preDPs_notdis)
 
 # PCP MALES =============================================================================
@@ -798,7 +798,7 @@ for index, rat in enumerate(discalc_pcp_M):
         pdps_dis.append(distracted_PDP)
         preDPs_dis.append(distracted_preDP)
     pdps_dis_pcp_M.append(pdps_dis)
-    med_pdps_dis_pcp_M.append(np.median(pdps_dis))
+    med_pdps_dis_pcp_M.append(np.mean(pdps_dis))
     preDPs_dis_pcp_M.append(preDPs_dis)
 
 # Not distracted PDPs 
@@ -817,7 +817,7 @@ for index, rat in enumerate(discalc_pcp_M):
         pdps_notdis.append(notdistracted_PDP)
         preDPs_notdis.append(notdistracted_preDP)
     pdps_notdis_pcp_M.append(pdps_notdis)
-    med_pdps_notdis_pcp_M.append(np.median(pdps_notdis))
+    med_pdps_notdis_pcp_M.append(np.mean(pdps_notdis))
     preDPs_notdis_pcp_M.append(preDPs_notdis)
 
 
@@ -843,7 +843,7 @@ for index, rat in enumerate(discalc_sal_F):
         pdps_dis.append(distracted_PDP)
         preDPs_dis.append(distracted_preDP)
     pdps_dis_sal_F.append(pdps_dis)
-    med_pdps_dis_sal_F.append(np.median(pdps_dis))
+    med_pdps_dis_sal_F.append(np.mean(pdps_dis))
     preDPs_dis_sal_F.append(preDPs_dis)
 
 # Not distracted PDPs 
@@ -862,7 +862,7 @@ for index, rat in enumerate(discalc_sal_F):
         pdps_notdis.append(notdistracted_PDP)
         preDPs_notdis.append(notdistracted_preDP)
     pdps_notdis_sal_F.append(pdps_notdis)
-    med_pdps_notdis_sal_F.append(np.median(pdps_notdis))
+    med_pdps_notdis_sal_F.append(np.mean(pdps_notdis))
     preDPs_notdis_sal_F.append(preDPs_notdis)
 
 # PCP FEMALES 
@@ -886,7 +886,7 @@ for index, rat in enumerate(discalc_pcp_F):
         pdps_dis.append(distracted_PDP)
         preDPs_dis.append(distracted_preDP)
     pdps_dis_pcp_F.append(pdps_dis)
-    med_pdps_dis_pcp_F.append(np.median(pdps_dis))
+    med_pdps_dis_pcp_F.append(np.mean(pdps_dis))
     preDPs_dis_pcp_F.append(preDPs_dis)
 
 # Not distracted PDPs 
@@ -905,7 +905,7 @@ for index, rat in enumerate(discalc_pcp_F):
         pdps_notdis.append(notdistracted_PDP)
         preDPs_notdis.append(notdistracted_preDP)
     pdps_notdis_pcp_F.append(pdps_notdis)
-    med_pdps_notdis_pcp_F.append(np.median(pdps_notdis))
+    med_pdps_notdis_pcp_F.append(np.mean(pdps_notdis))
     preDPs_notdis_pcp_F.append(preDPs_notdis)
    
 '''

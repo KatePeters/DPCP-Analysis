@@ -36,8 +36,8 @@ distraction_sasVpcp[1] = np.array(percent_dis_dis_pcp_M)
 
 
 barscatter(distraction_sasVpcp, grouplabel=['saline', 'pcp']) #grouplabel=['mod', 'distraction', 'hab1', 'hab2', 'amph'])
-'''
-'''
+
+
 ### females (n = 11, 5-6 per group)
 distraction_salVpcp_F = np.empty((2,), dtype=np.object)
 #distraction_salVpcp_F[0] = np.array(percent_dis_dis_sal_F)
@@ -48,7 +48,42 @@ distraction_salVpcp_F[1] = np.array(percent_dis_hab1_pcp_F)
 barscatter(distraction_salVpcp_F, grouplabel=['pcp dis', 'pcp hab'])
 
 '''
+## Use mean PDPs  - median gives same result for males and females too 
 
-## Use median PDPs 
+# females 
 
-med_pdps_notdis_pcp_F
+dis_pdps_median = np.empty((2,), dtype=np.object)
+dis_pdps_median[0] = np.array(med_pdps_dis_sal_M)
+dis_pdps_median[1] = np.array(med_pdps_dis_pcp_M)
+
+#dis_pdps_median[2] = np.array(med_pdps_dis_sal_F)
+#dis_pdps_median[3] = np.array(med_pdps_dis_pcp_F)
+
+
+notdis_pdps_median = np.empty((2,), dtype=np.object)
+notdis_pdps_median[0] = np.array(med_pdps_notdis_sal_M)
+notdis_pdps_median[1] = np.array(med_pdps_notdis_pcp_M)
+
+#notdis_pdps_median[2] = np.array(med_pdps_notdis_sal_F)
+#notdis_pdps_median[3] = np.array(med_pdps_notdis_pcp_F)
+
+barscatter(notdis_pdps_median, grouplabel=['sal', 'pcp'])
+
+#barscatter(notdis_pdps_median)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

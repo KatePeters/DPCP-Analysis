@@ -379,7 +379,7 @@ fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/MeanIR
     # Very variable though , issues with wild outliers messing up the regression
 
 # Maybe limit to the PDPs under 2 seconds (then same window of 1 second either way and reduced variablity)
-
+'''
 
 compare distracted and not distracted pdps (all together) with all pre-dps too 
 
@@ -402,6 +402,9 @@ can go through and find if distracted or not based on the pdp
 count = 0
 for trial in pdps_dis_sal_M:
     for tril in trial[0]:
-        if tril < 2:
+        if tril < 10:
             count += 1
+            
+            # cuts out the extremes. 114 are under 10 seconds. 66 are over 10 seconds 
 
+'''

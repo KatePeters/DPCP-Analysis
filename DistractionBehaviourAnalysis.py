@@ -335,14 +335,13 @@ percent_dis_combined_sal_M, percent_dis_combined_pcp_M, percent_dis_combined_sal
 
 
 ## SAL MALES - DISTRACTION DAY ONLY - DISTRACTOR TYPE ANALYSIS INCLUDED
-
 # Finds distracted or not (corrects for med slipping issue)
 for rat in distraction_sal_M:
     discalc = distractionCalc2(rat[0])
     distracted, notdistracted = distractedOrNot(discalc, rat[0])
   #  work out percentage and add this too 
     discalc_sal_M.append([distracted, notdistracted])
-    
+
     dis_numeric = []
     ndis_numeric = []
 # Modality analysis - calculates which distractors contain different features (whitenoise, tone or combination)
@@ -642,7 +641,42 @@ for rat in last_lick_pcp_F:
     distracted, notdistracted = distractedOrNot(discalc, rat[0])
     mod_dis_pcp_F.append([distracted, notdistracted])
 
+# Habituation days and amphetamine days SAL M ONLY ˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚
+# Calculate percentage distracted later
+hab1_dis_sal_M, hab2_dis_sal_M, amph_dis_sal_M = [], [], []
+hab1_dis_pcp_M, hab2_dis_pcp_M, amph_dis_pcp_M = [], [], []
 
+for rat in hab1_sal_M:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    hab1_dis_sal_M.append([distracted, notdistracted])
+     
+for rat in hab2_sal_M:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    hab2_dis_sal_M.append([distracted, notdistracted])
+    
+for rat in amph_sal_M:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    amph_dis_sal_M.append([distracted, notdistracted]) 
+    
+for rat in hab1_pcp_M:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    hab1_dis_pcp_M.append([distracted, notdistracted])
+     
+for rat in hab2_pcp_M:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    hab2_dis_pcp_M.append([distracted, notdistracted])
+    
+for rat in amph_pcp_M:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    amph_dis_pcp_M.append([distracted, notdistracted])    
+    
+    
 ###################################################################################
 
 # POST DISTRACTION PAUSES 
@@ -851,6 +885,75 @@ for index, value in enumerate(salMdistractors):
 
 ###################################################################################
 '''
+
+##################################################################
+# Percentage distracted    ##################################################################
+
+# SALINE and PCP for males only 
+
+# Cross checked and correct percentage on distraction day for all sal. 
+percent_dis_dis_sal_M = []
+for rat in discalc_sal_M: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_dis_sal_M.append(percentage)
+
+percent_dis_modelled_sal_M = []
+for rat in mod_dis_sal_M: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_modelled_sal_M.append(percentage)
+    
+percent_dis_hab1_sal_M = []
+for rat in hab1_dis_sal_M: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_hab1_sal_M.append(percentage)
+    
+percent_dis_hab2_sal_M = []
+for rat in hab2_dis_sal_M: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_hab2_sal_M.append(percentage)
+
+percent_dis_amph_sal_M = []
+for rat in amph_dis_sal_M: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_amph_sal_M.append(percentage)
+
+
+
+## PCP
+percent_dis_dis_pcp_M = []
+for rat in discalc_pcp_M: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_dis_pcp_M.append(percentage)
+
+percent_dis_modelled_pcp_M = []
+for rat in mod_dis_pcp_M: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_modelled_pcp_M.append(percentage)
+    
+percent_dis_hab1_pcp_M = []
+for rat in hab1_dis_pcp_M: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_hab1_pcp_M.append(percentage)
+    
+percent_dis_hab2_pcp_M = []
+for rat in hab2_dis_pcp_M: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_hab2_pcp_M.append(percentage)
+
+percent_dis_amph_pcp_M = []
+for rat in amph_dis_pcp_M: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_amph_pcp_M.append(percentage)
+
+
+
+
+
+
+
+
+
+
 #GROUP DATA (ways to subset)
 #
 #MALES 

@@ -584,15 +584,16 @@ def barscatter(data, transpose = False,
         xvals = groupx
     
     # Set colors for bars and scatters  
-    colors = ['dodgerblue', 'hotpink','slategrey']
-    colors2 = ['k','k','k']
+    #colors = ['#1abc9c', '#f1c40f', '#d35400', '#3498db', '#8e44ad']
+    colors = ['dodgerblue', 'hotpink', 'dodgerblue', 'hotpink']
+    colors2 = ['k','k','k', 'k', 'k']
     colors3 = ['white', 'white','white']
     
-    barfacecolorArray = setcolors("individual", colors, 1, 3, data, paired_scatter = False)
-    baredgecolorArray = setcolors("individual", colors, 1, 3, data, paired_scatter = False)
+    barfacecolorArray = setcolors("individual", colors, 1, 2, data, paired_scatter = False)
+    baredgecolorArray = setcolors("individual", colors, 1, 2, data, paired_scatter = False)
      
-    scfacecolorArray = setcolors("individual", colors3, 1, 3, data, paired_scatter = False)
-    scedgecolorArray = setcolors("individual", colors2, 1, 3, data, paired_scatter = False)
+    scfacecolorArray = setcolors("individual", colors3, 1, 2, data, paired_scatter = False)
+    scedgecolorArray = setcolors("individual", colors2, 1, 2, data, paired_scatter = False)
  #   scfacecolorArray = setcolors("between", colors3, nGroups=nGroups, barspergroup=barspergroup, data=dataX, paired_scatter = True)
     
 # Initialize figure
@@ -628,7 +629,7 @@ def barscatter(data, transpose = False,
             np.shape(data)[1]
             for x, Yarray, scf, sce in zip(xvals, data, scfacecolorArray, scedgecolorArray):
                 for y in np.transpose(Yarray.tolist()):
-                    sclist.append(ax.plot(x, y, 'o', markersize = scattersize/10,
+                    sclist.append(ax.plot(x, y, '-o', markersize = scattersize/10,
                              color = scatterlinecolor,
                              linewidth=linewidth,
                              markerfacecolor = scf,
@@ -639,7 +640,7 @@ def barscatter(data, transpose = False,
             print(len(data[0]))
             for n,_ in enumerate(data[0]):
                 y = [y[n-1] for y in data]
-                sclist.append(ax.plot(xvals, y, 'o', markersize = scattersize/10,
+                sclist.append(ax.plot(xvals, y, '-o', markersize = scattersize/10,
                              color = 'grey',
                              linewidth=linewidth,
                              markerfacecolor = 'white',
@@ -692,7 +693,7 @@ def barscatter(data, transpose = False,
 
     ax.set(ylabel='Percentage of distracted trials')
     ax.yaxis.label.set_size(14)      
- #   fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/ModalityPercentDistracted.pdf', bbox_inches="tight") 
+ #   fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/SvP_PercentDistracted.pdf', bbox_inches="tight") 
 
     return ax, barx, barlist, sclist
       

@@ -132,8 +132,9 @@ def distractionCalc2(licks, pre=1, post=1):
 #    print(len(d))
     
 #    print(d[-1])
-    if d[-1] > 3599:
-        d = d[:-1]
+    if len(d) > 1:
+        if d[-1] > 3599:
+            d = d[:-1]
         
 #    print(len(d))
     
@@ -585,7 +586,7 @@ def barscatter(data, transpose = False,
     
     # Set colors for bars and scatters  
     #colors = ['#1abc9c', '#f1c40f', '#d35400', '#3498db', '#8e44ad']
-    colors = ['dodgerblue', 'hotpink', 'dodgerblue', 'hotpink']
+    colors = ['hotpink', 'lightpink', 'dodgerblue', 'hotpink']
     colors2 = ['k','k','k', 'k', 'k']
     colors3 = ['white', 'white','white']
     
@@ -693,7 +694,7 @@ def barscatter(data, transpose = False,
 
     ax.set(ylabel='Percentage of distracted trials')
     ax.yaxis.label.set_size(14)      
- #   fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/SvP_PercentDistracted.pdf', bbox_inches="tight") 
+  #  fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/F_pcp_dis_habPERCENT.pdf', bbox_inches="tight") 
 
     return ax, barx, barlist, sclist
       

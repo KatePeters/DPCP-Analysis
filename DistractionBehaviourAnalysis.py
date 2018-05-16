@@ -674,10 +674,46 @@ for rat in hab2_pcp_M:
 for rat in amph_pcp_M:
     discalc = distractionCalc2(rat[0])
     distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    amph_dis_pcp_M.append([distracted, notdistracted])    
+    amph_dis_pcp_M.append([distracted, notdistracted]) 
     
+#### REPEATED FOR FEMALSE SALINE AND PCP    
+hab1_dis_sal_F, hab2_dis_sal_F, amph_dis_sal_F = [], [], []
+hab1_dis_pcp_F, hab2_dis_pcp_F, amph_dis_pcp_F = [], [], []
+
+for rat in hab1_sal_F:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    hab1_dis_sal_F.append([distracted, notdistracted])
+     
+for rat in hab2_sal_F:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    hab2_dis_sal_F.append([distracted, notdistracted])
     
-###################################################################################
+for rat in amph_sal_F:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    amph_dis_sal_F.append([distracted, notdistracted]) 
+    
+for rat in hab1_pcp_F:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    hab1_dis_pcp_F.append([distracted, notdistracted])
+     
+for rat in hab2_pcp_F:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    hab2_dis_pcp_F.append([distracted, notdistracted])
+
+### SOMETHING WRONG HERE, LIST INDEX OUT OF RANGE (LAST RAT IN FEMALES, ISSUE?)    
+for rat in amph_pcp_F:
+    discalc = distractionCalc2(rat[0])
+    distracted, notdistracted = distractedOrNot(discalc, rat[0])
+    amph_dis_pcp_F.append([distracted, notdistracted])    
+# fixed issue by adding if statement to distractionCalc2 (if len(d) is not > 1)    
+# got zero distractors, consider how to deal with these situations
+
+
 
 # POST DISTRACTION PAUSES 
 # For both distracted and non-distracted trials 
@@ -700,6 +736,9 @@ discalc_sal_M[0][0][0] # [rat][list][licktimestamp]
 pdps_dis_sal_M, pdps_notdis_sal_M = [], [] 
 preDPs_dis_sal_M, preDPs_notdis_sal_M = [], [] 
 
+med_pdps_dis_sal_M, med_pdps_notdis_sal_M = [], []
+
+
 for index, rat in enumerate(discalc_sal_M):
     pdps_dis = []
     preDPs_dis = []
@@ -714,8 +753,9 @@ for index, rat in enumerate(discalc_sal_M):
         
         pdps_dis.append(distracted_PDP)
         preDPs_dis.append(distracted_preDP)
-    pdps_dis_sal_M.append([pdps_dis])
-    preDPs_dis_sal_M.append([preDPs_dis])
+    pdps_dis_sal_M.append(pdps_dis)
+    med_pdps_dis_sal_M.append(np.median(pdps_dis))
+    preDPs_dis_sal_M.append(preDPs_dis)
 
 # Not distracted PDPs 
 
@@ -732,13 +772,16 @@ for index, rat in enumerate(discalc_sal_M):
         
         pdps_notdis.append(notdistracted_PDP)
         preDPs_notdis.append(notdistracted_preDP)
-    pdps_notdis_sal_M.append([pdps_notdis])
-    preDPs_notdis_sal_M.append([preDPs_notdis])
+    pdps_notdis_sal_M.append(pdps_notdis)
+    med_pdps_notdis_sal_M.append(np.median(pdps_notdis))
+    preDPs_notdis_sal_M.append(preDPs_notdis)
 
 # PCP MALES =============================================================================
 # Cross check for number of distracted and not distracted trials in each group 
 pdps_dis_pcp_M, pdps_notdis_pcp_M = [], []
 preDPs_dis_pcp_M, preDPs_notdis_pcp_M = [], [] 
+
+med_pdps_dis_pcp_M, med_pdps_notdis_pcp_M = [], []
 
 for index, rat in enumerate(discalc_pcp_M):
     pdps_dis = []
@@ -754,8 +797,9 @@ for index, rat in enumerate(discalc_pcp_M):
         
         pdps_dis.append(distracted_PDP)
         preDPs_dis.append(distracted_preDP)
-    pdps_dis_pcp_M.append([pdps_dis])
-    preDPs_dis_pcp_M.append([preDPs_dis])
+    pdps_dis_pcp_M.append(pdps_dis)
+    med_pdps_dis_pcp_M.append(np.median(pdps_dis))
+    preDPs_dis_pcp_M.append(preDPs_dis)
 
 # Not distracted PDPs 
 
@@ -772,8 +816,9 @@ for index, rat in enumerate(discalc_pcp_M):
         
         pdps_notdis.append(notdistracted_PDP)
         preDPs_notdis.append(notdistracted_preDP)
-    pdps_notdis_pcp_M.append([pdps_notdis])
-    preDPs_notdis_pcp_M.append([preDPs_notdis])
+    pdps_notdis_pcp_M.append(pdps_notdis)
+    med_pdps_notdis_pcp_M.append(np.median(pdps_notdis))
+    preDPs_notdis_pcp_M.append(preDPs_notdis)
 
 
 # SALINE FEMALES
@@ -781,6 +826,8 @@ for index, rat in enumerate(discalc_pcp_M):
 # Distracted pdps
 pdps_dis_sal_F, pdps_notdis_sal_F = [], [] 
 preDPs_dis_sal_F, preDPs_notdis_sal_F = [], [] 
+med_pdps_dis_sal_F, med_pdps_notdis_sal_F = [], []
+
 for index, rat in enumerate(discalc_sal_F):
     pdps_dis = []
     preDPs_dis = []
@@ -795,8 +842,9 @@ for index, rat in enumerate(discalc_sal_F):
         
         pdps_dis.append(distracted_PDP)
         preDPs_dis.append(distracted_preDP)
-    pdps_dis_sal_F.append([pdps_dis])
-    preDPs_dis_sal_F.append([preDPs_dis])
+    pdps_dis_sal_F.append(pdps_dis)
+    med_pdps_dis_sal_F.append(np.median(pdps_dis))
+    preDPs_dis_sal_F.append(preDPs_dis)
 
 # Not distracted PDPs 
 
@@ -813,13 +861,16 @@ for index, rat in enumerate(discalc_sal_F):
         
         pdps_notdis.append(notdistracted_PDP)
         preDPs_notdis.append(notdistracted_preDP)
-    pdps_notdis_sal_F.append([pdps_notdis])
-    preDPs_notdis_sal_F.append([preDPs_notdis])
+    pdps_notdis_sal_F.append(pdps_notdis)
+    med_pdps_notdis_sal_F.append(np.median(pdps_notdis))
+    preDPs_notdis_sal_F.append(preDPs_notdis)
 
 # PCP FEMALES 
 
 pdps_dis_pcp_F, pdps_notdis_pcp_F = [], []
 preDPs_dis_pcp_F, preDPs_notdis_pcp_F = [], []
+med_pdps_dis_pcp_F, med_pdps_notdis_pcp_F = [], []
+
 for index, rat in enumerate(discalc_pcp_F):
     pdps_dis = []
     preDPs_dis = []
@@ -834,8 +885,9 @@ for index, rat in enumerate(discalc_pcp_F):
         
         pdps_dis.append(distracted_PDP)
         preDPs_dis.append(distracted_preDP)
-    pdps_dis_pcp_F.append([pdps_dis])
-    preDPs_dis_pcp_F.append([preDPs_dis])
+    pdps_dis_pcp_F.append(pdps_dis)
+    med_pdps_dis_pcp_F.append(np.median(pdps_dis))
+    preDPs_dis_pcp_F.append(preDPs_dis)
 
 # Not distracted PDPs 
 
@@ -852,8 +904,9 @@ for index, rat in enumerate(discalc_pcp_F):
         
         pdps_notdis.append(notdistracted_PDP)
         preDPs_notdis.append(notdistracted_preDP)
-    pdps_notdis_pcp_F.append([pdps_notdis])
-    preDPs_notdis_pcp_F.append([preDPs_notdis])
+    pdps_notdis_pcp_F.append(pdps_notdis)
+    med_pdps_notdis_pcp_F.append(np.median(pdps_notdis))
+    preDPs_notdis_pcp_F.append(preDPs_notdis)
    
 '''
 # Corelations 
@@ -947,10 +1000,68 @@ for rat in amph_dis_pcp_M:
 
 
 
+############# FEMALES - percent distracted 
+## Remember might have an issue with the last PCP rat on amphetamine day
+# division by zero potential problem 
+
+# Might remove this rat from ALL days for the plots?? 
+
+percent_dis_dis_sal_F = []
+for rat in discalc_sal_F: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_dis_sal_F.append(percentage)
+
+percent_dis_modelled_sal_F = []
+for rat in mod_dis_sal_F: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_modelled_sal_F.append(percentage)
+    
+percent_dis_hab1_sal_F = []
+for rat in hab1_dis_sal_F: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_hab1_sal_F.append(percentage)
+    
+percent_dis_hab2_sal_F = []
+for rat in hab2_dis_sal_F: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_hab2_sal_F.append(percentage)
+
+percent_dis_amph_sal_F = []
+for rat in amph_dis_sal_F: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_amph_sal_F.append(percentage)
 
 
 
+## PCP
+percent_dis_dis_pcp_F = []
+for rat in discalc_pcp_F[:-1]:  ## Exclude last rat, zero distracted and zero not dis 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_dis_pcp_F.append(percentage)
 
+percent_dis_modelled_pcp_F = []
+for rat in mod_dis_pcp_F[:-1]: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_modelled_pcp_F.append(percentage)
+    
+percent_dis_hab1_pcp_F = []
+for rat in hab1_dis_pcp_F[:-1]: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_hab1_pcp_F.append(percentage)
+    
+percent_dis_hab2_pcp_F = []
+for rat in hab2_dis_pcp_F[:-1]: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_hab2_pcp_F.append(percentage)
+
+
+percent_dis_amph_pcp_F = []
+for rat in amph_dis_pcp_F[:-1]: 
+    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+    percent_dis_amph_pcp_F.append(percentage)
+    
+    
+    
 
 
 

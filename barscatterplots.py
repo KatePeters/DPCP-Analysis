@@ -28,14 +28,27 @@ distraction_percents[4] = np.array(percent_dis_amph_sal_M)
 barscatter(distraction_percents, grouplabel=['mod', 'distraction', 'hab1', 'hab2', 'amph'])
 '''
 
-
-
+'''
+#### 
 distraction_sasVpcp = np.empty((2,), dtype=np.object)
 distraction_sasVpcp[0] = np.array(percent_dis_dis_sal_M)
 distraction_sasVpcp[1] = np.array(percent_dis_dis_pcp_M)
 
 
 barscatter(distraction_sasVpcp, grouplabel=['saline', 'pcp']) #grouplabel=['mod', 'distraction', 'hab1', 'hab2', 'amph'])
- 
+'''
+'''
+### females (n = 11, 5-6 per group)
+distraction_salVpcp_F = np.empty((2,), dtype=np.object)
+#distraction_salVpcp_F[0] = np.array(percent_dis_dis_sal_F)
+#distraction_salVpcp_F[1] = np.array(percent_dis_hab1_sal_F)
+distraction_salVpcp_F[0] = np.array(percent_dis_dis_pcp_F)
+distraction_salVpcp_F[1] = np.array(percent_dis_hab1_pcp_F)
 
+barscatter(distraction_salVpcp_F, grouplabel=['pcp dis', 'pcp hab'])
 
+'''
+
+## Use median PDPs 
+
+med_pdps_notdis_pcp_F

@@ -126,7 +126,7 @@ final_width = 0.6
 inner=None
 offset_violinplot_halves(ax, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb
 
-fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/nRun Violin.pdf', bbox_inches="tight") 
+#fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/nRun Violin.pdf', bbox_inches="tight") 
 
 #### nBursts
 a = []
@@ -171,7 +171,7 @@ final_width = 0.6
 inner=None
 offset_violinplot_halves(ax2, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb
 
-fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/nBurst Violin.pdf', bbox_inches="tight") 
+#fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/nBurst Violin.pdf', bbox_inches="tight") 
 
 
 ## Mean burst length 
@@ -217,7 +217,7 @@ final_width = 0.6
 inner=None
 offset_violinplot_halves(ax3, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb
 
-fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/MeanBurstLength Violin.pdf', bbox_inches="tight") 
+#fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/MeanBurstLength Violin.pdf', bbox_inches="tight") 
 
 
 # Mean run length
@@ -262,7 +262,7 @@ delta =0.05
 final_width = 0.6
 inner=None
 offset_violinplot_halves(ax4, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb
-fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/MeanRunLength Violin.pdf', bbox_inches="tight") 
+#fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/MeanRunLength Violin.pdf', bbox_inches="tight") 
 
 
 # Mean IBI 
@@ -308,7 +308,7 @@ delta =0.05
 final_width = 0.6
 inner=None
 offset_violinplot_halves(ax5, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb
-fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/MeanIBI Violin.pdf', bbox_inches="tight") 
+#fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/MeanIBI Violin.pdf', bbox_inches="tight") 
 
 
 # Mean IRI 
@@ -354,7 +354,7 @@ final_width = 0.6
 inner=None
 offset_violinplot_halves(ax6, delta, final_width, inner, 'horizontal') ## Add this function to all funcs. be careful with import names sns vs sb
 
-fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/MeanIRI Violin.pdf', bbox_inches="tight") 
+#fig.savefig('/Volumes/KPMSB352/Distraction photometry paper/BehaviourFigs/MeanIRI Violin.pdf', bbox_inches="tight") 
 
 
 ### CODE OVERWRITES DATAFRAME EACH TIME, CANNOT ACCESS PREVIOUS VARIABLES. RRE NEEDED

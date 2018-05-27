@@ -25,7 +25,7 @@ import os
 import matplotlib as mpl
 import itertools
 import matplotlib.mlab as mlab
-#import seaborn as sb
+import seaborn as sb
 import statistics as stats
 # Set plot parameters and styles
 
@@ -741,3 +741,29 @@ def setcolors(coloroption, colors, barspergroup, nGroups, data, paired_scatter =
         coloroutput = [colors[0] for x in range(len(data.flatten()))]
 
     return coloroutput
+
+def subsetter(dictionary, dates, drug, verbose=False):
+    subset = []
+    for ind, filename in enumerate(dictionary['MedFilenames']):
+        path = medfolder + filename
+        onsets, offsets, med_dis_times, dis_type = medfilereader(path, ['e', 'f', 'i', 'j'], remove_var_header = True)  # e onset, f offset
+
+        if dictionary['Date'][ind] in dates and dictionary['Drug'][ind] == drug:
+            subset.append([onsets, offsets, dictionary['RatID'][ind]])
+            if verbose: #assumes true
+                print('filename, or comment ...') 
+    return subset
+    
+
+## Could have 2 funcs, one for the for to give onsets/offsets that takes a dict 
+
+
+def lickanalysis(lickdata, burstThreshold=0.25, runThreshold=10):
+    analysis = []
+    
+    for lists in lickdata:
+        lickon = lists[0]
+        offset = lists[1]
+        lick_analysis = lickCalc(lickon, offset, burstThreshold=burstThreshold, runThreshold=runThreshold)
+        analysis.append(lick_analysis)
+    return analysis

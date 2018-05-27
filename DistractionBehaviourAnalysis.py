@@ -1062,7 +1062,14 @@ for rat in amph_dis_pcp_F[:-1]:
     
     
     
+######################### INDIVIDUAL DIFFERENCES #######################
 
+# Flatten lists and plot EVERYTHING (check you haven't removed anything)
+
+# Can pre-distraction pause predict chances of distracted or not?
+    # Logistic regression 
+    
+# Do numbers of runs/bursts predict distractedness?
 
 
 #GROUP DATA (ways to subset)

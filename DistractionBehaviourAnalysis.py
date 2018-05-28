@@ -85,31 +85,13 @@ amph_pcp_F = subsetter(extract_females, ['171128'], 'PCP')
 # assign empty variables to store outputs from lick calc (to find means/groups stats)
 # lists where each item is a dictionary (25) derived from lickCalc for each rat / day
 
-lick_analysis_sal_M, lick_analysis_pcp_M,lick_analysis_sal_F, lick_analysis_pcp_F = [], [], [], []
 
-for lists in last_lick_sal_M:
-    licks = lists[0]
-    offset = lists[1]    
-    lick_analysis = lickCalc(licks, offset, burstThreshold = 0.25, runThreshold = 10)
-    lick_analysis_sal_M.append(lick_analysis)
+lick_analysis_sal_M2 = lickanalysis(last_lick_sal_M)
+lick_analysis_pcp_M2 = lickanalysis(last_lick_pcp_M)
+lick_analysis_sal_F2 = lickanalysis(last_lick_sal_F)
+lick_analysis_pcp_F2 = lickanalysis(last_lick_pcp_F)
 
-for lists in last_lick_pcp_M:
-    licks = lists[0]
-    offset = lists[1]    
-    lick_analysis = lickCalc(licks, offset, burstThreshold = 0.25, runThreshold = 10)
-    lick_analysis_pcp_M.append(lick_analysis)
 
-for lists in last_lick_sal_F:
-    licks = lists[0]
-    offset = lists[1]    
-    lick_analysis = lickCalc(licks, offset, burstThreshold = 0.25, runThreshold = 10)
-    lick_analysis_sal_F.append(lick_analysis)
-
-for lists in last_lick_pcp_F:
-    licks = lists[0]
-    offset = lists[1]    
-    lick_analysis = lickCalc(licks, offset, burstThreshold = 0.25, runThreshold = 10)
-    lick_analysis_pcp_F.append(lick_analysis)
 
 # ***********************************************************************************!!!!!    
 ''' 

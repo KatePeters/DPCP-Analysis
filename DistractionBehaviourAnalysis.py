@@ -86,10 +86,10 @@ amph_pcp_F = subsetter(extract_females, ['171128'], 'PCP')
 # lists where each item is a dictionary (25) derived from lickCalc for each rat / day
 
 
-lick_analysis_sal_M2 = lickanalysis(last_lick_sal_M)
-lick_analysis_pcp_M2 = lickanalysis(last_lick_pcp_M)
-lick_analysis_sal_F2 = lickanalysis(last_lick_sal_F)
-lick_analysis_pcp_F2 = lickanalysis(last_lick_pcp_F)
+lick_analysis_sal_M = lickanalysis(last_lick_sal_M)
+lick_analysis_pcp_M = lickanalysis(last_lick_pcp_M)
+lick_analysis_sal_F = lickanalysis(last_lick_sal_F)
+lick_analysis_pcp_F = lickanalysis(last_lick_pcp_F)
 
 
 

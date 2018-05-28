@@ -748,12 +748,13 @@ def subsetter(dictionary, dates, drug, dis=False, verbose=False):
         path = medfolder + filename
         onsets, offsets, med_dis_times, dis_type = medfilereader(path, ['e', 'f', 'i', 'j'], remove_var_header = True)  # e onset, f offset
 
-        if dis:
-    
+        if dis == True:
             if dictionary['Date'][ind] in dates and dictionary['Drug'][ind] == drug:
                 subset.append([onsets, offsets, dictionary['RatID'][ind]])
                 
-            elif dis==False
+            elif dis==False:
+                if dictionary['Date'][ind] in dates and dictionary['Drug'][ind] == drug:
+                    subset.append([onsets, offsets, dictionary['RatID'][ind]])
             
             
           

@@ -750,11 +750,13 @@ def subsetter(dictionary, dates, drug, dis=False, verbose=False):
 
         if dis == True:
             if dictionary['Date'][ind] in dates and dictionary['Drug'][ind] == drug:
-                subset.append([onsets, offsets, dictionary['RatID'][ind]])
+                subset.append([onsets, offsets, dis_type, dictionary['RatID'][ind]])
                 
-            elif dis==False:
-                if dictionary['Date'][ind] in dates and dictionary['Drug'][ind] == drug:
-                    subset.append([onsets, offsets, dictionary['RatID'][ind]])
+        elif dis==False:
+            
+            if dictionary['Date'][ind] in dates and dictionary['Drug'][ind] == drug:
+            
+                subset.append([onsets, offsets, dictionary['RatID'][ind]])
             
             
           

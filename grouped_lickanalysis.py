@@ -14,16 +14,6 @@ Function to work out means and medians for lick analysis by group
 # Produce medians/means for individual rats and group means 
 # Assign empty variables to store all data (before calc means etc.)
 
-# Saline males
-all_n_bursts_sal_M, all_n_runs_sal_M, all_mean_IBI_sal_M, all_mean_IRI_sal_M, all_mean_burst_length_sal_M, all_mean_run_length_sal_M = [], [], [], [], [], []
-# Pcp males
-all_n_bursts_pcp_M, all_n_runs_pcp_M, all_mean_IBI_pcp_M, all_mean_IRI_pcp_M, all_mean_burst_length_pcp_M, all_mean_run_length_pcp_M = [], [], [], [], [], []
-# Saline females
-all_n_bursts_sal_F, all_n_runs_sal_F, all_mean_IBI_sal_F, all_mean_IRI_sal_F, all_mean_burst_length_sal_F, all_mean_run_length_sal_F = [], [], [], [], [], []
-# Pcp females 
-all_n_bursts_pcp_F, all_n_runs_pcp_F, all_mean_IBI_pcp_F, all_mean_IRI_pcp_F, all_mean_burst_length_pcp_F, all_mean_run_length_pcp_F = [], [], [], [], [], []
-
-
 #function :
 #def Group_Lick_Analysis(dictionary, bursts=True, runs=True):
     
@@ -33,10 +23,11 @@ all_n_bursts_pcp_F, all_n_runs_pcp_F, all_mean_IBI_pcp_F, all_mean_IRI_pcp_F, al
 
 def grouped_lickanalysis(groupdicts, bursts=True, runs=True):
 
-    for dictionary in groupdicts     
-        grouped_lick = []
-        all_n_bursts, all_n_runs, all_mean_IBI, all_mean_burst_length, \
+    all_n_bursts, all_n_runs, all_mean_IBI, all_mean_burst_length, \
         all_mean_IRI, all_mean_run_length = [], [], [], [], [], []
+    for dictionary in groupdicts:     
+        grouped_lick = []
+       
         
         n_bursts = dictionary['bNum']
         n_runs = dictionary['rNum']
@@ -63,9 +54,6 @@ def grouped_lickanalysis(groupdicts, bursts=True, runs=True):
     
     return mean_n_bursts, mean_n_runs, mean_mean_IBI, mean_mean_IRI,\
     all_n_bursts, all_n_runs, all_mean_IBI, all_mean_IRI, all_mean_burst_length, all_mean_run_length 
-
-
-
 
 
 

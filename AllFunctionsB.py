@@ -742,6 +742,8 @@ def setcolors(coloroption, colors, barspergroup, nGroups, data, paired_scatter =
 
     return coloroutput
 
+#### FUNCTIONS IN ORDER OF APPEARANCE IN DISTRACTION BEHAVIOUR ANALYSIS
+
 '''
 SUBSETTER KP
 # Subsets data according to date, reads in dictionnary produced from metafile
@@ -784,3 +786,46 @@ def lickanalysis(lickdata, burstThreshold=0.25, runThreshold=10):
         lick_analysis = lickCalc(lickon, offset, burstThreshold=burstThreshold, runThreshold=runThreshold)
         analysis.append(lick_analysis)
     return analysis
+
+
+'''
+GROUPED_LICKANALYSIS 
+
+Takes list of dictionaries previously sorted by subsetter
+Finds lick analysis information on bursts, clusters, intervals 
+taken from individual lick analysis 
+Runs need to be defined somewhere????
+'''
+
+def grouped_lickanalysis(groupdicts):
+
+    all_n_bursts, all_n_runs, all_mean_IBI, all_mean_burst_length, \
+        all_mean_IRI, all_mean_run_length = [], [], [], [], [], []
+    for dictionary in groupdicts:     
+      
+        n_bursts = dictionary['bNum']
+        n_runs = dictionary['rNum']
+        #Mean ILI for each burst for each rat then caclulate a mean of mean for the groups
+        mean_inter_burst = np.mean(dictionary['bILIs']) 
+        mean_burst_length = dictionary['bMean'] # bMean uses bLicks (n licks not ILIs)
+        mean_inter_run = np.mean(dictionary['rILIs'])
+        mean_run_length = dictionary['rMean']
+        # median burst lengths, median inter-burst-intervals (all measures with medians)
+        all_n_bursts.append(n_bursts)
+        all_n_runs.append(n_runs)
+        all_mean_IBI.append(mean_inter_burst)
+        all_mean_burst_length.append(mean_burst_length) # rename this variable 
+        all_mean_IRI.append(mean_inter_run)
+        all_mean_run_length.append(mean_run_length)
+    # Can use these means to make plots, use the full lists to do statistics 
+        # comparing saline to pcp for each variable - is there a difference between 
+        # the numbers of bursts, the IBIs the runs etc. in sal and pcp (m then f)    
+
+    mean_n_bursts = np.mean(all_n_bursts)
+    mean_n_runs = np.mean(all_n_runs)
+    mean_mean_IBI = np.mean(all_mean_IBI)
+    mean_mean_IRI = np.mean(all_mean_IRI)
+    
+    return mean_n_bursts, mean_n_runs, mean_mean_IBI, mean_mean_IRI,\
+    all_n_bursts, all_n_runs, all_mean_IBI, all_mean_IRI, all_mean_burst_length, all_mean_run_length 
+

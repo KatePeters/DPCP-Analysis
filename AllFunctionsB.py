@@ -742,25 +742,42 @@ def setcolors(coloroption, colors, barspergroup, nGroups, data, paired_scatter =
 
     return coloroutput
 
-def subsetter(dictionary, dates, drug, verbose=False):
+'''
+SUBSETTER KP
+# Subsets data according to date, reads in dictionnary produced from metafile
+# and subsets into variable based on date(s) and drug condition 
+# if distraction day argument is given as True adds the distractor type 
+# to the output lists for later processing 
+
+'''
+
+def subsetter(dictionary, dates, drug, dis=False, verbose=False):
     subset = []
     for ind, filename in enumerate(dictionary['MedFilenames']):
         path = medfolder + filename
         onsets, offsets, med_dis_times, dis_type = medfilereader(path, ['e', 'f', 'i', 'j'], remove_var_header = True)  # e onset, f offset
 
-        if dictionary['Date'][ind] in dates and dictionary['Drug'][ind] == drug:
-            subset.append([onsets, offsets, dictionary['RatID'][ind]])
-            if verbose: #assumes true
-                print('filename, or comment ...') 
+        if dis == True:
+            if dictionary['Date'][ind] in dates and dictionary['Drug'][ind] == drug:
+                subset.append([onsets, offsets, dis_type, dictionary['RatID'][ind]])
+                
+        elif dis==False:   
+            if dictionary['Date'][ind] in dates and dictionary['Drug'][ind] == drug:
+                subset.append([onsets, offsets, dictionary['RatID'][ind]])
+            
+        if verbose: #assumes true
+            print('filename, or comment ...') 
     return subset
     
+'''
+LICKANALYSIS KP
+# Takes lickdata from subset lists/dictionary
+# produces 25 item dictionary for each rat / day 
+# lick information on bursts, clusters(runs) etc. 
 
-## Could have 2 funcs, one for the for to give onsets/offsets that takes a dict 
-
-
+'''
 def lickanalysis(lickdata, burstThreshold=0.25, runThreshold=10):
     analysis = []
-    
     for lists in lickdata:
         lickon = lists[0]
         offset = lists[1]

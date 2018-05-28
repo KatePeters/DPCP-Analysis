@@ -742,6 +742,8 @@ def setcolors(coloroption, colors, barspergroup, nGroups, data, paired_scatter =
 
     return coloroutput
 
+#### FUNCTIONS IN ORDER OF APPEARANCE IN DISTRACTION BEHAVIOUR ANALYSIS
+
 '''
 SUBSETTER KP
 # Subsets data according to date, reads in dictionnary produced from metafile
@@ -787,17 +789,20 @@ def lickanalysis(lickdata, burstThreshold=0.25, runThreshold=10):
 
 
 '''
+GROUPED_LICKANALYSIS 
 
+Takes list of dictionaries previously sorted by subsetter
+Finds lick analysis information on bursts, clusters, intervals 
+taken from individual lick analysis 
+Runs need to be defined somewhere????
 '''
 
-def grouped_lickanalysis(groupdicts, bursts=True, runs=True):
+def grouped_lickanalysis(groupdicts):
 
     all_n_bursts, all_n_runs, all_mean_IBI, all_mean_burst_length, \
         all_mean_IRI, all_mean_run_length = [], [], [], [], [], []
     for dictionary in groupdicts:     
-        grouped_lick = []
-       
-        
+      
         n_bursts = dictionary['bNum']
         n_runs = dictionary['rNum']
         #Mean ILI for each burst for each rat then caclulate a mean of mean for the groups

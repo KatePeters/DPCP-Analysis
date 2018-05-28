@@ -35,6 +35,9 @@ def grouped_lickanalysis(groupdicts, bursts=True, runs=True):
 
     for dictionary in groupdicts     
         grouped_lick = []
+        all_n_bursts, all_n_runs, all_mean_IBI, all_mean_burst_length, \
+        all_mean_IRI, all_mean_run_length = [], [], [], [], [], []
+        
         n_bursts = dictionary['bNum']
         n_runs = dictionary['rNum']
         #Mean ILI for each burst for each rat then caclulate a mean of mean for the groups
@@ -58,6 +61,15 @@ def grouped_lickanalysis(groupdicts, bursts=True, runs=True):
     mean_mean_IBI = np.mean(all_mean_IBI)
     mean_mean_IRI = np.mean(all_mean_IRI)
     
-    return mean_n_bursts, mean_n_runs, mean_mean_IBI, mean_mean_IRI 
+    return mean_n_bursts, mean_n_runs, mean_mean_IBI, mean_mean_IRI,\
+    all_n_bursts, all_n_runs, all_mean_IBI, all_mean_IRI, all_mean_burst_length, all_mean_run_length 
+
+
+
+
+
+
+
+
 
 

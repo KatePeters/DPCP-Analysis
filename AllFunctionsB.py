@@ -742,14 +742,21 @@ def setcolors(coloroption, colors, barspergroup, nGroups, data, paired_scatter =
 
     return coloroutput
 
-def subsetter(dictionary, dates, drug, verbose=False):
+def subsetter(dictionary, dates, drug, dis=False, verbose=False):
     subset = []
     for ind, filename in enumerate(dictionary['MedFilenames']):
         path = medfolder + filename
         onsets, offsets, med_dis_times, dis_type = medfilereader(path, ['e', 'f', 'i', 'j'], remove_var_header = True)  # e onset, f offset
 
-        if dictionary['Date'][ind] in dates and dictionary['Drug'][ind] == drug:
-            subset.append([onsets, offsets, dictionary['RatID'][ind]])
+        if dis:
+    
+            if dictionary['Date'][ind] in dates and dictionary['Drug'][ind] == drug:
+                subset.append([onsets, offsets, dictionary['RatID'][ind]])
+                
+            elif dis==False
+            
+            
+          
             if verbose: #assumes true
                 print('filename, or comment ...') 
     return subset

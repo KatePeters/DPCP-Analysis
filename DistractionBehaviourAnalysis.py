@@ -53,13 +53,13 @@ medfolder = '/Volumes/KP_HARD_DRI/kp259/DPCP_ALL/' # sometimes need space1 after
 # SALINE 
 
 last_lick_sal_M = subsetter(extract_males, ['170417','171006'], 'SAL')
-distraction_sal_M = subsetter(extract_males, ['170418','171007'], 'SAL')
+distraction_sal_M = subsetter(extract_males, ['170418','171007'], 'SAL', dis=True)
 hab1_sal_M = subsetter(extract_males, ['170419','171008'], 'SAL')
 hab2_sal_M = subsetter(extract_males, ['170420','171009'], 'SAL')
 amph_sal_M = subsetter(extract_males, ['170423','171012'], 'SAL')
 # PCP
 last_lick_pcp_M = subsetter(extract_males, ['170417','171006'], 'PCP')
-distraction_pcp_M = subsetter(extract_males, ['170418','171007'], 'PCP')
+distraction_pcp_M = subsetter(extract_males, ['170418','171007'], 'PCP', dis=True)
 hab1_pcp_M = subsetter(extract_males, ['170419','171008'], 'PCP')
 hab2_pcp_M = subsetter(extract_males, ['170420','171009'], 'PCP')
 amph_pcp_M = subsetter(extract_males, ['170423','171012'], 'PCP')
@@ -68,13 +68,13 @@ amph_pcp_M = subsetter(extract_males, ['170423','171012'], 'PCP')
 # FEMALES **********************************************************************
 # SALINE
 last_lick_sal_F = subsetter(extract_females, ['171124'], 'SAL')
-distraction_sal_F = subsetter(extract_females, ['171125'], 'SAL')
+distraction_sal_F = subsetter(extract_females, ['171125'], 'SAL',dis=True)
 hab1_sal_F = subsetter(extract_females, ['171126'], 'SAL')
 hab2_sal_F = subsetter(extract_females, ['171127'], 'SAL')
 amph_sal_F = subsetter(extract_females, ['171128'], 'SAL')
 # PCP
 last_lick_pcp_F = subsetter(extract_females, ['171124'], 'PCP')
-distraction_pcp_F = subsetter(extract_females, ['171125'], 'PCP')
+distraction_pcp_F = subsetter(extract_females, ['171125'], 'PCP',dis=True)
 hab1_pcp_F = subsetter(extract_females, ['171126'], 'PCP')
 hab2_pcp_F = subsetter(extract_females, ['171127'], 'PCP')
 amph_pcp_F = subsetter(extract_females, ['171128'], 'PCP')

@@ -5,6 +5,7 @@ Created on Mon Apr 16 11:18:00 2018
 @author: u1490431 (kp) 
 
 DATA EXTRACTION - DISTRACTION BEHAVIOUR PAPER PETERS ET AL. 
+DATA EXTRACTION - CHAPTER 3 PCPvSAL 
 
 Information on what this script does start to finish and which other 
 functions need to be run first 
@@ -105,9 +106,6 @@ lick_analysis_pcp_F = []
 # Produce medians/means for individual rats and group means 
 # Assign empty variables to store all data (before calc means etc.)
 
-
-## Could store these as dictionary, either by defining here or within the function 
-## Need to consider how to access (and if already used) later 
 # Males
 # Saline
 sal_M_mean_n_bursts, sal_M_mean_n_runs, sal_M_mean_mean_IBI, sal_M_mean_mean_IRI,\
@@ -136,8 +134,7 @@ all_mean_burst_length_pcp_F, all_mean_run_length_pcp_F = grouped_lickanalysis(li
 
 # Distraction day analysis 
 
-''' Licking data already subset earlier '''
-
+modalitykey = {'whitenoise':[1,4], 'tone':[2,5], 'combined3':[3,6]}
 # MALES
 # Saline
 discalc_sal_M, percent_dis_whitenoise_sal_M, percent_dis_tone_sal_M,\
@@ -613,35 +610,6 @@ for rat in amph_dis_pcp_F[:-1]:
     # Logistic regression 
     
 # Do numbers of runs/bursts predict distractedness?
-
-
-#GROUP DATA (ways to subset)
-#
-#MALES 
-#PCP lick day mean PDP, mean percentage distracted, mean/median bursts
-#PCP distraction day mean PDP, mean percentage distracted, mean/median bursts
-#PCP habituation day mean PDP, mean percentage distracted, mean/median bursts
-#PCP salineIP day mean PDP, mean percentage distracted, mean/median bursts
-#PCP amphetamineIP day mean PDP, mean percentage distracted, mean/median bursts
-#
-#SAL lick day mean PDP, mean percentage distracted, mean/median bursts
-#SAL distraction day mean PDP, mean percentage distracted, mean/median bursts
-#SAL habituation day mean PDP, mean percentage distracted, mean/median bursts
-#SAL salineIP day mean PDP, mean percentage distracted, mean/median bursts
-#SAL amphetamineIP day mean PDP, mean percentage distracted, mean/median bursts
-#
-#FEMALES 
-#PCP lick day mean PDP, mean percentage distracted, mean/median bursts
-#PCP distraction day mean PDP, mean percentage distracted, mean/median bursts
-#PCP habituation day mean PDP, mean percentage distracted, mean/median bursts
-#PCP salineIP day mean PDP, mean percentage distracted, mean/median bursts
-#PCP amphetamineIP day mean PDP, mean percentage distracted, mean/median bursts
-#
-#SAL lick day mean PDP, mean percentage distracted, mean/median bursts
-#SAL distraction day mean PDP, mean percentage distracted, mean/median bursts
-#SAL habituation day mean PDP, mean percentage distracted, mean/median bursts
-#SAL salineIP day mean PDP, mean percentage distracted, mean/median bursts
-#SAL amphetamineIP day mean PDP, mean percentage distracted, mean/median bursts
 
 
 #sb.jointplot(x=df['nRuns'], y=df['nBursts'], kind='hex')) #or type 'reg' for kernel estimation and regression

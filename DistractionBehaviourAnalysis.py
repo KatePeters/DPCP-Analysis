@@ -157,103 +157,31 @@ mean_percent_COMBINED_pcp_F = discalc_modalities(distraction_pcp_F, modalitykey)
 
 # Modelled distractors ˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚
 
-mod_dis_sal_M, mod_dis_pcp_M, mod_dis_sal_F, mod_dis_pcp_F = [], [], [], []
-
-# last_lick_sal_M, last_lick_pcp_M, last_lick_pcp_F, last_lick_sal_F  ---- variables
-
-for rat in last_lick_sal_M:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    mod_dis_sal_M.append([distracted, notdistracted])
-
-for rat in last_lick_pcp_M:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    mod_dis_pcp_M.append([distracted, notdistracted])
+# Modelled distractors by group (last lick day)    
+mod_dis_sal_M = disbygroup(last_lick_sal_M)
+mod_dis_pcp_M = disbygroup(last_lick_pcp_M)
+mod_dis_sal_F = disbygroup(last_lick_sal_F)
+mod_dis_pcp_F = disbygroup(last_lick_pcp_F)
     
-for rat in last_lick_sal_F:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    mod_dis_sal_F.append([distracted, notdistracted])
-    
-for rat in last_lick_pcp_F:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    mod_dis_pcp_F.append([distracted, notdistracted])
+# Habituation days by group 
+hab1_dis_sal_M = disbygroup(hab1_sal_M)
+hab2_dis_sal_M = disbygroup(hab2_sal_M)
 
-# Habituation days and amphetamine days SAL M ONLY ˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚
-# Calculate percentage distracted later
-hab1_dis_sal_M, hab2_dis_sal_M, amph_dis_sal_M = [], [], []
-hab1_dis_pcp_M, hab2_dis_pcp_M, amph_dis_pcp_M = [], [], []
+hab1_dis_pcp_M = disbygroup(hab1_pcp_M)
+hab2_dis_pcp_M = disbygroup(hab2_pcp_M)
 
-for rat in hab1_sal_M:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    hab1_dis_sal_M.append([distracted, notdistracted])
-     
-for rat in hab2_sal_M:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    hab2_dis_sal_M.append([distracted, notdistracted])
-    
-for rat in amph_sal_M:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    amph_dis_sal_M.append([distracted, notdistracted]) 
-    
-for rat in hab1_pcp_M:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    hab1_dis_pcp_M.append([distracted, notdistracted])
-     
-for rat in hab2_pcp_M:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    hab2_dis_pcp_M.append([distracted, notdistracted])
-    
-for rat in amph_pcp_M:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    amph_dis_pcp_M.append([distracted, notdistracted]) 
-    
-#### REPEATED FOR FEMALSE SALINE AND PCP    
-hab1_dis_sal_F, hab2_dis_sal_F, amph_dis_sal_F = [], [], []
-hab1_dis_pcp_F, hab2_dis_pcp_F, amph_dis_pcp_F = [], [], []
+hab1_dis_sal_F = disbygroup(hab1_sal_F)
+hab2_dis_sal_F = disbygroup(hab2_sal_F)
 
-for rat in hab1_sal_F:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    hab1_dis_sal_F.append([distracted, notdistracted])
-     
-for rat in hab2_sal_F:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    hab2_dis_sal_F.append([distracted, notdistracted])
-    
-for rat in amph_sal_F:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    amph_dis_sal_F.append([distracted, notdistracted]) 
-    
-for rat in hab1_pcp_F:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    hab1_dis_pcp_F.append([distracted, notdistracted])
-     
-for rat in hab2_pcp_F:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    hab2_dis_pcp_F.append([distracted, notdistracted])
+hab1_dis_pcp_F = disbygroup(hab1_pcp_F)
+hab2_dis_pcp_F = disbygroup(hab2_pcp_F)
 
-### SOMETHING WRONG HERE, LIST INDEX OUT OF RANGE (LAST RAT IN FEMALES, ISSUE?)    
-for rat in amph_pcp_F:
-    discalc = distractionCalc2(rat[0])
-    distracted, notdistracted = distractedOrNot(discalc, rat[0])
-    amph_dis_pcp_F.append([distracted, notdistracted])    
-# fixed issue by adding if statement to distractionCalc2 (if len(d) is not > 1)    
-# got zero distractors, consider how to deal with these situations
+# Amphetamine days by group 
+amph_dis_sal_M = disbygroup(amph_sal_M)
+amph_dis_pcp_M = disbygroup(amph_pcp_M)
 
-
+amph_dis_sal_F = disbygroup(amph_sal_F)
+amph_dis_pcp_F = disbygroup(amph_pcp_F)
 
 # POST DISTRACTION PAUSES 
 # For both distracted and non-distracted trials 

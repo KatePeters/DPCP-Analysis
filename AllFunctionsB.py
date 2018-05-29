@@ -987,3 +987,14 @@ def pdpbygroup(distractiondict, groupdict):
     
     return pdps_dis_group, med_pdps_dis_group, preDPs_dis_group, \
         pdps_notdis_group, med_pdps_notdis_group, preDPs_notdis_group
+        
+
+def percentdisgroup(distractiondict):
+    ''' Discalc_sal_M == distractiondict '''
+    
+    percent_dis_group = []
+    for rat in distractiondict: 
+        percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
+        percent_dis_group.append(percentage)
+    return percent_dis_group
+        

@@ -254,124 +254,34 @@ for index, value in enumerate(salMdistractors):
 ##################################################################
 # Percentage distracted    ##################################################################
 
-# SALINE and PCP for males only 
-
-# Cross checked and correct percentage on distraction day for all sal. 
-percent_dis_dis_sal_M = []
-for rat in discalc_sal_M: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_dis_sal_M.append(percentage)
-
-percent_dis_modelled_sal_M = []
-for rat in mod_dis_sal_M: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_modelled_sal_M.append(percentage)
-    
-percent_dis_hab1_sal_M = []
-for rat in hab1_dis_sal_M: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_hab1_sal_M.append(percentage)
-    
-percent_dis_hab2_sal_M = []
-for rat in hab2_dis_sal_M: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_hab2_sal_M.append(percentage)
-
-percent_dis_amph_sal_M = []
-for rat in amph_dis_sal_M: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_amph_sal_M.append(percentage)
-
-
+percent_dis_dis_sal_M = percentdisgroup(discalc_sal_M)
+percent_dis_modelled_sal_M = percentdisgroup(mod_dis_sal_M)
+percent_dis_hab1_sal_M = percentdisgroup(hab1_dis_sal_M)
+percent_dis_hab2_sal_M = percentdisgroup(hab2_dis_sal_M)
+percent_dis_amph_sal_M = percentdisgroup(amph_dis_sal_M)
 
 ## PCP
-percent_dis_dis_pcp_M = []
-for rat in discalc_pcp_M: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_dis_pcp_M.append(percentage)
-
-percent_dis_modelled_pcp_M = []
-for rat in mod_dis_pcp_M: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_modelled_pcp_M.append(percentage)
-    
-percent_dis_hab1_pcp_M = []
-for rat in hab1_dis_pcp_M: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_hab1_pcp_M.append(percentage)
-    
-percent_dis_hab2_pcp_M = []
-for rat in hab2_dis_pcp_M: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_hab2_pcp_M.append(percentage)
-
-percent_dis_amph_pcp_M = []
-for rat in amph_dis_pcp_M: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_amph_pcp_M.append(percentage)
-
-
+percent_dis_dis_pcp_M = percentdisgroup(discalc_pcp_M)
+percent_dis_modelled_pcp_M = percentdisgroup(mod_dis_pcp_M)
+percent_dis_hab1_pcp_M = percentdisgroup(hab1_dis_pcp_M)
+percent_dis_hab2_pcp_M = percentdisgroup(hab2_dis_pcp_M)
+percent_dis_amph_pcp_M = percentdisgroup(amph_dis_pcp_M)
 
 ############# FEMALES - percent distracted 
 ## Remember might have an issue with the last PCP rat on amphetamine day
-# division by zero potential problem 
+# division by zero potential problem/ Might remove this rat from ALL days for the plots?? 
+# SALINE
+percent_dis_dis_sal_F = percentdisgroup(discalc_sal_F)
+percent_dis_modelled_sal_F = percentdisgroup(mod_dis_sal_F)
+percent_dis_hab1_sal_F = percentdisgroup(hab1_dis_sal_F)
+percent_dis_hab2_sal_F = percentdisgroup(hab2_dis_sal_F)
+percent_dis_amph_sal_F = percentdisgroup(amph_dis_sal_F)
 
-# Might remove this rat from ALL days for the plots?? 
-
-percent_dis_dis_sal_F = []
-for rat in discalc_sal_F: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_dis_sal_F.append(percentage)
-
-percent_dis_modelled_sal_F = []
-for rat in mod_dis_sal_F: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_modelled_sal_F.append(percentage)
-    
-percent_dis_hab1_sal_F = []
-for rat in hab1_dis_sal_F: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_hab1_sal_F.append(percentage)
-    
-percent_dis_hab2_sal_F = []
-for rat in hab2_dis_sal_F: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_hab2_sal_F.append(percentage)
-
-percent_dis_amph_sal_F = []
-for rat in amph_dis_sal_F: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_amph_sal_F.append(percentage)
-
-
-
-## PCP
-percent_dis_dis_pcp_F = []
-for rat in discalc_pcp_F[:-1]:  ## Exclude last rat, zero distracted and zero not dis 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_dis_pcp_F.append(percentage)
-
-percent_dis_modelled_pcp_F = []
-for rat in mod_dis_pcp_F[:-1]: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_modelled_pcp_F.append(percentage)
-    
-percent_dis_hab1_pcp_F = []
-for rat in hab1_dis_pcp_F[:-1]: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_hab1_pcp_F.append(percentage)
-    
-percent_dis_hab2_pcp_F = []
-for rat in hab2_dis_pcp_F[:-1]: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_hab2_pcp_F.append(percentage)
-
-
-percent_dis_amph_pcp_F = []
-for rat in amph_dis_pcp_F[:-1]: 
-    percentage = len(rat[0]) / (len(rat[0])+len(rat[1])) * 100
-    percent_dis_amph_pcp_F.append(percentage)
-    
-    
+# PCP
+percent_dis_dis_pcp_F = percentdisgroup(discalc_pcp_F[0:-1])
+percent_dis_modelled_pcp_F = percentdisgroup(mod_dis_pcp_F[0:-1])
+percent_dis_hab1_pcp_F = percentdisgroup(hab1_dis_pcp_F[0:-1])
+percent_dis_hab2_pcp_F = percentdisgroup(hab2_dis_pcp_F[0:-1])
+percent_dis_amph_pcp_F = percentdisgroup(amph_dis_pcp_F[0:-1]) 
 ######################### INDIVIDUAL DIFFERENCES #######################
 #sb.jointplot(x=df['nRuns'], y=df['nBursts'], kind='hex')) #or type 'reg' for kernel estimation and regression

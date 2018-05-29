@@ -6,13 +6,37 @@ Created on Tue May 29 07:39:25 2018
 @author: u1490431
 """
 
+modalitykey = {'whitenoise':[1,4], 'tone':[2,5], 'combined3':[3,6]}
+
+#modalitykey as a dictionary 
+
+def discalc_modalities(dictionary, modalitykey, ):
+    
+    return 1,2,3,4,5,6,7
+
+
+ 
+# output variables to assign function returns to 
+    
+#discalc_sal_M = discalgroup
+#
+#percent_dis_whitenoise_sal_M = percent_dis_whitenoise_group
+#percent_dis_tone_sal_M = percent_dis_tone_group
+#percent_dis_combined_sal_M = percent_dis_combined_group
+#
+#mean_percent_WHITENOISE_sal_M = mean_percent_WHITENOISE
+#mean_percent_TONE_sal_M = mean_percent_TONE
+#mean_percent_COMBINED_sal_M = mean_percent_COMBINED
+
+
 ## SAL MALES - DISTRACTION DAY ONLY - DISTRACTOR TYPE ANALYSIS INCLUDED
 # Finds distracted or not (corrects for med slipping issue)
-for rat in distraction_sal_M:
+for rat in dictionary:
+    discalcgroup = []
     discalc = distractionCalc2(rat[0])
     distracted, notdistracted = distractedOrNot(discalc, rat[0])
   #  work out percentage and add this too 
-    discalc_sal_M.append([distracted, notdistracted])
+    discalcgroup.append([distracted, notdistracted])
 
     dis_numeric = []
     ndis_numeric = []
@@ -31,13 +55,13 @@ for rat in distraction_sal_M:
     
     dis_type_text = [] #labels the distypes with text labels and adds to the counts
     for d in dis_numeric:
-        if d in whitenoise:
+        if d in modalitykey['whitenoise']:
             dis_type_text.append('whitenoise')
             d_whitenoise_count += 1
-        elif d in tone:
+        elif d in modalitykey['tone']:
             dis_type_text.append('tone')
             d_tone_count += 1
-        elif d in combined3:
+        elif d in modalitykey['combined3']:
             dis_type_text.append('combined3')
             d_combined_count += 1 
     d_percent_white_noise = d_whitenoise_count / (len(dis_type_text))*100
@@ -52,13 +76,13 @@ for rat in distraction_sal_M:
     
     ndis_type_text = []
     for d in ndis_numeric:
-        if d in whitenoise:
+        if d in modalitykey['whitenoise']:
             ndis_type_text.append('whitenoise')
             nd_whitenoise_count += 1
-        elif d in tone:
+        elif d in modalitykey['tone']:
             ndis_type_text.append('tone')
             nd_tone_count += 1
-        elif d in combined3:
+        elif d in modalitykey['combined3']:
             ndis_type_text.append('combined3')
             nd_combined_count += 1 
             
@@ -71,10 +95,10 @@ for rat in distraction_sal_M:
     percent_distracted_tone = d_tone_count / (d_tone_count + nd_tone_count) *100
     percent_distracted_combined = d_combined_count / (d_combined_count + nd_combined_count) *100  
     
-    percent_dis_whitenoise_sal_M.append(percent_distracted_whitenoise)
-    percent_dis_tone_sal_M.append(percent_distracted_tone)
-    percent_dis_combined_sal_M.append(percent_distracted_combined)
+    percent_dis_whitenoise_group.append(percent_distracted_whitenoise)
+    percent_dis_tone_group.append(percent_distracted_tone)
+    percent_dis_combined_group.append(percent_distracted_combined)
   
-mean_percent_WHITENOISE_sal_M = np.mean(percent_dis_whitenoise_sal_M) # the average percentage of JUST whitenoise trials that rats are distracted on 
-mean_percent_TONE_sal_M = np.mean(percent_dis_tone_sal_M)
-mean_percent_COMBINED_sal_M = np.mean(percent_dis_combined_sal_M)
+mean_percent_WHITENOISE = np.mean(percent_dis_whitenoise_group) # the average percentage of JUST whitenoise trials that rats are distracted on 
+mean_percent_TONE = np.mean(percent_dis_tone_group)
+mean_percent_COMBINED = np.mean(percent_dis_combined_group)

@@ -922,3 +922,17 @@ def discalc_modalities(dictionary, modalitykey, ):
             percent_dis_combined_group, mean_percent_WHITENOISE, mean_percent_TONE, \
             mean_percent_COMBINED
 
+
+''' Prodcues times of distracted and not distracted as 2 lists
+    takes a dictionary of grouped rat data 
+'''
+
+def disbygroup(dictionary):
+    dis = []
+    for rat in dictionary:
+        
+        discalc = distractionCalc2(rat[0])         
+        distracted, notdistracted = distractedOrNot(discalc, rat[0])
+        dis.append([distracted, notdistracted])
+        
+    return dis

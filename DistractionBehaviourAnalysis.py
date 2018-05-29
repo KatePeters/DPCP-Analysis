@@ -104,8 +104,6 @@ lick_analysis_pcp_F = []
 '''
 ## LICK DAY ANALYSIS - BY GROUP 
 # Produce medians/means for individual rats and group means 
-# Assign empty variables to store all data (before calc means etc.)
-
 # Males
 # Saline
 sal_M_mean_n_bursts, sal_M_mean_n_runs, sal_M_mean_mean_IBI, sal_M_mean_mean_IRI,\
@@ -132,7 +130,7 @@ all_mean_burst_length_pcp_F, all_mean_run_length_pcp_F = grouped_lickanalysis(li
 
 ################################################################################
 
-# Distraction day analysis 
+# Distraction day analysis (including modalities)
 
 modalitykey = {'whitenoise':[1,4], 'tone':[2,5], 'combined3':[3,6]}
 # MALES
@@ -156,7 +154,7 @@ percent_dis_combined_pcp_F, mean_percent_WHITENOISE_pcp_F, mean_percent_TONE_pcp
 mean_percent_COMBINED_pcp_F = discalc_modalities(distraction_pcp_F, modalitykey)
 
 # Modelled distractors ˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚˚
-
+# Not including modalities 
 # Modelled distractors by group (last lick day)    
 mod_dis_sal_M = disbygroup(last_lick_sal_M)
 mod_dis_pcp_M = disbygroup(last_lick_pcp_M)
